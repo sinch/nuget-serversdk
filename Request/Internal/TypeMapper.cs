@@ -248,7 +248,7 @@ namespace Sinch.Callback.Request.Internal
                     result = Result.Answered;
                     break;
                 case "denied":
-                case "budy":
+                case "busy":
                     result = Result.Busy;
                     break;
                 case "cancel":

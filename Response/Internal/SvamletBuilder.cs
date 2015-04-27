@@ -91,7 +91,7 @@ namespace Sinch.Callback.Response.Internal
                 AddInstruction(new SvamletInstruction
                 {
                     Name = "playfiles",
-                    Ids = _promptSpecifications.ToArray(),
+                    Ids = _promptSpecifications.Select(spec => spec.StartsWith("http") ? "#href[" + spec + "]" : spec).ToArray(),
                     Locale = Locale.Code
                 });
 

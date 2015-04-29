@@ -18,6 +18,12 @@
             return this;
         }
 
+        public IManageCallSvamletBuilder SaySsml(string ssml)
+        {
+            InternalPlaySsml(ssml);
+            return this;
+        }
+
         public IManageCallSvamletBuilder Say(string text)
         {
             InternalSay(text);

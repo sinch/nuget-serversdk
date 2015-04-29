@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Sinch.Callback.Model;
 
@@ -69,12 +70,32 @@ namespace Sinch.Callback.Response.Internal
             if (file.Length > 128)
                 throw new BuilderException("File names can not be longer than 128 characters");
 
-            _promptSpecifications.Add(file);
+            if(file.StartsWith("http", StringComparison.InvariantCultureIgnoreCase))
+                _promptSpecifications.Add("#href[" + file + "]");
+            else
+                _promptSpecifications.Add(file);
+        }
+
+        protected void InternalPlaySsml(string ssml)
+        {
+            if (string.IsNullOrEmpty(ssml))
+                throw new BuilderException("Cannot specify empty SSML");
+
+            if (_promptSpecifications.Count > 128)
+                throw new BuilderException("Cannot specify more than 128 characters as SSML");
+
+            _promptSpecifications.Add("#ssml[" + ssml + "]");
         }
 
         public ISvamletResponse Hangup()
         {
             SetAction(new SvamletAction { Name = "hangup", Barge = Barge });
+            return Build();
+        }
+
+        public ISvamletResponse Hangup(int hangupCause)
+        {
+            SetAction(new SvamletAction { Name = "hangup", Barge = Barge, HangupCause = hangupCause });
             return Build();
         }
 
@@ -91,7 +112,7 @@ namespace Sinch.Callback.Response.Internal
                 AddInstruction(new SvamletInstruction
                 {
                     Name = "playfiles",
-                    Ids = _promptSpecifications.Select(spec => spec.StartsWith("http") ? "#href[" + spec + "]" : spec).ToArray(),
+                    Ids = _promptSpecifications.ToArray(),
                     Locale = Locale.Code
                 });
 

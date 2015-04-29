@@ -34,6 +34,12 @@ namespace Sinch.Callback.Response.Internal
             return this;
         }
 
+        public IIceSvamletBuilder SaySsml(string ssml)
+        {
+            InternalPlaySsml(ssml);
+            return this;
+        }
+
         public ISvamletResponse RunMenu(string menuId)
         {
             if(!_menus.ContainsKey(menuId) && !_numberInputMenus.ContainsKey(menuId))

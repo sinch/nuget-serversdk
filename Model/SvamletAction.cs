@@ -54,5 +54,8 @@ namespace Sinch.Callback.Model
 
         [JsonProperty(PropertyName = "barge", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public bool Barge { get; set; }
+
+        [JsonProperty(PropertyName = "hangupCause", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public int HangupCause { get; set; }
     }
 }

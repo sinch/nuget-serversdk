@@ -25,5 +25,10 @@
             return this;
         }
 
+        public IAceSvamletBuilder SaySsml(string ssml)
+        {
+            InternalPlaySsml(ssml);
+            return this;
+        }
     }
 }

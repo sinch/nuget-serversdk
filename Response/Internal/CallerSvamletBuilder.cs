@@ -13,7 +13,7 @@ namespace Sinch.Callback.Response.Internal
         {
         }
 
-        public ISvamletResponse ConnectPstn(string destination, TimeSpan timeout, string callerId = null)
+        public ISvamletResponse ConnectPstn(string destination, TimeSpan timeout, string callerId = null, bool suppressCallbacks = false)
         {
             if(timeout.TotalMinutes > 240)
                 throw new BuilderException("Cannot specify more than 4 hours of calling");
@@ -43,7 +43,8 @@ namespace Sinch.Callback.Response.Internal
                 {
                     Type = "number",
                     Endpoint = destination
-                }
+                },
+                SuppressCallbacks = suppressCallbacks
             });
 
             return Build();

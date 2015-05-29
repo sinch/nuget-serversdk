@@ -39,7 +39,7 @@ namespace Sinch.Callback.Model
 
         [JsonProperty(PropertyName = "conferenceId", NullValueHandling = NullValueHandling.Ignore)]
         public string ConferenceId { get; set; }
-
+        
         [JsonProperty(PropertyName = "suppressCallbacks", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public bool SuppressCallbacks { get; set; }
 

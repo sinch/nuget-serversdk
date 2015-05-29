@@ -13,9 +13,10 @@ namespace Sinch.Callback.Response.Internal
         {
         }
 
-        public ISvamletResponse ConnectPstn(string destination, TimeSpan timeout, string callerId = null, bool suppressCallbacks = false)
+        public ISvamletResponse ConnectPstn(string destination, TimeSpan bridgedTimeout, string callerId = null,
+            bool suppressCallbacks = false, TimeSpan? dialTimeout = null)
         {
-            if(timeout.TotalMinutes > 240)
+            if (bridgedTimeout.TotalMinutes > 240)
                 throw new BuilderException("Cannot specify more than 4 hours of calling");
 
             if (!string.IsNullOrEmpty(destination))
@@ -36,7 +37,8 @@ namespace Sinch.Callback.Response.Internal
             SetAction(new SvamletAction
             {
                 Name = "connectpstn",
-                DialTimeout = (int) timeout.TotalSeconds,
+                MaxDuration = (int)bridgedTimeout.TotalSeconds,
+                DialTimeout = dialTimeout.HasValue ? (int) dialTimeout.Value.TotalSeconds : 0,
                 Cli = callerId ?? "private",
                 Locale = Locale.Code,
                 Destination = new IdentityModel

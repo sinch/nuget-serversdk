@@ -2,13 +2,13 @@
 <package >
   <metadata>
     <id>$id$</id>
-    <version>1.0.0.11</version>
+    <version>1.0.0.13</version>
     <title>Sinch Calling Callback</title>
     <authors>BF</authors>
     <owners>Sinch</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Interpret callback data and create callback responses</description>
-    <releaseNotes>First version</releaseNotes>
+    <releaseNotes>Minor changes in connect PSTN</releaseNotes>
     <copyright>Copyright 2015 Sinch</copyright>
   </metadata>
 </package>

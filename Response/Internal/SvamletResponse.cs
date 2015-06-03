@@ -6,20 +6,14 @@ namespace Sinch.Callback.Response.Internal
 {
     internal class SvamletResponse : ISvamletResponse
     {
-        private readonly Svamlet _model;
         private string _json;
-
-        internal SvamletResponse(Svamlet model)
-        {
-            _model = model;
-        }
 
         private void Render()
         {
             if (_json == null)
             {
                 var sw = new StringWriter();
-                new JsonSerializer().Serialize(sw, _model);
+                new JsonSerializer().Serialize(sw, Model);
                 _json = sw.ToString();
             }
         }
@@ -53,7 +47,7 @@ namespace Sinch.Callback.Response.Internal
 
         public Svamlet Model
         {
-            get { return _model; }
+            get; set;
         }
     }
 }

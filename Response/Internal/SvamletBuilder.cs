@@ -105,7 +105,7 @@ namespace Sinch.Callback.Response.Internal
             return Build();
         }
 
-        public virtual ISvamletResponse Build()
+        protected virtual T Build<T>() where T : SvamletResponse, new()
         {
             if (_promptSpecifications.Any())
             {
@@ -119,11 +119,19 @@ namespace Sinch.Callback.Response.Internal
                 _promptSpecifications.Clear();
             }
 
-            return new SvamletResponse(new Svamlet
+            return new T()
             {
-                Action = _action,
-                Instructions = _instructions.ToArray()
-            });
+                Model = new Svamlet()
+                {
+                    Action = _action,
+                    Instructions = _instructions.ToArray()
+                }
+            };
+        }
+
+        public virtual ISvamletResponse Build()
+        {
+            return Build<SvamletResponse>();
         }
     }
 }

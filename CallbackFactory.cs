@@ -20,7 +20,7 @@ namespace Sinch.Callback
         public IIceSvamletBuilder CreateIceSvamletBuilder() { return new IceSvamletBuilder(_locale); }
         public IAceSvamletBuilder CreateAceSvamletBuilder() { return new AceSvamletBuilder(_locale); }
         public IManageCallSvamletBuilder CreateManageCallSvamletBuilder() { return new ManageCallSvamletBuilder(_locale); }
-        public ISvamletResponse CreateDiceResponse() {  return new SvamletResponse(new Svamlet()); }
-        public ISvamletResponse CreateNotificationResponse() {  return new SvamletResponse(new Svamlet()); }
+        public ISvamletResponse CreateDiceResponse() { return new SvamletResponse { Model = new Svamlet() }; }
+        public ISvamletResponse CreateNotificationResponse() {  return new SvamletResponse { Model = new Svamlet()}; }
     }
 }

@@ -266,11 +266,31 @@ Hangs up the call (after having executed any instructions)
 ##### Continue
 If this is a call initiated from the an SDK client, the call will be connected as requested by the client. If you want to override the behaviour, you should specify another action.
 
-##### ConnectPstn(string destination, TimeSpan timeout, string callerId = null)
-Connect the call to a PSTN destination specified by "destination". The timeout indicates how long the call can stay connected and callerId indicates what CLI to use ("private" makes the call anonymous)
+##### ConnectPstn(string destination)
+Connect the call to a PSTN destination specified by "destination".
 
-##### ConnectMxp(string user, string callerId = null)
+The returned object supports manipulating the PSTN call:
+
+###### WithCli(string cli) - sets the CLI for the call
+###### WithAnonymousCli() - sets hidden CLI for the call
+###### WithBridgeTimeout(TimeSpan timeSpan) - sets timeout, in seconds - how long can the call be connected for (max 4 hours)
+###### WithDialTimeout(TimeSpan timeSpan) - sets timeout for ringing - after how long trying to connect, should the call attempt be cancelled
+###### WithOptimizedDialTimeout() - undocumented for now
+###### WithOptimizedDialTimeout() - undocumented for now
+###### WithCallbacks() - enable callbacks for the rest of the call (default)
+###### WithoutCallbacks() - disable callbacks for the rest of the call
+
+
+##### ConnectMxp(string user)
 Connect the call to a app destination specified by "user". Note that this is currently an unsupported feature and it does not do any GCM/APN pushes.
+
+The returned object supports manipulating the MXP call:
+
+###### WithCli(string cli) - sets the CLI for the call
+###### WithAnonymousCli() - sets hidden CLI for the call
+
+##### ConnectMxp(Identity identity)
+Connect the call to a app destination specified by "identity". Note that this is currently an unsupported feature and it does not do any GCM/APN pushes.
 
 ##### ConnectConference(string conferenceId)
 Connects the call to a server-side conference

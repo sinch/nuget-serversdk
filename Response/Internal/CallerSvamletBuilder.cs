@@ -13,12 +13,8 @@ namespace Sinch.Callback.Response.Internal
         {
         }
 
-        public ISvamletResponse ConnectPstn(string destination, TimeSpan bridgedTimeout, string callerId = null,
-            bool suppressCallbacks = false, TimeSpan? dialTimeout = null)
+        public IConnectPstnSvamletResponse ConnectPstn(string destination)
         {
-            if (bridgedTimeout.TotalMinutes > 240)
-                throw new BuilderException("Cannot specify more than 4 hours of calling");
-
             if (!string.IsNullOrEmpty(destination))
             {
                 if (!destination.StartsWith("+"))
@@ -37,22 +33,22 @@ namespace Sinch.Callback.Response.Internal
             SetAction(new SvamletAction
             {
                 Name = "connectpstn",
-                MaxDuration = (int)bridgedTimeout.TotalSeconds,
-                DialTimeout = dialTimeout.HasValue ? (int) dialTimeout.Value.TotalSeconds : 0,
-                Cli = callerId ?? "private",
+                MaxDuration = (int) TimeSpan.FromMinutes(240).TotalSeconds,
+                DialTimeout = 0,
+                Cli = "private",
                 Locale = Locale.Code,
                 Destination = new IdentityModel
                 {
                     Type = "number",
                     Endpoint = destination
                 },
-                SuppressCallbacks = suppressCallbacks
+                SuppressCallbacks = false
             });
 
-            return Build();
+            return Build<ConnectPstnSvamletResponse>();
         }
 
-        public ISvamletResponse ConnectMxp(IIdentity destination, string callerId = null)
+        public IConnectMxpSvamletResponse ConnectMxp(IIdentity destination)
         {
             if (destination == null || string.IsNullOrEmpty(destination.Endpoint))
                 throw new BuilderException("No destionation given");
@@ -68,15 +64,15 @@ namespace Sinch.Callback.Response.Internal
             SetAction(new SvamletAction
             {
                 Name = "connectmxp",
-                Cli = callerId ?? "private",
+                Cli = "private",
                 Locale = Locale.Code,
                 Destination = destinationModel
             });
 
-            return Build();
+            return Build<ConnectMxpSvamletResponse>();
         }
 
-        public ISvamletResponse ConnectMxp(string userName, string callerId = null)
+        public IConnectMxpSvamletResponse ConnectMxp(string userName)
         {
             if (!string.IsNullOrEmpty(userName))
             {
@@ -87,17 +83,16 @@ namespace Sinch.Callback.Response.Internal
             SetAction(new SvamletAction
             {
                 Name = "connectmxp",
-                Cli = callerId ?? "private",
+                Cli = "private",
                 Locale = Locale.Code,
                 Destination = new IdentityModel
                 {
                     Type = "username",
                     Endpoint = userName
                 }
-
             });
 
-            return Build();
+            return Build<ConnectMxpSvamletResponse>();
         }
 
         public ISvamletResponse ConnectConference(string conferenceId)

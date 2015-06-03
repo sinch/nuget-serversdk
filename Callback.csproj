@@ -92,12 +92,14 @@
     <Compile Include="Response\Internal\CallerSvamletBuilder.cs" />
     <Compile Include="Response\IAceSvamletBuilder.cs" />
     <Compile Include="Response\ICallerSvamletBuilder.cs" />
+    <Compile Include="Response\Internal\ConnectMxpSvamletResponse.cs" />
     <Compile Include="Response\Internal\IceSvamletBuilder.cs" />
     <Compile Include="Response\IDiceSvamletBuilder.cs" />
     <Compile Include="Response\IIceSvamletBuilder.cs" />
     <Compile Include="Response\IManageCallSvamletBuilder.cs" />
     <Compile Include="Response\IMenu.cs" />
     <Compile Include="Response\Internal\Menu.cs" />
+    <Compile Include="Response\Internal\ConnectPstnSvamletResponse.cs" />
     <Compile Include="Response\IPieSvamletBuilder.cs" />
     <Compile Include="Response\ISvamletResponse.cs" />
     <Compile Include="Response\ISvamletBuilder.cs" />

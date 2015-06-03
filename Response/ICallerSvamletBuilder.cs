@@ -5,10 +5,27 @@ namespace Sinch.Callback.Response
 {
     public interface ICallerSvamletBuilder<out T> : ISvamletBuilder<T>
     {
-        ISvamletResponse ConnectPstn(string destination, TimeSpan bridgedTimeout, string callerId = null, bool suppressCallbacks = false, TimeSpan? dialTimeout = null);
-        ISvamletResponse ConnectMxp(string userName, string callerId = null);
-        ISvamletResponse ConnectMxp(IIdentity identity, string callerId = null);
+        IConnectPstnSvamletResponse ConnectPstn(string destination);
+        IConnectMxpSvamletResponse ConnectMxp(string userName);
+        IConnectMxpSvamletResponse ConnectMxp(IIdentity identity);
         ISvamletResponse ConnectConference(string conferenceId);
         ISvamletResponse Park(string holdPrompt, TimeSpan timeout);
+    }
+
+    public interface IConnectMxpSvamletResponse : ISvamletResponse
+    {
+        IConnectMxpSvamletResponse WithCli(string cli);
+        IConnectMxpSvamletResponse WithAnonymousCli();
+    }
+
+    public interface IConnectPstnSvamletResponse : ISvamletResponse
+    {
+        IConnectPstnSvamletResponse WithDialTimeout(TimeSpan timeout);
+        IConnectPstnSvamletResponse WithOptimizedDialTimeout();
+        IConnectPstnSvamletResponse WithBridgeTimeout(TimeSpan timeout);
+        IConnectPstnSvamletResponse WithCli(string cli);
+        IConnectPstnSvamletResponse WithAnonymousCli();
+        IConnectPstnSvamletResponse WithCallbacks();
+        IConnectPstnSvamletResponse WithoutCallbacks();
     }
 }

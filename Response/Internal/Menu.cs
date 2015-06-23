@@ -10,7 +10,7 @@ namespace Sinch.Callback.Response.Internal
         public IDictionary<Dtmf,Tuple<string,IDictionary<string,string>>> GotoMenuOptions { get; private set; }
         public IDictionary<Dtmf,string> ReturnOptions { get; private set; }
 
-        internal Menu(T builder, string prompt, string repeatPrompt, int repeats)
+        internal Menu(T builder, Prompt prompt, Prompt repeatPrompt, int repeats)
             : base(prompt, repeatPrompt, repeats)
         {
             _builder = builder;
@@ -36,6 +36,18 @@ namespace Sinch.Callback.Response.Internal
         {
             CheckClash(option);
             ReturnOptions[option] = result;
+            return this;
+        }
+
+        public IMenu<T> WithRepeatPrompt(Prompt prompt)
+        {
+            RepeatPrompt = prompt;
+            return this;
+        }
+
+        public IMenu<T> WithRepeats(int repeats)
+        {
+            Repeats = repeats;
             return this;
         }
 

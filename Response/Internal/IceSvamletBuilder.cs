@@ -56,8 +56,8 @@ namespace Sinch.Callback.Response.Internal
                     var menu = new MenuModel
                     {
                         Id = m.Key,
-                        MainPrompt = m.Value.Prompt,
-                        RepeatPrompt = m.Value.RepeatPrompt,
+                        MainPrompt = m.Value.Prompt.Specification,
+                        RepeatPrompt = m.Value.RepeatPrompt.Specification,
                         Repeats = m.Value.Repeats
                     };
 
@@ -81,8 +81,8 @@ namespace Sinch.Callback.Response.Internal
                     var menu = new MenuModel
                     {
                         Id = i.Key,
-                        MainPrompt = i.Value.Prompt,
-                        RepeatPrompt = i.Value.RepeatPrompt,
+                        MainPrompt = i.Value.Prompt.Specification,
+                        RepeatPrompt = i.Value.RepeatPrompt.Specification,
                         Repeats = i.Value.Repeats,
                         MaxDigits = i.Value.MaxDigits
                     };
@@ -94,14 +94,15 @@ namespace Sinch.Callback.Response.Internal
             return Build();
         }
 
-        public IMenu<IIceSvamletBuilder> BeginMenuDefinition(string menuId, string prompt, string repeatPrompt = null, int repeats = 3)
+        public IMenu<IIceSvamletBuilder> BeginMenuDefinition(string menuId, Prompt prompt)
         {
             CheckMenuId(menuId);
 
-            var menu = new Menu<IIceSvamletBuilder>(this, prompt, repeatPrompt, repeats);
+            var menu = new Menu<IIceSvamletBuilder>(this, prompt, null, 3);
             _menus[menuId] = menu;
             return menu;
         }
+
 
         private void CheckMenuId(string menuId)
         {
@@ -115,7 +116,7 @@ namespace Sinch.Callback.Response.Internal
                 throw new BuilderException("Menu '" + menuId + "' already defined");
         }
 
-        public IIceSvamletBuilder AddNumberInputMenu(string menuId, string prompt, int maxDigits, string repeatPrompt = null,
+        public IIceSvamletBuilder AddNumberInputMenu(string menuId, Prompt prompt, int maxDigits, Prompt repeatPrompt = null,
             int repeats = 3)
         {
             CheckMenuId(menuId);

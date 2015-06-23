@@ -111,6 +111,10 @@
     <Compile Include="Response\Internal\SvamletResponse.cs" />
     <Compile Include="Response\Internal\SvamletBuilder.cs" />
     <Compile Include="CallbackFactory.cs" />
+    <Compile Include="Response\Prompt.cs" />
+    <Compile Include="Response\PromptChain.cs" />
+    <Compile Include="Response\PromptFile.cs" />
+    <Compile Include="Response\TtsPrompt.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

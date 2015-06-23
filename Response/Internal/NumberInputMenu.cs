@@ -4,7 +4,7 @@
     {
         public int MaxDigits { get; private set; }
 
-        internal NumberInputMenu(string prompt, string repeatPrompt, int repeats, int maxDigits)
+        internal NumberInputMenu(Prompt prompt, Prompt repeatPrompt, int repeats, int maxDigits)
             : base(prompt, repeatPrompt, repeats)
         {
             MaxDigits = maxDigits;

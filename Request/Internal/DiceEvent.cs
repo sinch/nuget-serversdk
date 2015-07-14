@@ -4,6 +4,11 @@ namespace Sinch.Callback.Request.Internal
 {
     internal class DiceEvent : CallingCallbackEvent, IDiceEvent
     {
+        public DiceEvent()
+        {
+            Event = Event.DisconnectedCall;
+        }
+
         public TimeSpan Duration { get; set; }
         public Result Result { get; set; }
         public Reason Reason { get; set; }

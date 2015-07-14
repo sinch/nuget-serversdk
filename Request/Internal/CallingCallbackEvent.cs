@@ -5,7 +5,7 @@ namespace Sinch.Callback.Request.Internal
 {
     public class CallingCallbackEvent : ICallbackEvent
     {
-        public Event Event { get; set; }
+        public Event Event { get; protected set; }
         public string CallId { get; set; }
         public DateTime Timestamp { get; set; }
         public int Version { get; set; }

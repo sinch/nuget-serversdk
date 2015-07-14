@@ -2,13 +2,13 @@
 <package >
   <metadata>
     <id>$id$</id>
-    <version>1.0.0.18</version>
+    <version>1.0.0.19</version>
     <title>Sinch Calling Callback</title>
     <authors>BF</authors>
     <owners>Sinch</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Interpret callback data and create callback responses</description>
-    <releaseNotes>More fluent menus/connectMxp</releaseNotes>
+    <releaseNotes>Populating Event property</releaseNotes>
     <copyright>Copyright 2015 Sinch</copyright>
   </metadata>
 </package>

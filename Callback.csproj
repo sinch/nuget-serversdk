@@ -92,6 +92,7 @@
     <Compile Include="Response\Internal\CallerSvamletBuilder.cs" />
     <Compile Include="Response\IAceSvamletBuilder.cs" />
     <Compile Include="Response\ICallerSvamletBuilder.cs" />
+    <Compile Include="Response\Internal\ConnectConferenceSvamletResponse.cs" />
     <Compile Include="Response\Internal\ConnectMxpSvamletResponse.cs" />
     <Compile Include="Response\Internal\IceSvamletBuilder.cs" />
     <Compile Include="Response\IDiceSvamletBuilder.cs" />

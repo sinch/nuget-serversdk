@@ -8,8 +8,8 @@ namespace Sinch.Callback.Response
         IConnectPstnSvamletResponse ConnectPstn(string destination);
         IConnectMxpSvamletResponse ConnectMxp(string userName);
         IConnectMxpSvamletResponse ConnectMxp(IIdentity identity);
-        ISvamletResponse ConnectConference(string conferenceId);
-        ISvamletResponse ConnectConference(string conferenceId, bool enableRecord);
+        IConnectConferenceSvamletResponse ConnectConference(string conferenceId);
+        IConnectConferenceSvamletResponse ConnectConference(string conferenceId, bool enableRecord);
         ISvamletResponse Park(string holdPrompt, TimeSpan timeout);
     }
 
@@ -28,5 +28,12 @@ namespace Sinch.Callback.Response
         IConnectPstnSvamletResponse WithAnonymousCli();
         IConnectPstnSvamletResponse WithCallbacks();
         IConnectPstnSvamletResponse WithoutCallbacks();
+    }
+
+    public interface IConnectConferenceSvamletResponse : ISvamletResponse
+    {
+        IConnectConferenceSvamletResponse WithMusicOnHold(string moh);
+        IConnectConferenceSvamletResponse WithRecording();
+        IConnectConferenceSvamletResponse WithoutRecording();
     }
 }

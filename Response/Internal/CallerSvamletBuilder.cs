@@ -95,12 +95,12 @@ namespace Sinch.Callback.Response.Internal
             return Build<ConnectMxpSvamletResponse>();
         }
 
-        public ISvamletResponse ConnectConference(string conferenceId)
+        public IConnectConferenceSvamletResponse ConnectConference(string conferenceId)
         {
             return ConnectConference(conferenceId, false);
         }
 
-        public ISvamletResponse ConnectConference(string conferenceId, bool enableRecord)
+        public IConnectConferenceSvamletResponse ConnectConference(string conferenceId, bool enableRecord)
         {
             if (string.IsNullOrEmpty(conferenceId))
                 throw new BuilderException("Conference id must be supplied");
@@ -116,7 +116,7 @@ namespace Sinch.Callback.Response.Internal
                 Record = enableRecord
             });
 
-            return Build();
+            return Build<ConnectConferenceSvamletResponse>();
         }
 
         public ISvamletResponse Park(string holdPrompt, TimeSpan timeout)

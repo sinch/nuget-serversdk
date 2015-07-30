@@ -60,5 +60,8 @@ namespace Sinch.Callback.Model
 
         [JsonProperty(PropertyName = "record", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public bool Record { get; set; }
+
+        [JsonProperty(PropertyName = "moh", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Moh { get; set; }
     }
 }

@@ -9,6 +9,7 @@ namespace Sinch.Callback.Response
         IConnectMxpSvamletResponse ConnectMxp(string userName);
         IConnectMxpSvamletResponse ConnectMxp(IIdentity identity);
         ISvamletResponse ConnectConference(string conferenceId);
+        ISvamletResponse ConnectConference(string conferenceId, bool enableRecord);
         ISvamletResponse Park(string holdPrompt, TimeSpan timeout);
     }
 

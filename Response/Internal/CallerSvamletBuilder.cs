@@ -97,6 +97,11 @@ namespace Sinch.Callback.Response.Internal
 
         public ISvamletResponse ConnectConference(string conferenceId)
         {
+            return ConnectConference(conferenceId, false);
+        }
+
+        public ISvamletResponse ConnectConference(string conferenceId, bool enableRecord)
+        {
             if (string.IsNullOrEmpty(conferenceId))
                 throw new BuilderException("Conference id must be supplied");
             
@@ -107,7 +112,8 @@ namespace Sinch.Callback.Response.Internal
             {
                 Name = "connectconf",
                 ConferenceId = conferenceId,
-                Locale = Locale.Code
+                Locale = Locale.Code,
+                Record = enableRecord
             });
 
             return Build();

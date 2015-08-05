@@ -19,5 +19,11 @@ namespace Sinch.Callback.Response.Internal
             Model.Action.Record = false;
             return this;
         }
+
+        public IConnectConferenceSvamletResponse WithCli(string cli)
+        {
+            Model.Action.Cli = cli;
+            return this;
+        }
     }
 }

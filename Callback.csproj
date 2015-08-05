@@ -118,6 +118,7 @@
     <Compile Include="Response\TtsPrompt.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Callback.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

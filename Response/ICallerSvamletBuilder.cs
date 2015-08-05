@@ -10,7 +10,8 @@ namespace Sinch.Callback.Response
         IConnectMxpSvamletResponse ConnectMxp(IIdentity identity);
         IConnectConferenceSvamletResponse ConnectConference(string conferenceId);
         IConnectConferenceSvamletResponse ConnectConference(string conferenceId, bool enableRecord);
-        ISvamletResponse Park(string holdPrompt, TimeSpan timeout);
+        ISvamletResponse Park(string holdPromptFile, TimeSpan timeout);
+        ISvamletResponse ParkWithTts(string holdPromptText, TimeSpan timeout);
     }
 
     public interface IConnectMxpSvamletResponse : ISvamletResponse
@@ -35,5 +36,6 @@ namespace Sinch.Callback.Response
         IConnectConferenceSvamletResponse WithMusicOnHold(string moh);
         IConnectConferenceSvamletResponse WithRecording();
         IConnectConferenceSvamletResponse WithoutRecording();
+        IConnectConferenceSvamletResponse WithCli(string cli);
     }
 }

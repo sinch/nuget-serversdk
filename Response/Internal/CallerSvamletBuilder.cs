@@ -137,5 +137,25 @@ namespace Sinch.Callback.Response.Internal
 
             return Build();
         }
+
+        public ISvamletResponse ParkWithTts(string holdPromptText, TimeSpan timeout)
+        {
+            if (string.IsNullOrEmpty(holdPromptText))
+                throw new BuilderException("A hold prompt must be supplied");
+
+            if (timeout.TotalSeconds < 60 && timeout.TotalSeconds > 600)
+                throw new BuilderException("The timeout must be between 1 and 10 minutes");
+
+            SetAction(new SvamletAction
+            {
+                Name = "park",
+                HoldPrompt = "tts#[" + holdPromptText + "]",
+                Locale = Locale.Code,
+                DialTimeout = (int)timeout.TotalSeconds
+            });
+
+            return Build();
+        }
+
     }
 }

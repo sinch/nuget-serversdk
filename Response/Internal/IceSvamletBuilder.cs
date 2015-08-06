@@ -58,7 +58,8 @@ namespace Sinch.Callback.Response.Internal
                         Id = m.Key,
                         MainPrompt = m.Value.Prompt.Specification,
                         RepeatPrompt = m.Value.RepeatPrompt.Specification,
-                        Repeats = m.Value.Repeats
+                        Repeats = m.Value.Repeats,
+                        TimeoutMills = (int) m.Value.Timeout.TotalMilliseconds
                     };
 
                     var options = m.Value.GotoMenuOptions.Select(mo => new MenuOptionModel()
@@ -84,7 +85,8 @@ namespace Sinch.Callback.Response.Internal
                         MainPrompt = i.Value.Prompt.Specification,
                         RepeatPrompt = i.Value.RepeatPrompt.Specification,
                         Repeats = i.Value.Repeats,
-                        MaxDigits = i.Value.MaxDigits
+                        MaxDigits = i.Value.MaxDigits,
+                        TimeoutMills = (int) i.Value.Timeout.TotalMilliseconds
                     };
 
                     return menu;
@@ -94,11 +96,11 @@ namespace Sinch.Callback.Response.Internal
             return Build();
         }
 
-        public IMenu<IIceSvamletBuilder> BeginMenuDefinition(string menuId, Prompt prompt)
+        public IMenu<IIceSvamletBuilder> BeginMenuDefinition(string menuId, Prompt prompt, TimeSpan? timeout = null)
         {
             CheckMenuId(menuId);
 
-            var menu = new Menu<IIceSvamletBuilder>(this, prompt, null, 3);
+            var menu = new Menu<IIceSvamletBuilder>(this, prompt, null, 3, timeout);
             _menus[menuId] = menu;
             return menu;
         }
@@ -117,11 +119,11 @@ namespace Sinch.Callback.Response.Internal
         }
 
         public IIceSvamletBuilder AddNumberInputMenu(string menuId, Prompt prompt, int maxDigits, Prompt repeatPrompt = null,
-            int repeats = 3)
+            int repeats = 3, TimeSpan? timeout = null)
         {
             CheckMenuId(menuId);
 
-            var menu = new NumberInputMenu(prompt, repeatPrompt, repeats, maxDigits);
+            var menu = new NumberInputMenu(prompt, repeatPrompt, repeats, maxDigits, timeout);
             _numberInputMenus[menuId] = menu;
             return this;
         }

@@ -27,5 +27,8 @@ namespace Sinch.Callback.Model
 
         [JsonProperty(PropertyName = "mainText", NullValueHandling = NullValueHandling.Ignore)]
         public string MainText { get; set; }
+
+        [JsonProperty(PropertyName = "timeoutMills", NullValueHandling = NullValueHandling.Ignore)]
+        public int TimeoutMills { get; set; }
     }
 }

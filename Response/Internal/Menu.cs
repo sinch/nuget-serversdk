@@ -10,8 +10,8 @@ namespace Sinch.Callback.Response.Internal
         public IDictionary<Dtmf,Tuple<string,IDictionary<string,string>>> GotoMenuOptions { get; private set; }
         public IDictionary<Dtmf,string> ReturnOptions { get; private set; }
 
-        internal Menu(T builder, Prompt prompt, Prompt repeatPrompt, int repeats)
-            : base(prompt, repeatPrompt, repeats)
+        internal Menu(T builder, Prompt prompt, Prompt repeatPrompt, int repeats, TimeSpan? timeout)
+            : base(prompt, repeatPrompt, repeats, timeout)
         {
             _builder = builder;
 

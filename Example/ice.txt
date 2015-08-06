@@ -1,0 +1,1 @@
+﻿{"event":"ice","callid":"241b8ab35e0e83814c4e775a66cf50db@193.45.63.102", "timestamp":"2015-08-06T13:55:39Z","version":1,"userRate":{"currencyId":"USD","amount":0.0},"cli":"46708168731","to":{"type":"did","endpoint":"+462010000188"},"domain":"pstn","applicationKey":"94983f76-12c8-4cb9-9515-4785c7b49ca8","originationType":"PSTN","duration":0}

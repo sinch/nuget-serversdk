@@ -9,6 +9,6 @@
 
         public string Reference { get; set; }
         public string MenuId { get; set; }
-        public IMenuResult Result { get; set; }
+        public IMenuResult MenuResult { get; set; }
     }
 }

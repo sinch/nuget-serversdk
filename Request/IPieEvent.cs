@@ -4,6 +4,6 @@
     {
         string Reference { get; }
         string MenuId { get; }
-        IMenuResult Result { get; }
+        IMenuResult MenuResult { get; }
     }
 }

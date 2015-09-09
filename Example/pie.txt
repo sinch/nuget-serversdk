@@ -1,0 +1,24 @@
+﻿{
+                             "event": "pie",
+                             "callid": "8cf82f01-a6f8-46b2-824f-3c9bd17c7d08",
+                             "menuResult": {
+                                                          "type": "return",
+                                                          "value": "fd5530ba-a3bd-44df-9bdd-79b5cbfc51d1",
+                                                          "menuId": "main"
+                             },
+                             "version": 1,
+                             "user": "",
+                             "cookies": [{
+                                                          "key": "VerificationId",
+                                                          "value": "fd5530ba-a3bd-44df-9bdd-79b5cbfc51d1"
+                             },
+                             {
+                                                          "key": "Identity",
+                                                          "value": "+46768051919"
+                             },
+                             {
+                                                          "key": "#locale",
+                                                          "value": "en-US"
+                             }],
+                             "duration": 0
+}

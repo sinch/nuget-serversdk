@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>$id$</id>
-    <version>1.0.0.25</version>
+    <version>1.0.0.26</version>
     <title>Sinch Calling Callback</title>
     <authors>BF</authors>
     <owners>Sinch</owners>

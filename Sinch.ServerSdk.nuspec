@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>1.0.1.0</version>
+    <title>Sinch Server SDK</title>
+    <authors>BF</authors>
+    <owners>Sinch</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Nuget integrate server backends with the Sinch backend</description>
+    <releaseNotes>Populating Event property</releaseNotes>
+    <copyright>Copyright 2015 Sinch</copyright>
+  </metadata>
+</package>

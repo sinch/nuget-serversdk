@@ -1,9 +1,13 @@
-# net-callingcallback
-# Sinch Calling Callback Utilities NuGet package, v 1.0.0.7
+#
+# Sinch Server SDK NuGet package, v 1.0.1.0
+This package supports
 
-## Overview
+	- Signing and making API REST calls to the Sinch backend
+	- Authenticating and interpreting callbacks from the Sinch Backend
+	- Constructing and signing replies to callbacks from the Sinch Backend
 
-This package contains code to parse/interpret calling callback events and create callback replies, a.k.a. "SVAMLets". For more information on the Sinch calling callback model and SVAML - see the REST callback documentation.
+## Calling Callbacks
+In this section, we describe how to use this package for parseing/interpreting calling callback events and creating callback replies, a.k.a. "SVAMLets". For more information on the Sinch calling callback model and SVAML - see the REST callback documentation.
 
 ## Interpreting a request
 
@@ -21,7 +25,7 @@ and then use
 
 Both methods are implemented by the CallbackFactory, so start by instantiating that:
 
-		var sinch = new CallbackFactory(Locale.EnUs);
+		var sinch = new SinchFactory(Locale.EnUs);
 
 You can use this object as a singleton (single instance) for every locale you need to support.
 
@@ -29,9 +33,9 @@ You can use this object as a singleton (single instance) for every locale you ne
 An OWIN example
 
     [Route("sinchcallback")]
-    public async Task<Svamlet> Post([FromBody] CallbackEventModel callbackEvent)
+    public async Task<SvamletModel> Post([FromBody] CallbackEventModel callbackEvent)
     {
-		var sinch = new CallbackFactory(new Locale("en-US"));
+		var sinch = new SinchFactory(new Locale("en-US"));
         var evt = reader.ReadModel(eventModel);
 		... 
     }
@@ -266,8 +270,8 @@ Hangs up the call (after having executed any instructions)
 ##### Continue
 If this is a call initiated from the an SDK client, the call will be connected as requested by the client. If you want to override the behaviour, you should specify another action.
 
-##### ConnectPstn(string destination)
-Connect the call to a PSTN destination specified by "destination".
+##### ConnectPstn(string number)
+Connect the call to a PSTN destination specified by "number".
 
 The returned object supports manipulating the PSTN call:
 
@@ -303,13 +307,13 @@ Executes an IVR menu (specified by menuId). The menu structure must have been de
 
 #### Building an ACE response
 
-An ACE response can only hangup the call or continue (see Hangup and Continue under "Building an ICE response").
+An ACE response has somewhat different support depending on in what context you are using it:
 
-The ACE event also allows for playing prompt, but that is currently not supported by this package.
-
+- If the ACE is an event triggered by an answered call to the PSTN, The ACE response can only play prompts/menus, hangup the call or continue (see Hangup and Continue under "Building an ICE response").
+- If the ACE is an event triggered for a server-initiated call, the ACE response can be a Hangup, a ConnectConf or a Park
 
 ## Defining menu structures
-You define menus by calling BeginMenuDefinition on an IIceSvamletBuilder:
+You define menus by calling BeginMenuDefinition on an IIceSvamletBuilder or IAceSvamletBuilder:
 
 	IMenu<IIceSvamletBuilder> BeginMenuDefinition(string menuId, string prompt, string repeatPrompt = null, int repeats = 3)
 

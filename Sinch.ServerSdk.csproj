@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{954A6E5B-6BE4-41C8-AD02-10B130399FF0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sinch.ServerSdk</RootNamespace>
+    <AssemblyName>Sinch.ServerSdk</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Calling\Callbacks\Request\CliMode.cs" />
+    <Compile Include="ISinchFactory.cs" />
+    <Compile Include="Calling\Callbacks\Request\ICli.cs" />
+    <Compile Include="Calling\Model\CliModel.cs" />
+    <Compile Include="Calling\Model\CallbackEventModel.cs" />
+    <Compile Include="Calling\Model\KeyValueModel.cs" />
+    <Compile Include="Calling\Model\IdentityModel.cs" />
+    <Compile Include="Calling\Model\MenuResultModel.cs" />
+    <Compile Include="Calling\Model\MoneyModel.cs" />
+    <Compile Include="Calling\Model\SvamletActionModel.cs" />
+    <Compile Include="Calling\Model\SvamletInstructionModel.cs" />
+    <Compile Include="Calling\Model\MenuModel.cs" />
+    <Compile Include="Calling\Model\MenuOptionModel.cs" />
+    <Compile Include="Calling\Callbacks\Request\INotificationEvent.cs" />
+    <Compile Include="Calling\Callbacks\Request\Internal\AceEvent.cs" />
+    <Compile Include="Calling\Callbacks\Request\Internal\CallingCallbackEvent.cs" />
+    <Compile Include="Calling\Callbacks\Request\Internal\DiceEvent.cs" />
+    <Compile Include="Calling\Callbacks\Request\EndpointType.cs" />
+    <Compile Include="Calling\Callbacks\Request\Event.cs" />
+    <Compile Include="Calling\Callbacks\Request\IAceEvent.cs" />
+    <Compile Include="Calling\Callbacks\Request\ICallbackEvent.cs" />
+    <Compile Include="Calling\Callbacks\Request\Internal\IceEvent.cs" />
+    <Compile Include="Calling\Callbacks\Request\Internal\Identity.cs" />
+    <Compile Include="Calling\Callbacks\Request\IDiceEvent.cs" />
+    <Compile Include="Calling\Callbacks\Request\ICallbackEventReader.cs" />
+    <Compile Include="Calling\Callbacks\Request\Internal\CallbackEventReader.cs" />
+    <Compile Include="Calling\Callbacks\Request\IIceEvent.cs" />
+    <Compile Include="Calling\Callbacks\Request\IIdentity.cs" />
+    <Compile Include="Calling\Callbacks\Request\IMenuResult.cs" />
+    <Compile Include="Calling\Callbacks\Request\IMoney.cs" />
+    <Compile Include="Calling\Callbacks\Request\Internal\NotificationEvent.cs" />
+    <Compile Include="Calling\Callbacks\Request\IPieEvent.cs" />
+    <Compile Include="Calling\Callbacks\Request\Internal\TypeMapper.cs" />
+    <Compile Include="Calling\Callbacks\Request\Internal\MenuResult.cs" />
+    <Compile Include="Calling\Callbacks\Request\Internal\Money.cs" />
+    <Compile Include="Calling\Callbacks\Request\MenuResultType.cs" />
+    <Compile Include="Calling\Callbacks\Request\OriginationType.cs" />
+    <Compile Include="Calling\Callbacks\Request\Internal\PieEvent.cs" />
+    <Compile Include="Calling\Callbacks\Request\Reason.cs" />
+    <Compile Include="Calling\Callbacks\Request\Result.cs" />
+    <Compile Include="Calling\Callbacks\Response\Dtmf.cs" />
+    <Compile Include="Calling\Callbacks\Response\Internal\AbstractMenu.cs" />
+    <Compile Include="Calling\Callbacks\Response\Internal\AceSvamletBuilder.cs" />
+    <Compile Include="Calling\Callbacks\Response\BuilderException.cs" />
+    <Compile Include="Calling\Callbacks\Response\Internal\CallerSvamletBuilder.cs" />
+    <Compile Include="Calling\Callbacks\Response\IAceSvamletBuilder.cs" />
+    <Compile Include="Calling\Callbacks\Response\ICallerSvamletBuilder.cs" />
+    <Compile Include="Calling\Callbacks\Response\Internal\ConnectConferenceSvamletResponse.cs" />
+    <Compile Include="Calling\Callbacks\Response\Internal\ConnectMxpSvamletResponse.cs" />
+    <Compile Include="Calling\Callbacks\Response\Internal\IceSvamletBuilder.cs" />
+    <Compile Include="Calling\Callbacks\Response\IDiceSvamletBuilder.cs" />
+    <Compile Include="Calling\Callbacks\Response\IIceSvamletBuilder.cs" />
+    <Compile Include="Calling\Callbacks\Response\IManageCallSvamletBuilder.cs" />
+    <Compile Include="Calling\Callbacks\Response\IMenu.cs" />
+    <Compile Include="Calling\Callbacks\Response\Internal\Menu.cs" />
+    <Compile Include="Calling\Callbacks\Response\Internal\ConnectPstnSvamletResponse.cs" />
+    <Compile Include="Calling\Callbacks\Response\IPieSvamletBuilder.cs" />
+    <Compile Include="Calling\Callbacks\Response\ISvamletResponse.cs" />
+    <Compile Include="Calling\Callbacks\Response\ISvamletBuilder.cs" />
+    <Compile Include="Calling\Model\SvamletModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Calling\Callbacks\Response\Locale.cs" />
+    <Compile Include="Calling\Callbacks\Response\Internal\ManageCallSvamletBuilder.cs" />
+    <Compile Include="Calling\Callbacks\Response\Internal\NumberInputMenu.cs" />
+    <Compile Include="Calling\Callbacks\Response\Internal\SvamletResponse.cs" />
+    <Compile Include="Calling\Callbacks\Response\Internal\SvamletBuilder.cs" />
+    <Compile Include="SinchFactory.cs" />
+    <Compile Include="Calling\Callbacks\Response\Prompt.cs" />
+    <Compile Include="Calling\Callbacks\Response\PromptChain.cs" />
+    <Compile Include="Calling\Callbacks\Response\PromptFile.cs" />
+    <Compile Include="Calling\Callbacks\Response\TtsPrompt.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sinch.ServerSdk.nuspec" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Calling\Api\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

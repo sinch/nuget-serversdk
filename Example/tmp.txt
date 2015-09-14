@@ -1,2 +1,0 @@
-{"instructions":[],"action":{"name":"runmenu","locale":"en-US","mainMenu":"ipt","menus":[{"id":"ipt","maxDigits":4,"repeats":3,"repeatPrompt":"#tts[Hello!]","mainPrompt":"#tts[Hello!]"}]}}
-{\"instructions\":[],\"action\":{\"name\":\"runmenu\",\"locale\":\"en-US\",\"mainMenu\":\"ipt\",\"menus\":[{\"id\":\"ipt\",\"maxDigits\":4,\"repeats\":3,\"repeatPrompt\":\"#tts[Hello!]\",\"mainPrompt\":\"#tts[Hello!]\"}]}}

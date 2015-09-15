@@ -7,7 +7,7 @@ namespace Sinch.Callback.Response.Internal
     {
         public IConnectPstnSvamletResponse WithDialTimeout(TimeSpan timeout)
         {
-            Model.ActionModel.DialTimeout = (int) timeout.TotalSeconds;
+            Model.Action.DialTimeout = (int) timeout.TotalSeconds;
             return this;
         }
 
@@ -21,31 +21,31 @@ namespace Sinch.Callback.Response.Internal
             if (timeout.TotalMinutes > 240)
                 throw new BuilderException("Cannot specify more than 4 hours of calling");
 
-            Model.ActionModel.MaxDuration = (int)timeout.TotalSeconds;
+            Model.Action.MaxDuration = (int)timeout.TotalSeconds;
             return this;
         }
 
         public IConnectPstnSvamletResponse WithCli(string cli)
         {
-            Model.ActionModel.Cli = cli;
+            Model.Action.Cli = cli;
             return this;
         }
 
         public IConnectPstnSvamletResponse WithAnonymousCli()
         {
-            Model.ActionModel.Cli = "private";
+            Model.Action.Cli = "private";
             return this;
         }
 
         public IConnectPstnSvamletResponse WithCallbacks()
         {
-            Model.ActionModel.SuppressCallbacks = false;
+            Model.Action.SuppressCallbacks = false;
             return this;
         }
 
         public IConnectPstnSvamletResponse WithoutCallbacks()
         {
-            Model.ActionModel.SuppressCallbacks = true;
+            Model.Action.SuppressCallbacks = true;
             return this;
         }
     }

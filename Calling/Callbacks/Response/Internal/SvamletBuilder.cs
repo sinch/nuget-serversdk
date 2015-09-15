@@ -122,10 +122,10 @@ namespace Sinch.Callback.Response.Internal
 
             return new T()
             {
-                Model = new Svamlet()
+                Model = new SvamletModel()
                 {
-                    ActionModel = _actionModel,
-                    InstructionsModel = _instructions.ToArray()
+                    Action = _actionModel,
+                    Instructions = _instructions.ToArray()
                 }
             };
         }

@@ -58,7 +58,7 @@ namespace Sinch.ServerSdk.Calling.Model
         [JsonProperty(PropertyName = "originationType", NullValueHandling = NullValueHandling.Ignore)]
         public string OriginationType { get; set; }
 
-        [JsonProperty(PropertyName = "duration")]
+        [JsonProperty(PropertyName = "duration", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public int Duration { get; set; }
 
         [JsonProperty(PropertyName = "from", NullValueHandling = NullValueHandling.Ignore)]

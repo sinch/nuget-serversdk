@@ -46,7 +46,7 @@ namespace Sinch.Callback.Response.Internal
             }
         }
 
-        public Svamlet Model
+        public SvamletModel Model
         {
             get; set;
         }

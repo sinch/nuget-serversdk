@@ -7,6 +7,6 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response
         string ContentType { get; }
         int ContentLength { get; }
         string Body { get; }
-        Svamlet Model { get; }
+        SvamletModel Model { get; }
     }
 }

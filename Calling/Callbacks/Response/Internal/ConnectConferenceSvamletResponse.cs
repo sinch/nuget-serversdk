@@ -6,25 +6,25 @@ namespace Sinch.Callback.Response.Internal
     {
         public IConnectConferenceSvamletResponse WithMusicOnHold(string moh)
         {
-            Model.ActionModel.Moh = moh;
+            Model.Action.Moh = moh;
             return this;
         }
 
         public IConnectConferenceSvamletResponse WithRecording()
         {
-            Model.ActionModel.Record = true;
+            Model.Action.Record = true;
             return this;
         }
 
         public IConnectConferenceSvamletResponse WithoutRecording()
         {
-            Model.ActionModel.Record = false;
+            Model.Action.Record = false;
             return this;
         }
 
         public IConnectConferenceSvamletResponse WithCli(string cli)
         {
-            Model.ActionModel.Cli = cli;
+            Model.Action.Cli = cli;
             return this;
         }
     }

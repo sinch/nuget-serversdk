@@ -2,12 +2,12 @@
 
 namespace Sinch.ServerSdk.Calling.Model
 {
-    public class Svamlet
+    public class SvamletModel
     {
         [JsonProperty(PropertyName = "instructions", NullValueHandling = NullValueHandling.Ignore)]
-        public SvamletInstructionModel[] InstructionsModel { get; set; }
+        public SvamletInstructionModel[] Instructions { get; set; }
 
         [JsonProperty(PropertyName = "action", NullValueHandling = NullValueHandling.Ignore)]
-        public SvamletActionModel ActionModel { get; set; }
+        public SvamletActionModel Action { get; set; }
     }
 }

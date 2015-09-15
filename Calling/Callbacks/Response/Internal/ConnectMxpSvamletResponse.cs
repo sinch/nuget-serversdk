@@ -6,13 +6,13 @@ namespace Sinch.Callback.Response.Internal
     {
         public IConnectMxpSvamletResponse WithCli(string cli)
         {
-            Model.ActionModel.Cli = cli;
+            Model.Action.Cli = cli;
             return this;
         }
 
         public IConnectMxpSvamletResponse WithAnonymousCli()
         {
-            Model.ActionModel.Cli = "private";
+            Model.Action.Cli = "private";
             return this;
         }
     }

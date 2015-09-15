@@ -18,29 +18,4 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response
         IMenu<T> BeginMenuDefinition(string menuId, Prompt prompt, TimeSpan? timeout);
         T AddNumberInputMenu(string menuId, Prompt prompt, int maxDigits, Prompt repeatPrompt = null, int repeats = 3, TimeSpan? timeout = null);
     }
-
-    public interface IConnectMxpSvamletResponse : ISvamletResponse
-    {
-        IConnectMxpSvamletResponse WithCli(string cli);
-        IConnectMxpSvamletResponse WithAnonymousCli();
-    }
-
-    public interface IConnectPstnSvamletResponse : ISvamletResponse
-    {
-        IConnectPstnSvamletResponse WithDialTimeout(TimeSpan timeout);
-        IConnectPstnSvamletResponse WithOptimizedDialTimeout();
-        IConnectPstnSvamletResponse WithBridgeTimeout(TimeSpan timeout);
-        IConnectPstnSvamletResponse WithCli(string cli);
-        IConnectPstnSvamletResponse WithAnonymousCli();
-        IConnectPstnSvamletResponse WithCallbacks();
-        IConnectPstnSvamletResponse WithoutCallbacks();
-    }
-
-    public interface IConnectConferenceSvamletResponse : ISvamletResponse
-    {
-        IConnectConferenceSvamletResponse WithMusicOnHold(string moh);
-        IConnectConferenceSvamletResponse WithRecording();
-        IConnectConferenceSvamletResponse WithoutRecording();
-        IConnectConferenceSvamletResponse WithCli(string cli);
-    }
 }

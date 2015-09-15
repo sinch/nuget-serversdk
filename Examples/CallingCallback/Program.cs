@@ -1,10 +1,10 @@
 ﻿using System;
 using System.IO;
-using Sinch.ServerSdk;
+using Sinch.ServerSdk.Calling;
 using Sinch.ServerSdk.Calling.Callbacks.Request;
 using Sinch.ServerSdk.Calling.Callbacks.Response;
 
-namespace CallingCallback
+namespace Sinch.ServerSdk.Examples.CallingCallback
 {
     class Program
     {

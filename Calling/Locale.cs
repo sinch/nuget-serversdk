@@ -1,4 +1,4 @@
-﻿namespace Sinch.ServerSdk.Calling.Callbacks.Response
+﻿namespace Sinch.ServerSdk.Calling
 {
     public class Locale
     {

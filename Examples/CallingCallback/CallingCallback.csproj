@@ -7,8 +7,8 @@
     <ProjectGuid>{231D055E-A58C-44C0-94D6-2B10A3FFF40C}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CallingCallback</RootNamespace>
-    <AssemblyName>CallingCallback</AssemblyName>
+    <RootNamespace>Sinch.ServerSdk.Examples.CallingCallback</RootNamespace>
+    <AssemblyName>Sinch.ServerSdk.Examples.CallingCallback</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

@@ -46,9 +46,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calling\Callbacks\Request\CliMode.cs" />
+    <Compile Include="Calling\Callbacks\Response\IConnectConferenceSvamletResponse.cs" />
+    <Compile Include="Calling\Callbacks\Response\IConnectMxpSvamletResponse.cs" />
+    <Compile Include="Calling\Callbacks\Response\IConnectPstnSvamletResponse.cs" />
     <Compile Include="ISinchFactory.cs" />
     <Compile Include="Calling\Callbacks\Request\ICli.cs" />
-    <Compile Include="Calling\Model\CliModel.cs" />
+    <Compile Include="Calling\Cli.cs" />
     <Compile Include="Calling\Model\CallbackEventModel.cs" />
     <Compile Include="Calling\Model\KeyValueModel.cs" />
     <Compile Include="Calling\Model\IdentityModel.cs" />
@@ -106,7 +109,7 @@
     <Compile Include="Calling\Callbacks\Response\ISvamletBuilder.cs" />
     <Compile Include="Calling\Model\SvamletModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Calling\Callbacks\Response\Locale.cs" />
+    <Compile Include="Calling\Locale.cs" />
     <Compile Include="Calling\Callbacks\Response\Internal\ManageCallSvamletBuilder.cs" />
     <Compile Include="Calling\Callbacks\Response\Internal\NumberInputMenu.cs" />
     <Compile Include="Calling\Callbacks\Response\Internal\SvamletResponse.cs" />

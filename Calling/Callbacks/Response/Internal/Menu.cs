@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Sinch.ServerSdk.Calling.Callbacks.Response;
 
-namespace Sinch.Callback.Response.Internal
+namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
 {
     internal class Menu<T> : AbstractMenu, IMenu<T>
     {

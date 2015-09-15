@@ -1,9 +1,8 @@
 ﻿using System.IO;
 using Newtonsoft.Json;
-using Sinch.ServerSdk.Calling.Callbacks.Response;
 using Sinch.ServerSdk.Calling.Model;
 
-namespace Sinch.Callback.Response.Internal
+namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
 {
     internal class SvamletResponse : ISvamletResponse
     {

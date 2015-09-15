@@ -1,7 +1,6 @@
 ﻿using System;
-using Sinch.ServerSdk.Calling.Callbacks.Response;
 
-namespace Sinch.Callback.Response.Internal
+namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
 {
     internal class AceSvamletBuilder : CallerSvamletBuilder<IAceSvamletBuilder>, IAceSvamletBuilder
     {

@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Sinch.ServerSdk.Calling.Callbacks.Response;
 using Sinch.ServerSdk.Calling.Model;
 
-namespace Sinch.Callback.Response.Internal
+namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
 {
     internal class SvamletBuilder
     {

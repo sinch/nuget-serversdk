@@ -1,5 +1,5 @@
 #
-# Sinch Server SDK NuGet package, v 1.0.1.0
+# Sinch Server SDK NuGet package, v 1.0.1.5
 This package supports
 
 	- Signing and making API REST calls to the Sinch backend

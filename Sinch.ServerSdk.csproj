@@ -109,7 +109,7 @@
     <Compile Include="Calling\Callbacks\Response\ISvamletBuilder.cs" />
     <Compile Include="Calling\Model\SvamletModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Calling\Locale.cs" />
+    <Compile Include="Locale.cs" />
     <Compile Include="Calling\Callbacks\Response\Internal\ManageCallSvamletBuilder.cs" />
     <Compile Include="Calling\Callbacks\Response\Internal\NumberInputMenu.cs" />
     <Compile Include="Calling\Callbacks\Response\Internal\SvamletResponse.cs" />

@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>$id$</id>
-    <version>1.0.1.4</version>
+    <version>1.0.1.5</version>
     <title>Sinch Server SDK</title>
     <authors>BF</authors>
     <owners>Sinch</owners>

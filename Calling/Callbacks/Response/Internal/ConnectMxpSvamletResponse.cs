@@ -13,5 +13,11 @@
             Model.Action.Cli = "private";
             return this;
         }
+
+        public IConnectMxpSvamletResponse WithIndications(string indications)
+        {
+            Model.Action.Indications = indications;
+            return this;
+        }
     }
 }

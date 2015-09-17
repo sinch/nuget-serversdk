@@ -63,5 +63,8 @@ namespace Sinch.ServerSdk.Calling.Model
 
         [JsonProperty(PropertyName = "moh", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Moh { get; set; }
+
+        [JsonProperty(PropertyName = "indications", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Indications { get; set; }
     }
 }

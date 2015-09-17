@@ -47,5 +47,11 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
             Model.Action.SuppressCallbacks = true;
             return this;
         }
+
+        public IConnectPstnSvamletResponse WithIndications(string indications)
+        {
+            Model.Action.Indications = indications;
+            return this;
+        }
     }
 }

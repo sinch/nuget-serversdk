@@ -11,5 +11,6 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response
         IConnectPstnSvamletResponse WithAnonymousCli();
         IConnectPstnSvamletResponse WithCallbacks();
         IConnectPstnSvamletResponse WithoutCallbacks();
+        IConnectPstnSvamletResponse WithIndications(string indications);
     }
 }

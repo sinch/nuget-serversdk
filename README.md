@@ -283,7 +283,7 @@ The returned object supports manipulating the PSTN call:
 ###### WithOptimizedDialTimeout() - undocumented for now
 ###### WithCallbacks() - enable callbacks for the rest of the call (default)
 ###### WithoutCallbacks() - disable callbacks for the rest of the call
-
+###### WithIndications(string indications) - set the tone standard for progress/busy/congestion - see "indications" below - default is "us"
 
 ##### ConnectMxp(string user)
 Connect the call to a app destination specified by "user". Note that this is currently an unsupported feature and it does not do any GCM/APN pushes.
@@ -292,6 +292,7 @@ The returned object supports manipulating the MXP call:
 
 ###### WithCli(string cli) - sets the CLI for the call
 ###### WithAnonymousCli() - sets hidden CLI for the call
+###### WithIndications(string indications) - set the tone standard for progress/busy/congestion - see "indications" below - default is "us"
 
 ##### ConnectMxp(Identity identity)
 Connect the call to a app destination specified by "identity". Note that this is currently an unsupported feature and it does not do any GCM/APN pushes.
@@ -311,6 +312,9 @@ An ACE response has somewhat different support depending on in what context you 
 
 - If the ACE is an event triggered by an answered call to the PSTN, The ACE response can only play prompts/menus, hangup the call or continue (see Hangup and Continue under "Building an ICE response").
 - If the ACE is an event triggered for a server-initiated call, the ACE response can be a Hangup, a ConnectConf or a Park
+
+##Indications
+"connectMxp" and "connectPstn" supports different indications standards (the way progress/busy/congestions) sounds. The following standards are supported: at, au, be, br, ch, cl, cn, cz, de, dk, ee, es, fi, fr, gr, hu, it, lt, mx, ml, no, nz, pl, pt, ru, se, sg, uk, us, us-old, tw, ve and za
 
 ## Defining menu structures
 You define menus by calling BeginMenuDefinition on an IIceSvamletBuilder or IAceSvamletBuilder:

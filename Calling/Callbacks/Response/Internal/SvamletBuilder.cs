@@ -89,13 +89,12 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
 
         public ISvamletResponse Hangup()
         {
-            SetAction(new SvamletActionModel { Name = "hangup", Barge = Barge });
-            return Build();
+            return Hangup(HangupCause.Normal);
         }
 
-        public ISvamletResponse Hangup(int hangupCause)
+        public ISvamletResponse Hangup(HangupCause cause)
         {
-            SetAction(new SvamletActionModel { Name = "hangup", Barge = Barge, HangupCause = hangupCause });
+            SetAction(new SvamletActionModel { Name = "hangup", Barge = Barge, HangupCause = (int) cause });
             return Build();
         }
 

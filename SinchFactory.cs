@@ -1,4 +1,3 @@
-using Sinch.ServerSdk.Calling;
 using Sinch.ServerSdk.Calling.Callbacks.Request;
 using Sinch.ServerSdk.Calling.Callbacks.Request.Internal;
 using Sinch.ServerSdk.Calling.Callbacks.Response;

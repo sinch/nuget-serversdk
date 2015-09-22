@@ -4,7 +4,8 @@ using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Sinch.ServerSdk.Calling.Callbacks.Response;
-using Sinch.ServerSdk.Calling.Model;
+using Sinch.ServerSdk.Calling.Models;
+using Sinch.ServerSdk.Models;
 
 namespace Sinch.ServerSdk.Calling.Callbacks.Request.Internal
 {

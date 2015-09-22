@@ -1,4 +1,4 @@
-﻿using Sinch.ServerSdk.Calling.Model;
+﻿using Sinch.ServerSdk.Calling.Models;
 
 namespace Sinch.ServerSdk.Calling.Callbacks.Response
 {

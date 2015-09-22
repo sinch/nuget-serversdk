@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Sinch.ServerSdk.Calling.Model;
+using Sinch.ServerSdk.Calling.Models;
+using Sinch.ServerSdk.Models;
 
 namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
 {

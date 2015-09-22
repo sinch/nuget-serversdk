@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Sinch.ServerSdk.Calling.Callbacks.Request;
 using Sinch.ServerSdk.Calling.Callbacks.Request.Internal;
-using Sinch.ServerSdk.Calling.Model;
+using Sinch.ServerSdk.Calling.Models;
+using Sinch.ServerSdk.Models;
 
 namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
 {
@@ -55,7 +56,7 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
 
         public IConnectMxpSvamletResponse ConnectMxp(IIdentity destination)
         {
-            if (destination == null || string.IsNullOrEmpty(destination.Endpoint))
+            if (string.IsNullOrEmpty(destination?.Endpoint))
                 throw new BuilderException("No destionation given");
 
             if (destination.Endpoint.Length > 128)

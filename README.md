@@ -1,5 +1,5 @@
 #
-# Sinch Server SDK NuGet package, v 1.0.1.5
+# Sinch Server SDK NuGet package, v 1.0.2.0
 This package supports
 
 	- Signing and making API REST calls to the Sinch backend
@@ -7,11 +7,11 @@ This package supports
 	- Constructing and signing replies to callbacks from the Sinch Backend
 
 ## Calling Callbacks
-In this section, we describe how to use this package for parseing/interpreting calling callback events and creating callback replies, a.k.a. "SVAMLets". For more information on the Sinch calling callback model and SVAML - see the REST callback documentation.
+In this section, we describe how to use this package for parsing/interpreting calling callback events and creating callback replies, a.k.a. "SVAMLets". For more information on the Sinch calling callback model and SVAML - see the REST callback documentation.
 
 ## Interpreting a request
 
-Depending on your server implementation, you either get and return a string or get and return a JSON-serializeable object. Should you get a string, the library offers
+Depending on your server implementation, you either get and return a string or get and return a JSON-serializable  object. Should you get a string, the library offers
 
 	ICallbackEvent ReadJson(string json);
 
@@ -23,9 +23,9 @@ and then use
 
 	ICallbackEvent ReadModel(CallbackEventModel model);
 
-Both methods are implemented by the CallbackFactory, so start by instantiating that:
+Both methods are implemented by the CallbackResponseFactory, so start by instantiating that:
 
-		var sinch = new SinchFactory(Locale.EnUs);
+		var sinch = SinchFactory.CreateCallbackResponseFactory(Locale.EnUs);
 
 You can use this object as a singleton (single instance) for every locale you need to support.
 
@@ -62,10 +62,10 @@ A unique identifier for the call - will be present in all callbacks for the call
 ##### IDictionary<string,string> Cookies
 During a callback session, you can set cookie values that survive between callbacks. A cookie has a string id and a string value (key/value pairs).
 
-Limitations: The id of a cookie cannot be longer that 50 characters. The sum of the size of all cookie values cannot be bigger than 1k characters. These limitations are currently not enforced by this library, but will be enfocred by the Sinch backend.
+Limitations: The id of a cookie cannot be longer that 50 characters. The sum of the size of all cookie values cannot be bigger than 1k characters. These limitations are currently not enforced by this library, but will be enforced by the Sinch backend.
 
 ##### string Custom
-This is the string data that you supplied when initiating the call - either when placing the call in the client SDK or when initating the call using the Sincg REST API. This data will also end up in any CDR associated with the call.
+This is the string data that you supplied when initiating the call - either when placing the call in the client SDK or when initiating the call using the Sinch REST API. This data will also end up in any CDR associated with the call.
 
 ##### Event Event
 
@@ -235,7 +235,7 @@ or
 
         IAceSvamletBuilder CreateAceSvamletBuilder()
 
-and then build the response by operating on the returned object. Having built the response you end by calling "Build" to get a ISvamletResponse. Depending on your server implementation, you then response by using the model (Model) or string (Body) of that object.
+and then build the response by operating on the returned object. Having built the response you end by calling "Build" to get an ISvamletResponse. Depending on your server implementation, you then response by using the model (Model) or string (Body) of that object.
 
 When responding to a DiCE or Notification, you cannot control anything in the response and hence you directly get a 
 ISvamletResponse object:
@@ -254,7 +254,7 @@ A SVAMLet has a number (that can be 0) of "instructions" and one "action".
 #### Instructions
 
 ##### Say(string text)
-Will render an instruction to play a prompt to the caller by using text-to-speach on the specified text. The maximum number of TTS characters of a SVAMLet is 200 (which is enforced by this library).
+Will render an instruction to play a prompt to the caller by using text-to-speech on the specified text. The maximum number of TTS characters of a SVAMLet is 200 (which is enforced by this library).
 
 ##### Play(string files)
 If you have uploaded pre-recorded prompts you can play them using the "Play" instructions. Multiple files can be specified by separating them by ";".
@@ -337,7 +337,7 @@ If you want a menu options that triggers a PIE event, call (the specified "resul
         IMenu<T> AddTriggerPieOption(Dtmf option, string result);
 
 ## Defining menus for number sequence input
-You can define a number sequence input menu by caling AddNumberInputMenu on an IIceSvamletBuilder
+You can define a number sequence input menu by calling AddNumberInputMenu on an IIceSvamletBuilder
 
 	IIceSvamletBuilder AddNumberInputMenu(string menuId, string prompt, int maxDigits, string repeatPrompt = null, int repeats = 3)
 
@@ -350,7 +350,7 @@ The package support a "fluent" style of creating responses - see the example sec
 ## Examples
 ### Interpreting an incoming event
 
-	var factory = new CallbackFactory(Locale.EnUs);
+	var factory = SinchFactory.CreateCallbackResponseFactory(Locale.EnUs);
 	var evtParser = factory.CreateEventReader();
 	var evt = evtParser.ReadJson(svaml);
 
@@ -396,3 +396,46 @@ The package support a "fluent" style of creating responses - see the example sec
         .EndMenuDefinition();
 
     svamletBuilder.AddNumberInputMenu("xyz", "#TTS[Enter 12 digits]", 12);
+
+
+## SMS
+The major takeaways of this section are:
+
+- Sending an SMS
+- Checking the status of a sent SMS
+
+Prerequisites:
+
+- A Sinch application key and secret
+- If the application being used is a 'sandbox' application, then a verified phone number on the Sinch account
+
+### Creating an SMS API
+
+	var smsApi = SinchFactory.CreateApiFactory("00000000-0000-0000-0000-000000000000", "AAAAAAAAAAAAAAAAAAAAAA==").CreateSmsApi();
+
+**Note:**
+
+- Replace "00000000-0000-0000-0000-000000000000" with your own application key.
+- Replace "AAAAAAAAAAAAAAAAAAAAAA==" with your own application secret.
+
+
+### Sending an SMS
+
+	var sendSmsResponse = await smsApi.Sms("+61491570156", "Hello world.").Send().ConfigureAwait(false);
+
+### Sending an SMS with a custom CLI (aka Caller ID)
+
+	var sendSmsResponse = await smsApi.Sms("+61491570156", "Hello world.").WithCli("CallerName").Send().ConfigureAwait(false);
+
+**Note:**
+
+- Using a custom text CLI in the USA is dependent on the network provider, and is generally not supported. 
+
+### Retrieving a sent SMS status
+
+	var smsMessageStatusResponse = await smsApi.GetSmsStatus(sendSmsResponse.MessageId).ConfigureAwait(false);
+
+	// smsMessageStatusResponse.Status =
+	// "Successful"
+	// "Pending"
+	// "Failed"

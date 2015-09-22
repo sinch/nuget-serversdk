@@ -1,25 +1,17 @@
-using Sinch.ServerSdk.Calling.Callbacks.Request;
-using Sinch.ServerSdk.Calling.Callbacks.Request.Internal;
-using Sinch.ServerSdk.Calling.Callbacks.Response;
-using Sinch.ServerSdk.Calling.Callbacks.Response.Internal;
-using Sinch.ServerSdk.Calling.Model;
+using Sinch.ServerSdk.Models;
 
 namespace Sinch.ServerSdk
 {
-    public class SinchFactory : ISinchFactory
+    public class SinchFactory
     {
-        private readonly Locale _locale;
-
-        public SinchFactory(Locale locale)
+        public static ICallbackResponseFactory CreateCallbackResponseFactory(Locale locale)
         {
-            _locale = locale ?? Locale.EnUs;
+            return new CallbackResponseFactory(locale);
         }
-
-        public ICallbackEventReader CreateEventReader() { return new CallbackEventReader(); }
-        public IIceSvamletBuilder CreateIceSvamletBuilder() { return new IceSvamletBuilder(_locale); }
-        public IAceSvamletBuilder CreateAceSvamletBuilder() { return new AceSvamletBuilder(_locale); }
-        public IManageCallSvamletBuilder CreateManageCallSvamletBuilder() { return new ManageCallSvamletBuilder(_locale); }
-        public ISvamletResponse CreateDiceResponse() { return new SvamletResponse { Model = new SvamletModel() }; }
-        public ISvamletResponse CreateNotificationResponse() {  return new SvamletResponse { Model = new SvamletModel()}; }
+        
+        public static IApiFactory CreateApiFactory(string key, string secret, string url = "https://api.sinch.com")
+        {
+            return new ApiFactory(key, secret, url);
+        }
     }
 }

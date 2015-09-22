@@ -1,14 +1,28 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>$id$</id>
-    <version>1.0.1.7</version>
+    <id>Sinch.ServerSdk</id>
+    <version>1.0.2.0</version>
     <title>Sinch Server SDK</title>
-    <authors>BF</authors>
+    <authors>Patrick Purcell</authors>
     <owners>Sinch</owners>
+    <iconUrl>https://www.sinch.com/wp-content/uploads/2015/09/NET-icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Nuget integrate server backends with the Sinch backend</description>
-    <releaseNotes>Populating Event property</releaseNotes>
-    <copyright>Copyright 2015 Sinch</copyright>
+    <description>
+      Integrate server backends with the Sinch backend.
+      Handle calling callbacks.  Send SMS.
+
+      For sample usage see https://github.com/sinch/nuget-serversdk
+    </description>
+    <projectUrl>https://github.com/sinch/nuget-serversdk</projectUrl>
+    <releaseNotes>Added SMS</releaseNotes>
+    <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+    <copyright>Copyright © 2015 Sinch AB</copyright>
+    <developmentDependency>false</developmentDependency>
+    <tags>sinch calling sms pstn messaging callback request signing</tags>
   </metadata>
+  <files>
+    <file src="License.txt"/>
+    <file src="README.md"/>
+  </files>
 </package>

@@ -1,4 +1,5 @@
 ﻿using System;
+using Sinch.ServerSdk.Models;
 
 namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
 {

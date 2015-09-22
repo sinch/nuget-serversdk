@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
-using Sinch.ServerSdk.Calling;
 using Sinch.ServerSdk.Calling.Callbacks.Request;
 using Sinch.ServerSdk.Calling.Callbacks.Response;
+using Sinch.ServerSdk.Models;
 
 namespace Sinch.ServerSdk.Examples.CallingCallback
 {
@@ -12,7 +12,7 @@ namespace Sinch.ServerSdk.Examples.CallingCallback
         {
             var iceRequestText = File.ReadAllText("../../ice.txt");
 
-            var sinch = new SinchFactory(new Locale("en-US"));
+            var sinch = SinchFactory.CreateCallbackResponseFactory(Locale.EnUs);
 
             var evt = sinch.CreateEventReader().ReadJson(iceRequestText);
 

@@ -71,7 +71,7 @@
     <Compile Include="Calling\Models\ConferenceCommand.cs" />
     <Compile Include="Calling\Models\GetConferenceResponse.cs" />
     <Compile Include="Calling\Models\IdentityModel.cs" />
-    <Compile Include="Calling\Models\ParticipantResource.cs" />
+    <Compile Include="Calling\Models\ParticipantModel.cs" />
     <Compile Include="Calling\Participant.cs" />
     <Compile Include="Exceptions\BadRequestException.cs" />
     <Compile Include="Messaging\ISmsApiEndpoints.cs" />

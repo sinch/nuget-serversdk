@@ -25,7 +25,7 @@ namespace Sinch.ServerSdk
         IConferenceApi CreateConferenceApi();
     }
 
-    class ApiFactory : IApiFactory
+    internal class ApiFactory : IApiFactory
     {
         private readonly string _key;
         private readonly byte[] _secret;
@@ -67,16 +67,24 @@ namespace Sinch.ServerSdk
             _url = url;
         }
 
-        public ICallbackValidator CreateCallbackValidator() { return new CallbackValidator(_key, _secret); }
+        public ICallbackValidator CreateCallbackValidator()
+        {
+            return new CallbackValidator(_key, _secret);
+        }
 
         public ISmsApi CreateSmsApi()
         {
-            return new SmsApi(new WebApiClientFactory().CreateClient<ISmsApiEndpoints>(_url, new ApplicationSigningFilter(_key, _secret), new RestReplyFilter()));
+            return new SmsApi(CreateApiClient<ISmsApiEndpoints>());
         }
 
         public IConferenceApi CreateConferenceApi()
         {
-            return new ConferenceApi(new WebApiClientFactory().CreateClient<IConferenceApiEndpoints>(_url, new ApplicationSigningFilter(_key, _secret), new RestReplyFilter()));
+            return new ConferenceApi(CreateApiClient<IConferenceApiEndpoints>());
+        }
+
+        private T CreateApiClient<T>() where T : class
+        {
+            return new WebApiClientFactory().CreateClient<T>(_url, new ApplicationSigningFilter(_key, _secret), new RestReplyFilter());
         }
     }
 }

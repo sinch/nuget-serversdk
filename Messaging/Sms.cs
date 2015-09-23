@@ -5,7 +5,7 @@ using Sinch.ServerSdk.Messaging.Models;
 
 namespace Sinch.ServerSdk.Messaging
 {
-    public class Sms
+    public class Sms : ISmsWithCli
     {
         private readonly ISmsApiEndpoints _smsApiEndpoints;
         private readonly string _to;
@@ -38,13 +38,13 @@ namespace Sinch.ServerSdk.Messaging
             _message = message.Trim();
         }
 
-        public Sms WithCli(string from)
+        public ISmsSend WithCli(string from)
         {
             if(string.IsNullOrWhiteSpace(from))
-                throw new BadRequestException("Cannot specify empty from CLI.");
+                throw new BadRequestException("Cannot specify empty CLI.");
 
             if(_from!=null)
-                throw new BadRequestException("Using CLI has already been set.");
+                throw new BadRequestException("CLI has already been set.");
 
             _from = from.Trim();
             return this;
@@ -54,5 +54,15 @@ namespace Sinch.ServerSdk.Messaging
         {
             return _smsApiEndpoints.SendSms(_to, new SendSmsRequest { Message = _message, From = _from });
         }
+    }
+
+    public interface ISmsSend
+    {
+        Task<SendSmsResponse> Send();
+    }
+
+    public interface ISmsWithCli :ISmsSend
+    {
+        ISmsSend WithCli(string from);
     }
 }

@@ -51,15 +51,15 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Sinch.ServerSdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Sinch.ServerSdk.1.0.2.0\lib\net45\Sinch.ServerSdk.dll</HintPath>
+      <HintPath>..\..\packages\Sinch.ServerSdk.1.0.2.1\lib\net45\Sinch.ServerSdk.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Sinch.ServerSdk.Callback.WebApi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Sinch.ServerSdk.Callback.WebApi.1.0.0.0\lib\net45\Sinch.ServerSdk.Callback.WebApi.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Sinch.WebApiClient, Version=1.0.0.26683, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Sinch.WebApiClient.1.0.1\lib\net45\Sinch.WebApiClient.dll</HintPath>
+    <Reference Include="Sinch.WebApiClient, Version=1.0.2.30701, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Sinch.WebApiClient.1.0.2\lib\net45\Sinch.WebApiClient.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http" />

@@ -13,7 +13,7 @@ namespace Sinch.ServerSdk.Examples.CallingCallback
             var iceRequestText = File.ReadAllText("../../ice.txt");
 
             var sinch = SinchFactory.CreateCallbackResponseFactory(Locale.EnUs);
-
+            
             var evt = sinch.CreateEventReader().ReadJson(iceRequestText);
 
             if (evt is IIceEvent)

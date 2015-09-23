@@ -35,7 +35,7 @@ An OWIN example
     [Route("sinchcallback")]
     public async Task<SvamletModel> Post([FromBody] CallbackEventModel callbackEvent)
     {
-		var sinch = new SinchFactory(new Locale("en-US"));
+		var sinch = SinchFactory.CreateCallbackResponseFactory(Locale.EnUs);
         var evt = reader.ReadModel(eventModel);
 		... 
     }

@@ -1,15 +1,63 @@
 #
-# Sinch Server SDK NuGet package, v 1.0.2.0
+# Sinch Server SDK NuGet package
+# Version: 1.0.2.0
 This package supports
 
 	- Signing and making API REST calls to the Sinch backend
 	- Authenticating and interpreting callbacks from the Sinch Backend
 	- Constructing and signing replies to callbacks from the Sinch Backend
 
+# Contents
+1. SMS
+2. Calling Callbacks
+3. Calling Callbacks - Responding
+
+## SMS
+The major takeaways of this section are:
+
+- Sending an SMS
+- Checking the status of a sent SMS
+
+Prerequisites:
+
+- A Sinch application key and secret
+- If the application being used is a 'sandbox' application, then a verified phone number on the Sinch account
+
+### Creating an SMS API
+
+	var smsApi = SinchFactory.CreateApiFactory("00000000-0000-0000-0000-000000000000", "AAAAAAAAAAAAAAAAAAAAAA==").CreateSmsApi();
+
+**Note:**
+
+- Replace "00000000-0000-0000-0000-000000000000" with your own application key.
+- Replace "AAAAAAAAAAAAAAAAAAAAAA==" with your own application secret.
+
+
+### Sending an SMS
+
+	var sendSmsResponse = await smsApi.Sms("+61491570156", "Hello world.").Send().ConfigureAwait(false);
+
+### Sending an SMS with a custom CLI (aka Caller ID)
+
+	var sendSmsResponse = await smsApi.Sms("+61491570156", "Hello world.").WithCli("CallerName").Send().ConfigureAwait(false);
+
+**Note:**
+
+- Using a custom text CLI in the USA is dependent on the network provider, and is generally not supported. 
+
+### Retrieving a sent SMS status
+
+	var smsMessageStatusResponse = await smsApi.GetSmsStatus(sendSmsResponse.MessageId).ConfigureAwait(false);
+
+	// smsMessageStatusResponse.Status =
+	// "Successful"
+	// "Pending"
+	// "Failed"
+
 ## Calling Callbacks
 In this section, we describe how to use this package for parsing/interpreting calling callback events and creating callback replies, a.k.a. "SVAMLets". For more information on the Sinch calling callback model and SVAML - see the REST callback documentation.
 
-## Interpreting a request
+### Interpreting a request
 
 Depending on your server implementation, you either get and return a string or get and return a JSON-serializable  object. Should you get a string, the library offers
 
@@ -225,7 +273,7 @@ Where was the call (to be) connected
 
         IIdentity To
 
-## Creating a response
+## Calling Callbacks - Responding
 
 You start by instantiating a "builder" object. Depending on what event you are responding to, you should create different builders. Create the builder by calling
 
@@ -396,46 +444,3 @@ The package support a "fluent" style of creating responses - see the example sec
         .EndMenuDefinition();
 
     svamletBuilder.AddNumberInputMenu("xyz", "#TTS[Enter 12 digits]", 12);
-
-
-## SMS
-The major takeaways of this section are:
-
-- Sending an SMS
-- Checking the status of a sent SMS
-
-Prerequisites:
-
-- A Sinch application key and secret
-- If the application being used is a 'sandbox' application, then a verified phone number on the Sinch account
-
-### Creating an SMS API
-
-	var smsApi = SinchFactory.CreateApiFactory("00000000-0000-0000-0000-000000000000", "AAAAAAAAAAAAAAAAAAAAAA==").CreateSmsApi();
-
-**Note:**
-
-- Replace "00000000-0000-0000-0000-000000000000" with your own application key.
-- Replace "AAAAAAAAAAAAAAAAAAAAAA==" with your own application secret.
-
-
-### Sending an SMS
-
-	var sendSmsResponse = await smsApi.Sms("+61491570156", "Hello world.").Send().ConfigureAwait(false);
-
-### Sending an SMS with a custom CLI (aka Caller ID)
-
-	var sendSmsResponse = await smsApi.Sms("+61491570156", "Hello world.").WithCli("CallerName").Send().ConfigureAwait(false);
-
-**Note:**
-
-- Using a custom text CLI in the USA is dependent on the network provider, and is generally not supported. 
-
-### Retrieving a sent SMS status
-
-	var smsMessageStatusResponse = await smsApi.GetSmsStatus(sendSmsResponse.MessageId).ConfigureAwait(false);
-
-	// smsMessageStatusResponse.Status =
-	// "Successful"
-	// "Pending"
-	// "Failed"

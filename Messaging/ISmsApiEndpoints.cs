@@ -12,12 +12,4 @@ namespace Sinch.ServerSdk.Messaging
         [HttpGet("messaging/v1/sms/{messageId}")]
         Task<GetSmsStatusResponse> GetSmsStatus([ToUri] int messageId);
     }
-    public interface ICallingApiEndpoints
-    {
-        [HttpPost("messaging/v1/sms/{toNumber}")]
-        Task<SendSmsResponse> SendSms([ToUri] string toNumber, [ToBody] SendSmsRequest request);
-
-        [HttpGet("messaging/v1/sms/{messageId}")]
-        Task<GetSmsStatusResponse> GetSmsStatus([ToUri] int messageId);
-    }
 }

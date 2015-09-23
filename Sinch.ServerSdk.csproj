@@ -65,7 +65,14 @@
     <Compile Include="Calling\Callbacks\Response\IConnectConferenceSvamletResponse.cs" />
     <Compile Include="Calling\Callbacks\Response\IConnectMxpSvamletResponse.cs" />
     <Compile Include="Calling\Callbacks\Response\IConnectPstnSvamletResponse.cs" />
+    <Compile Include="Calling\Conference.cs" />
+    <Compile Include="Calling\ConferenceApi.cs" />
+    <Compile Include="Calling\IConferenceApiEndpoints.cs" />
+    <Compile Include="Calling\Models\ConferenceCommand.cs" />
+    <Compile Include="Calling\Models\GetConferenceResponse.cs" />
     <Compile Include="Calling\Models\IdentityModel.cs" />
+    <Compile Include="Calling\Models\ParticipantResource.cs" />
+    <Compile Include="Calling\Participant.cs" />
     <Compile Include="Exceptions\BadRequestException.cs" />
     <Compile Include="Messaging\ISmsApiEndpoints.cs" />
     <Compile Include="Callback\CallbackValidator.cs" />
@@ -152,7 +159,6 @@
     <None Include="Sinch.ServerSdk.nuspec" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Calling\Api\" />
     <Folder Include="Verification\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

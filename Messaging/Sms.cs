@@ -61,7 +61,7 @@ namespace Sinch.ServerSdk.Messaging
         Task<SendSmsResponse> Send();
     }
 
-    public interface ISmsWithCli :ISmsSend
+    public interface ISmsWithCli : ISmsSend
     {
         ISmsSend WithCli(string from);
     }

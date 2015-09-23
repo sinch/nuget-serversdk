@@ -1,6 +1,7 @@
 ﻿using System;
 using Sinch.ServerSdk.ApiFilters;
 using Sinch.ServerSdk.Callback;
+using Sinch.ServerSdk.Calling;
 using Sinch.ServerSdk.Messaging;
 using Sinch.WebApiClient;
 
@@ -17,6 +18,11 @@ namespace Sinch.ServerSdk
         /// Create a Sinch SMS API. Provides endpoints for sending SMS's using Sinch.
         /// </summary>
         ISmsApi CreateSmsApi();
+
+        /// <summary>
+        /// Create a Sinch Conference API. Endpoints for ending the conference, as well as getting, muting, unmuting and kicking participants.
+        /// </summary>
+        IConferenceApi CreateConferenceApi();
     }
 
     class ApiFactory : IApiFactory
@@ -54,10 +60,11 @@ namespace Sinch.ServerSdk
             if (string.IsNullOrWhiteSpace(url))
                 throw new ArgumentNullException(nameof(url), "Sinch API URL cannot be null.");
 
-            _url = url;
+            Uri uri;
+            if (!Uri.TryCreate(url, UriKind.Absolute, out uri))
+                throw new ArgumentException("Sinch API URL is in an invalid format.  The default URL is https://api.sinch.com");
 
-            /*if (!Uri.TryCreate(url, UriKind.Absolute, out _url))
-                throw new ArgumentException("Sinch API URL is in an invalid format.  The default URL is https://api.sinch.com");*/
+            _url = url;
         }
 
         public ICallbackValidator CreateCallbackValidator() { return new CallbackValidator(_key, _secret); }
@@ -65,6 +72,11 @@ namespace Sinch.ServerSdk
         public ISmsApi CreateSmsApi()
         {
             return new SmsApi(new WebApiClientFactory().CreateClient<ISmsApiEndpoints>(_url, new ApplicationSigningFilter(_key, _secret), new RestReplyFilter()));
+        }
+
+        public IConferenceApi CreateConferenceApi()
+        {
+            return new ConferenceApi(new WebApiClientFactory().CreateClient<IConferenceApiEndpoints>(_url, new ApplicationSigningFilter(_key, _secret), new RestReplyFilter()));
         }
     }
 }

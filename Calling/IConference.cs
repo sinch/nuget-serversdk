@@ -7,5 +7,6 @@ namespace Sinch.ServerSdk.Calling
         Task<IGetConferenceResponse> Get();
         Task End();
         IConferenceParticipant Participant(string id);
+        IConferenceParticipant Participant(IParticipant participant);
     }
 }

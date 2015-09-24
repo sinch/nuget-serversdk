@@ -28,5 +28,10 @@ namespace Sinch.ServerSdk.Calling.Fluent
         {
             return new ConferenceParticipant(_api, _conferenceId, id);
         }
+
+        public IConferenceParticipant Participant(IParticipant participant)
+        {
+            return new ConferenceParticipant(_api, _conferenceId, participant.Id);
+        }
     }
 }

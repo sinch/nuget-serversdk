@@ -1,13 +1,7 @@
 ﻿using System.Threading.Tasks;
 
-namespace Sinch.ServerSdk.Messaging
+namespace Sinch.ServerSdk.Messaging.Fluent
 {
-    public interface ISmsApi
-    {
-        ISms Sms(string to, string message);
-        Task<IGetStatusResponse> GetSmsStatus(int messageId);
-    }
-
     class SmsApi : ISmsApi
     {
         private readonly ISmsApiEndpoints _smsApiEndpoints;

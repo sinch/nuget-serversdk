@@ -1,6 +1,6 @@
 ﻿using Sinch.ServerSdk.Calling.Callbacks.Request;
 
-namespace Sinch.ServerSdk.Calling
+namespace Sinch.ServerSdk.Calling.Models
 {
     internal class Cli : ICli
     {

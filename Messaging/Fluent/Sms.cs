@@ -3,9 +3,9 @@ using System.Threading.Tasks;
 using Sinch.ServerSdk.Exceptions;
 using Sinch.ServerSdk.Messaging.Models;
 
-namespace Sinch.ServerSdk.Messaging
+namespace Sinch.ServerSdk.Messaging.Fluent
 {
-    public class Sms : ISms
+    class Sms : ISms
     {
         private readonly ISmsApiEndpoints _smsApiEndpoints;
         private readonly string _to;
@@ -22,9 +22,9 @@ namespace Sinch.ServerSdk.Messaging
             if (string.IsNullOrWhiteSpace(message))
                 throw new BadRequestException("Cannot specify empty message.");
 
-            if(!to.Trim().StartsWith("+"))
+            if (!to.Trim().StartsWith("+"))
                 throw new BadRequestException("'to' must be in international format. Phone number should start with a '+'");
-            
+
             if (to.Length < 7)
                 throw new BadRequestException("Phone number too short");
 
@@ -40,10 +40,10 @@ namespace Sinch.ServerSdk.Messaging
 
         public ISmsSend WithCli(string from)
         {
-            if(string.IsNullOrWhiteSpace(from))
+            if (string.IsNullOrWhiteSpace(from))
                 throw new BadRequestException("Cannot specify empty CLI.");
 
-            if(_from!=null)
+            if (_from != null)
                 throw new BadRequestException("CLI has already been set.");
 
             _from = from.Trim();
@@ -54,17 +54,5 @@ namespace Sinch.ServerSdk.Messaging
         {
             return await _smsApiEndpoints.SendSms(_to, new SendSmsRequest { Message = _message, From = _from }).ConfigureAwait(false);
         }
-    }
-
-    public interface ISms : ISmsSend, ISmsWithCli { }
-
-    public interface ISmsSend
-    {
-        Task<ISendSmsResponse> Send();
-    }
-
-    public interface ISmsWithCli
-    {
-        ISmsSend WithCli(string from);
     }
 }

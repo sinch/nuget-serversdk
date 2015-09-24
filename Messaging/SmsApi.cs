@@ -1,12 +1,11 @@
 ﻿using System.Threading.Tasks;
-using Sinch.ServerSdk.Messaging.Models;
 
 namespace Sinch.ServerSdk.Messaging
 {
     public interface ISmsApi
     {
-        Sms Sms(string to, string message);
-        Task<GetSmsStatusResponse> GetSmsStatus(int messageId);
+        ISms Sms(string to, string message);
+        Task<IGetStatusResponse> GetSmsStatus(int messageId);
     }
 
     class SmsApi : ISmsApi
@@ -18,14 +17,14 @@ namespace Sinch.ServerSdk.Messaging
             _smsApiEndpoints = smsApiEndpoints;
         }
 
-        public Sms Sms(string to, string message)
+        public ISms Sms(string to, string message)
         {
             return new Sms(_smsApiEndpoints, to, message);
         }
 
-        public Task<GetSmsStatusResponse> GetSmsStatus(int messageId)
+        public async Task<IGetStatusResponse> GetSmsStatus(int messageId)
         {
-            return _smsApiEndpoints.GetSmsStatus(messageId);
+            return await _smsApiEndpoints.GetSmsStatus(messageId).ConfigureAwait(false);
         }
     }
 }

@@ -1,6 +1,6 @@
 namespace Sinch.ServerSdk.Messaging.Models
 {
-    public class SendSmsResponse
+    public class SendSmsResponse : ISendSmsResponse
     {
         /// <summary>
         /// Message ID of the SendSms request.  

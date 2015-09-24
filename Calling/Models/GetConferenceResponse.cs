@@ -2,7 +2,7 @@
 
 namespace Sinch.ServerSdk.Calling.Models
 {
-    public class GetConferenceResponse
+    public class GetConferenceResponse 
     {
         [JsonProperty(PropertyName = "participants")]
         public ParticipantModel[] Participants { get; set; }

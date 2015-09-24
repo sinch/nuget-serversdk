@@ -1,15 +1,8 @@
 ﻿using System.Threading.Tasks;
-using Sinch.ServerSdk.Calling.Models;
+using Sinch.ServerSdk.Calling.Adapters;
 
-namespace Sinch.ServerSdk.Calling
+namespace Sinch.ServerSdk.Calling.Fluent
 {
-    public interface IConference
-    {
-        Task<GetConferenceResponse> Get();
-        Task End();
-        IParticipant Participant(string id);
-    }
-
     class Conference : IConference
     {
         private readonly IConferenceApiEndpoints _api;
@@ -21,9 +14,9 @@ namespace Sinch.ServerSdk.Calling
             _conferenceId = conferenceId;
         }
 
-        public Task<GetConferenceResponse> Get()
+        public async Task<IGetConferenceResponse> Get()
         {
-            return _api.GetConference(_conferenceId);
+            return new GetConferenceResponseAdapter(await _api.GetConference(_conferenceId).ConfigureAwait(false));
         }
 
         public Task End()
@@ -31,9 +24,9 @@ namespace Sinch.ServerSdk.Calling
             return _api.End(_conferenceId);
         }
 
-        public IParticipant Participant(string id)
+        public IConferenceParticipant Participant(string id)
         {
-            return new Participant(_api, _conferenceId, id);
+            return new ConferenceParticipant(_api, _conferenceId, id);
         }
     }
 }

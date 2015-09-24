@@ -40,8 +40,8 @@
       <HintPath>packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Sinch.WebApiClient, Version=1.0.2.30701, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Sinch.WebApiClient.1.0.2\lib\net45\Sinch.WebApiClient.dll</HintPath>
+    <Reference Include="Sinch.WebApiClient, Version=1.0.3.19967, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Sinch.WebApiClient.1.0.3\lib\net45\Sinch.WebApiClient.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -65,21 +65,29 @@
     <Compile Include="Calling\Callbacks\Response\IConnectConferenceSvamletResponse.cs" />
     <Compile Include="Calling\Callbacks\Response\IConnectMxpSvamletResponse.cs" />
     <Compile Include="Calling\Callbacks\Response\IConnectPstnSvamletResponse.cs" />
-    <Compile Include="Calling\Conference.cs" />
-    <Compile Include="Calling\ConferenceApi.cs" />
+    <Compile Include="Calling\Fluent\Conference.cs" />
+    <Compile Include="Calling\Fluent\ConferenceApi.cs" />
+    <Compile Include="Calling\Fluent\ConferenceParticipant.cs" />
+    <Compile Include="Calling\IConference.cs" />
+    <Compile Include="Calling\IConferenceApi.cs" />
     <Compile Include="Calling\IConferenceApiEndpoints.cs" />
     <Compile Include="Calling\Models\ConferenceCommand.cs" />
     <Compile Include="Calling\Models\GetConferenceResponse.cs" />
+    <Compile Include="Calling\Adapters\GetConferenceResponseAdapter.cs" />
     <Compile Include="Calling\Models\IdentityModel.cs" />
+    <Compile Include="Calling\IGetConferenceResponse.cs" />
+    <Compile Include="Calling\IParticipant.cs" />
     <Compile Include="Calling\Models\ParticipantModel.cs" />
-    <Compile Include="Calling\Participant.cs" />
+    <Compile Include="Calling\IConferenceParticipant.cs" />
     <Compile Include="Exceptions\BadRequestException.cs" />
+    <Compile Include="Messaging\ISendSmsResponse.cs" />
     <Compile Include="Messaging\ISmsApiEndpoints.cs" />
     <Compile Include="Callback\CallbackValidator.cs" />
     <Compile Include="Exceptions\InvalidCallbackException.cs" />
     <Compile Include="Calling\Callbacks\Request\ICli.cs" />
     <Compile Include="Calling\Cli.cs" />
     <Compile Include="Calling\Models\CallbackEventModel.cs" />
+    <Compile Include="Messaging\IGetStatusResponse.cs" />
     <Compile Include="Models\KeyValueModel.cs" />
     <Compile Include="Models\Identity.cs" />
     <Compile Include="Calling\Models\MenuResultModel.cs" />
@@ -136,7 +144,7 @@
     <Compile Include="Calling\Callbacks\Response\ISvamletBuilder.cs" />
     <Compile Include="Calling\Models\SvamletModel.cs" />
     <Compile Include="Messaging\SmsApi.cs" />
-    <Compile Include="Messaging\Models\GetSmsStatusResponse.cs" />
+    <Compile Include="Messaging\Models\GetStatusResponse.cs" />
     <Compile Include="Messaging\Models\IncomingMessageEvent.cs" />
     <Compile Include="Messaging\Models\SendSmsRequest.cs" />
     <Compile Include="Messaging\Models\SendSmsResponse.cs" />

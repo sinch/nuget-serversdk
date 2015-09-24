@@ -1,22 +1,15 @@
 ﻿using System.Threading.Tasks;
 using Sinch.ServerSdk.Calling.Models;
 
-namespace Sinch.ServerSdk.Calling
+namespace Sinch.ServerSdk.Calling.Fluent
 {
-    public interface IParticipant
-    {
-        Task Mute();
-        Task Unmute();
-        Task Kick();
-    }
-
-    class Participant : IParticipant
+    class ConferenceParticipant : IConferenceParticipant
     {
         private readonly IConferenceApiEndpoints _api;
         private readonly string _conferenceId;
         private readonly string _id;
 
-        public Participant(IConferenceApiEndpoints api, string conferenceId, string id)
+        public ConferenceParticipant(IConferenceApiEndpoints api, string conferenceId, string id)
         {
             _api = api;
             _conferenceId = conferenceId;

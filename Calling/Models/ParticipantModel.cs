@@ -2,7 +2,7 @@
 
 namespace Sinch.ServerSdk.Calling.Models
 {
-    public class ParticipantModel
+    public class ParticipantModel : IParticipant
     {
         //[JsonProperty(PropertyName = "id")]
         public string Id => CallId;

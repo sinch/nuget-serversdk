@@ -35,11 +35,11 @@ Prerequisites:
 
 ### Sending an SMS
 
-	var sendSmsResponse = await smsApi.Sms("+61491570156", "Hello world.").Send().ConfigureAwait(false);
+	var sendSmsResponse = await smsApi.Sms("+61491570156", "Hello world.").Send();
 
 ### Sending an SMS with a custom CLI (aka Caller ID)
 
-	var sendSmsResponse = await smsApi.Sms("+61491570156", "Hello world.").WithCli("CallerName").Send().ConfigureAwait(false);
+	var sendSmsResponse = await smsApi.Sms("+61491570156", "Hello world.").WithCli("CallerName").Send();
 
 **Note:**
 
@@ -47,7 +47,7 @@ Prerequisites:
 
 ### Retrieving a sent SMS status
 
-	var smsMessageStatusResponse = await smsApi.GetSmsStatus(sendSmsResponse.MessageId).ConfigureAwait(false);
+	var smsMessageStatusResponse = await smsApi.GetStatus(sendSmsResponse.MessageId);
 
 	// smsMessageStatusResponse.Status =
 	// "Successful"
@@ -84,7 +84,8 @@ An OWIN example
     public async Task<SvamletModel> Post([FromBody] CallbackEventModel callbackEvent)
     {
 		var sinch = SinchFactory.CreateCallbackResponseFactory(Locale.EnUs);
-        var evt = reader.ReadModel(eventModel);
+		var reader = sinch.CreateEventReader();
+        var evt = reader.ReadModel(callbackEvent);
 		... 
     }
 

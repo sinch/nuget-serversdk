@@ -5,7 +5,7 @@ using Sinch.ServerSdk.Messaging.Models;
 
 namespace Sinch.ServerSdk.Messaging
 {
-    public class Sms : ISmsWithCli
+    public class Sms : ISms
     {
         private readonly ISmsApiEndpoints _smsApiEndpoints;
         private readonly string _to;
@@ -50,18 +50,20 @@ namespace Sinch.ServerSdk.Messaging
             return this;
         }
 
-        public Task<SendSmsResponse> Send()
+        public async Task<ISendSmsResponse> Send()
         {
-            return _smsApiEndpoints.SendSms(_to, new SendSmsRequest { Message = _message, From = _from });
+            return await _smsApiEndpoints.SendSms(_to, new SendSmsRequest { Message = _message, From = _from }).ConfigureAwait(false);
         }
     }
 
+    public interface ISms : ISmsSend, ISmsWithCli { }
+
     public interface ISmsSend
     {
-        Task<SendSmsResponse> Send();
+        Task<ISendSmsResponse> Send();
     }
 
-    public interface ISmsWithCli : ISmsSend
+    public interface ISmsWithCli
     {
         ISmsSend WithCli(string from);
     }

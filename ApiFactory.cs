@@ -2,6 +2,7 @@
 using Sinch.ServerSdk.ApiFilters;
 using Sinch.ServerSdk.Callback;
 using Sinch.ServerSdk.Calling;
+using Sinch.ServerSdk.Calling.Fluent;
 using Sinch.ServerSdk.Messaging;
 using Sinch.WebApiClient;
 

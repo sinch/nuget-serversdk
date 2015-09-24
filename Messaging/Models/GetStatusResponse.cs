@@ -1,6 +1,6 @@
 ﻿namespace Sinch.ServerSdk.Messaging.Models
 {
-    public class GetSmsStatusResponse
+    public class GetStatusResponse : IGetStatusResponse
     {
         public string Status { get; set; }
     }

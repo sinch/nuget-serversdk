@@ -10,6 +10,6 @@ namespace Sinch.ServerSdk.Messaging
         Task<SendSmsResponse> SendSms([ToUri] string toNumber, [ToBody] SendSmsRequest request);
 
         [HttpGet("messaging/v1/sms/{messageId}")]
-        Task<GetSmsStatusResponse> GetSmsStatus([ToUri] int messageId);
+        Task<GetStatusResponse> GetSmsStatus([ToUri] int messageId);
     }
 }

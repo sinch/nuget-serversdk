@@ -7,24 +7,29 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Dispatcher;
 using Sinch.ServerSdk.Exceptions;
 
 namespace Sinch.ServerSdk.Callback.WebApi
 {
     public class CallbackMessageHandler : DelegatingHandler
     {
-        private readonly IApiFactory _factory;
+        private readonly ICallbackValidator _callbackValidator;
 
         public CallbackMessageHandler(IApiFactory factory)
         {
-            _factory = factory;
+            _callbackValidator = factory.CreateCallbackValidator();
         }
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             try
             {
-                _factory.CreateCallbackValidator().Validate(request.RequestUri.AbsolutePath, GetHeaders(request), await request.Content.ReadAsByteArrayAsync());
+                var controllerSelector = new DefaultHttpControllerSelector(request.GetConfiguration());
+                var descriptor = controllerSelector.SelectController(request);
+
+                if (descriptor.ControllerType.IsDefined(typeof(SinchCallbackAttribute), false))
+                    _callbackValidator.Validate(request.RequestUri.AbsolutePath, GetHeaders(request), await request.Content.ReadAsByteArrayAsync());
             }
             catch (InvalidCallbackException)
             {
@@ -38,7 +43,7 @@ namespace Sinch.ServerSdk.Callback.WebApi
             request.Content.ReadAsStreamAsync().Result.Seek(0, SeekOrigin.Begin);
             return await base.SendAsync(request, cancellationToken);
         }
-        
+
         private static Dictionary<string, string> GetHeaders(HttpRequestMessage request)
         {
             var requestHeaders = request.Headers.ToDictionary(kvp => kvp.Key.ToLowerInvariant(), kvp => kvp.Value.FirstOrDefault());

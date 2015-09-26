@@ -1,6 +1,6 @@
 #
 # Sinch Server SDK NuGet package
-# Version: 1.0.2.1
+# Version: 1.0.2.4
 This package supports
 
 	- Signing and making API REST calls to the Sinch backend
@@ -22,6 +22,10 @@ Prerequisites:
 
 - A Sinch application key and secret
 - If the application being used is a 'sandbox' application, then a verified phone number on the Sinch account
+
+##Experimental Functionality
+This NuGet package has support for some functionality that is concidered "experm
+imental". This means that it is documented here and can be used, but is noy yet officially supported. 
 
 ### Creating an SMS API
 
@@ -108,7 +112,7 @@ The key of the application that triggered the callback. This corresponds to the 
 ##### string CallId
 A unique identifier for the call - will be present in all callbacks for the call and in CDRs.
 
-##### IDictionary<string,string> Cookies
+##### IDictionary<string,string> Cookies [*Experimental*]
 During a callback session, you can set cookie values that survive between callbacks. A cookie has a string id and a string value (key/value pairs).
 
 Limitations: The id of a cookie cannot be longer that 50 characters. The sum of the size of all cookie values cannot be bigger than 1k characters. These limitations are currently not enforced by this library, but will be enforced by the Sinch backend.
@@ -308,13 +312,16 @@ Will render an instruction to play a prompt to the caller by using text-to-speec
 ##### Play(string files)
 If you have uploaded pre-recorded prompts you can play them using the "Play" instructions. Multiple files can be specified by separating them by ";".
 
-##### SetCookie(string name, string value)
+##### SetCookie(string name, string value) [*Experimental*]
 Sets a cookie for the call that will be present in the next callback event (ACE or DiCE).
 
 #### Actions
 
 ##### Hangup
 Hangs up the call (after having executed any instructions)
+
+#### Hangup(HangupCause cause) [*Experimental*]
+Hangs up the call (after having executed any instructions and indicated busy/congestion to the user)
 
 ##### Continue
 If this is a call initiated from the an SDK client, the call will be connected as requested by the client. If you want to override the behaviour, you should specify another action.
@@ -327,12 +334,12 @@ The returned object supports manipulating the PSTN call:
 ###### WithCli(string cli) - sets the CLI for the call
 ###### WithAnonymousCli() - sets hidden CLI for the call
 ###### WithBridgeTimeout(TimeSpan timeSpan) - sets timeout, in seconds - how long can the call be connected for (max 4 hours)
-###### WithDialTimeout(TimeSpan timeSpan) - sets timeout for ringing - after how long trying to connect, should the call attempt be cancelled
+###### WithDialTimeout(TimeSpan timeSpan) [*Experimental*] - sets timeout for ringing - after how  long trying to connect, should the call attempt be cancelled
 ###### WithOptimizedDialTimeout() - undocumented for now
 ###### WithOptimizedDialTimeout() - undocumented for now
 ###### WithCallbacks() - enable callbacks for the rest of the call (default)
 ###### WithoutCallbacks() - disable callbacks for the rest of the call
-###### WithIndications(string indications) - set the tone standard for progress/busy/congestion - see "indications" below - default is "us"
+###### WithIndications(string indications) [*Experimental*] - set the tone standard for progress/busy/congestion - see "indications" below - default is "us"
 
 ##### ConnectMxp(string user)
 Connect the call to a app destination specified by "user". Note that this is currently an unsupported feature and it does not do any GCM/APN pushes.
@@ -341,7 +348,7 @@ The returned object supports manipulating the MXP call:
 
 ###### WithCli(string cli) - sets the CLI for the call
 ###### WithAnonymousCli() - sets hidden CLI for the call
-###### WithIndications(string indications) - set the tone standard for progress/busy/congestion - see "indications" below - default is "us"
+###### WithIndications(string indications) [*Experimental*] - set the tone standard for progress/busy/congestion - see "indications" below - default is "us"
 
 ##### ConnectMxp(Identity identity)
 Connect the call to a app destination specified by "identity". Note that this is currently an unsupported feature and it does not do any GCM/APN pushes.
@@ -362,7 +369,7 @@ An ACE response has somewhat different support depending on in what context you 
 - If the ACE is an event triggered by an answered call to the PSTN, The ACE response can only play prompts/menus, hangup the call or continue (see Hangup and Continue under "Building an ICE response").
 - If the ACE is an event triggered for a server-initiated call, the ACE response can be a Hangup, a ConnectConf or a Park
 
-##Indications
+##Indications [*Experimental*]
 "connectMxp" and "connectPstn" supports different indications standards (the way progress/busy/congestions) sounds. The following standards are supported: at, au, be, br, ch, cl, cn, cz, de, dk, ee, es, fi, fr, gr, hu, it, lt, mx, ml, no, nz, pl, pt, ru, se, sg, uk, us, us-old, tw, ve and za
 
 ## Defining menu structures
@@ -375,7 +382,7 @@ You define menus by calling BeginMenuDefinition on an IIceSvamletBuilder or IAce
 	string repeatPrompt = null
 	int repeats = 3
 
-The "prompt" will be played first. If no DTMF response is detected a prompt will be repeated (but no more that "repeats" times. If a "repeatPrompt" is specified, that will be used, otherwise the "prompt" will be repeated.
+The "prompt" will be played first. If no DTMF response is detected a prompt will be repeated (but no more that "repeats" times). If a "repeatPrompt" is specified, that will be used, otherwise the "prompt" will be repeated.
 
 To the returned menu, you can add menu options. If you want a menu option that  jumps to another menu, call
 

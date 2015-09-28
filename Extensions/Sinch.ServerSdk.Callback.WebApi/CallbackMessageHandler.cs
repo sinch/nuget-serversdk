@@ -30,6 +30,9 @@ namespace Sinch.ServerSdk.Callback.WebApi
 
                 if (descriptor.ControllerType.IsDefined(typeof(SinchCallbackAttribute), false))
                     _callbackValidator.Validate(request.RequestUri.AbsolutePath, GetHeaders(request), await request.Content.ReadAsByteArrayAsync());
+
+                (await request.Content.ReadAsStreamAsync()).Seek(0, SeekOrigin.Begin);
+                return await base.SendAsync(request, cancellationToken);
             }
             catch (InvalidCallbackException)
             {
@@ -39,9 +42,6 @@ namespace Sinch.ServerSdk.Callback.WebApi
             {
                 throw new HttpResponseException(HttpStatusCode.InternalServerError);
             }
-
-            request.Content.ReadAsStreamAsync().Result.Seek(0, SeekOrigin.Begin);
-            return await base.SendAsync(request, cancellationToken);
         }
 
         private static Dictionary<string, string> GetHeaders(HttpRequestMessage request)

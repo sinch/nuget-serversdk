@@ -40,7 +40,7 @@ namespace Sinch.ServerSdk.Callback
             if(!appKeyGuid.Equals(headerAppKeyGuid))
                 throw new InvalidCallbackException("Invalid authorization.  Application key in request header is not recognised.");
 
-            var callbackSignature = authorizationSplit[1];
+            var callbackSignature = authorizationSplit[2];
             var signature = Convert.ToBase64String(new HMACSHA256(_secret).ComputeHash(Encoding.UTF8.GetBytes(BuildStringToSign(absolutePath, headers, body))));
 
             if (!signature.Equals(callbackSignature, StringComparison.Ordinal))

@@ -4,6 +4,7 @@
     {
         IConnectMxpSvamletResponse WithCli(string cli);
         IConnectMxpSvamletResponse WithAnonymousCli();
+        IConnectMxpSvamletResponse WithIncomingCli();
         IConnectMxpSvamletResponse WithIndications(string indications);
     }
 }

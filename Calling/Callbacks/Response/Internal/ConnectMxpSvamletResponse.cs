@@ -14,6 +14,12 @@
             return this;
         }
 
+        public IConnectMxpSvamletResponse WithIncomingCli()
+        {
+            Model.Action.Cli = "incoming";
+            return this;
+        }
+
         public IConnectMxpSvamletResponse WithIndications(string indications)
         {
             Model.Action.Indications = indications;

@@ -36,6 +36,12 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
             return this;
         }
 
+        public IConnectPstnSvamletResponse WithIncomingCli()
+        {
+            Model.Action.Cli = "incoming";
+            return this;
+        }
+
         public IConnectPstnSvamletResponse WithCallbacks()
         {
             Model.Action.SuppressCallbacks = false;

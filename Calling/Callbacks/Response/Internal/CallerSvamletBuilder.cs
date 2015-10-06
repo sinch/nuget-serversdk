@@ -41,7 +41,7 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
                 Name = "connectpstn",
                 MaxDuration = (int) TimeSpan.FromMinutes(240).TotalSeconds,
                 DialTimeout = 0,
-                Cli = "private",
+                Cli = (this is IManageCallSvamletBuilder) ? "private" : "incoming",
                 Locale = Locale.Code,
                 Destination = new IdentityModel
                 {
@@ -70,7 +70,7 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
             SetAction(new SvamletActionModel
             {
                 Name = "connectmxp",
-                Cli = "private",
+                Cli = (this is IManageCallSvamletBuilder) ? "private" : "incoming",
                 Locale = Locale.Code,
                 Destination = destinationModel
             });

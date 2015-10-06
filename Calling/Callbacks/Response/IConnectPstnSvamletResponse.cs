@@ -9,6 +9,7 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response
         IConnectPstnSvamletResponse WithBridgeTimeout(TimeSpan timeout);
         IConnectPstnSvamletResponse WithCli(string cli);
         IConnectPstnSvamletResponse WithAnonymousCli();
+        IConnectPstnSvamletResponse WithIncomingCli();
         IConnectPstnSvamletResponse WithCallbacks();
         IConnectPstnSvamletResponse WithoutCallbacks();
         IConnectPstnSvamletResponse WithIndications(string indications);

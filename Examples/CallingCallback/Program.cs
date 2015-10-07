@@ -29,6 +29,8 @@ namespace Sinch.ServerSdk.Examples.CallingCallback
                     resoponse
                         .AddNumberInputMenu("ipt", new TtsPrompt("Hello!"), 4)
                         .RunMenu("ipt").Body;
+
+               Console.WriteLine(iceResponseText);
             }
         }
     }

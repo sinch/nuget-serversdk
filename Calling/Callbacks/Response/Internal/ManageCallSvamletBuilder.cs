@@ -1,5 +1,4 @@
-﻿using System;
-using Sinch.ServerSdk.Models;
+﻿using Sinch.ServerSdk.Models;
 
 namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
 {
@@ -36,18 +35,6 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
         public IManageCallSvamletBuilder Play(string file)
         {
             InternalPlay(file);
-            return this;
-        }
-
-        public IMenu<IManageCallSvamletBuilder> BeginMenuDefinition(string menuId, Prompt prompt, TimeSpan? timeout)
-        {
-            return InternalBeginMenuDefinition(this, menuId, prompt, timeout);
-        }
-
-        public IManageCallSvamletBuilder AddNumberInputMenu(string menuId, Prompt prompt, int maxDigits, Prompt repeatPrompt = null,
-            int repeats = 3, TimeSpan? timeout = null)
-        {
-            base.InternalAddNumberInputMenu(menuId, prompt, maxDigits, prompt, repeats, timeout);
             return this;
         }
     }

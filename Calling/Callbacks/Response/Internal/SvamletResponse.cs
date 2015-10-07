@@ -1,6 +1,4 @@
-﻿using System.IO;
-using Newtonsoft.Json;
-using Sinch.ServerSdk.Calling.Models;
+﻿using Sinch.ServerSdk.Calling.Models;
 
 namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
 {
@@ -11,11 +9,7 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
         private void Render()
         {
             if (_json == null)
-            {
-                var sw = new StringWriter();
-                new JsonSerializer().Serialize(sw, Model);
-                _json = sw.ToString();
-            }
+                _json = Model.Serialize();
         }
 
         public string ContentType

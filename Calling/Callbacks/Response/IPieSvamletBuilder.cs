@@ -1,6 +1,6 @@
 ﻿namespace Sinch.ServerSdk.Calling.Callbacks.Response
 {
-    public interface IPieSvamletBuilder : ICallerSvamletBuilder<IPieSvamletBuilder>
+    public interface IPieSvamletBuilder : IBridgedCallSvamletBuilder<IPieSvamletBuilder>
     {
     }
 }

@@ -1,9 +1,10 @@
 ﻿using System;
+using Sinch.ServerSdk.Calling.Callbacks.Request;
 using Sinch.ServerSdk.Models;
 
 namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
 {
-    internal class AceSvamletBuilder : CallerSvamletBuilder<IAceSvamletBuilder>, IAceSvamletBuilder
+    internal class AceSvamletBuilder : BridgedCallSvamletBuilders<IAceSvamletBuilder>, IAceSvamletBuilder
     {
         internal AceSvamletBuilder(Locale locale)
             : base(locale)
@@ -44,6 +45,21 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
         {
             InternalAddNumberInputMenu(menuId, prompt, maxDigits, repeatPrompt, repeats, timeout);
             return this;
+        }
+
+        public IConnectPstnSvamletResponse ConnectPstn(string number)
+        {
+            return ConnectPstn(number, "private");
+        }
+
+        public IConnectMxpSvamletResponse ConnectMxp(string userName)
+        {
+            return ConnectMxp(userName, "private");
+        }
+
+        public IConnectMxpSvamletResponse ConnectMxp(IIdentity identity)
+        {
+            return ConnectMxp(identity, "private");
         }
     }
 }

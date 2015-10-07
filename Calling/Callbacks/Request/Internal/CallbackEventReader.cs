@@ -39,7 +39,7 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Request.Internal
             if (targetPropertyType.IsAssignableFrom(sourceType))
                 return modelPropertyData;
 
-            var converterFunction = TypeMapper.Singleton.GetType().GetMethods().FirstOrDefault(m => m.ReturnType == typeof(bool) && m.GetParameters().Count() == 2 && m.GetParameters()[0].ParameterType == sourceType && m.GetParameters()[1].ParameterType == targetPropertyType.MakeByRefType() && m.GetParameters()[1].IsOut);
+            var converterFunction = TypeMapper.Singleton.GetType().GetMethods().FirstOrDefault(m => m.ReturnType == typeof(bool) && m.GetParameters().Length == 2 && m.GetParameters()[0].ParameterType == sourceType && m.GetParameters()[1].ParameterType == targetPropertyType.MakeByRefType() && m.GetParameters()[1].IsOut);
 
             if (converterFunction != null)
             {

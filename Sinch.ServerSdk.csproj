@@ -61,10 +61,13 @@
     <Compile Include="ApiFilters\PublicFilter.cs" />
     <Compile Include="ApiFilters\RestReplyFilter.cs" />
     <Compile Include="CallbackResponseFactory.cs" />
+    <Compile Include="Calling\Callbacks\CallbackExtensions.cs" />
     <Compile Include="Calling\Callbacks\Request\CliMode.cs" />
     <Compile Include="Calling\Callbacks\Response\IConnectConferenceSvamletResponse.cs" />
     <Compile Include="Calling\Callbacks\Response\IConnectMxpSvamletResponse.cs" />
     <Compile Include="Calling\Callbacks\Response\IConnectPstnSvamletResponse.cs" />
+    <Compile Include="Calling\Callbacks\Response\IBridgedCallerSvamletBuilder.cs" />
+    <Compile Include="Calling\Callbacks\Response\Internal\BridgedCallerSvamletBuilders.cs" />
     <Compile Include="Calling\Fluent\Conference.cs" />
     <Compile Include="Calling\Fluent\ConferenceApi.cs" />
     <Compile Include="Calling\Fluent\ConferenceParticipant.cs" />

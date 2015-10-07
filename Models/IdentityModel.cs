@@ -2,7 +2,7 @@
 
 namespace Sinch.ServerSdk.Models
 {
-    public class Identity
+    public class IdentityModel
     {
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }

@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Sinch.ServerSdk.Examples.CallingCallback</RootNamespace>
     <AssemblyName>Sinch.ServerSdk.Examples.CallingCallback</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -42,7 +43,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Sinch.ServerSdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Sinch.ServerSdk.1.0.2.1\lib\net45\Sinch.ServerSdk.dll</HintPath>
+      <HintPath>..\..\packages\Sinch.ServerSdk.1.0.2.6\lib\net45\Sinch.ServerSdk.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Sinch.WebApiClient, Version=1.0.3.19967, Culture=neutral, processorArchitecture=MSIL">
@@ -64,7 +65,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="ice.txt" />

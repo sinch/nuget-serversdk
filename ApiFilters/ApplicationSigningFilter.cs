@@ -27,8 +27,12 @@ namespace Sinch.ServerSdk.ApiFilters
             requestMessage.Headers.Add("x-timestamp", DateTime.UtcNow.ToString("O", CultureInfo.InvariantCulture));
 
             var stringToSign = await BuildStringToSign(requestMessage);
-            var signature = Convert.ToBase64String(new HMACSHA256(_secret).ComputeHash(Encoding.UTF8.GetBytes(stringToSign)));
-            requestMessage.Headers.TryAddWithoutValidation("authorization", "application " + _key + ":" + signature);
+
+            using (var sha = new HMACSHA256(_secret))
+            {
+                var signature = Convert.ToBase64String(sha.ComputeHash(Encoding.UTF8.GetBytes(stringToSign)));
+                requestMessage.Headers.TryAddWithoutValidation("authorization", "application " + _key + ":" + signature);
+            }
         }
 
         public async Task OnActionExecuted(HttpResponseMessage responseMessage)
@@ -87,7 +91,12 @@ namespace Sinch.ServerSdk.ApiFilters
         static async Task AppendBody(HttpRequestMessage request, StringBuilder sb)
         {
             if (request.Content != null)
-                sb.Append(Convert.ToBase64String(MD5.Create().ComputeHash(await request.Content.ReadAsByteArrayAsync())));
+            {
+                using (var md5 = MD5.Create())
+                {
+                    sb.Append(Convert.ToBase64String(md5.ComputeHash(await request.Content.ReadAsByteArrayAsync())));
+                }
+            }
 
             sb.Append("\n");
         }

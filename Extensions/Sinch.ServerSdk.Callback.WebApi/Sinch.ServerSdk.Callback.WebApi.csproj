@@ -39,7 +39,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Sinch.ServerSdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Sinch.ServerSdk.1.0.2.5\lib\net45\Sinch.ServerSdk.dll</HintPath>
+      <HintPath>..\..\packages\Sinch.ServerSdk.1.0.2.6\lib\net45\Sinch.ServerSdk.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Sinch.WebApiClient, Version=1.0.3.19967, Culture=neutral, processorArchitecture=MSIL">

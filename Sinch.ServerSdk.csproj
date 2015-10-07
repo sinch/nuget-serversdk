@@ -74,7 +74,6 @@
     <Compile Include="Calling\Models\ConferenceCommand.cs" />
     <Compile Include="Calling\Models\GetConferenceResponse.cs" />
     <Compile Include="Calling\Adapters\GetConferenceResponseAdapter.cs" />
-    <Compile Include="Calling\Models\IdentityModel.cs" />
     <Compile Include="Calling\IGetConferenceResponse.cs" />
     <Compile Include="Calling\IParticipant.cs" />
     <Compile Include="Calling\Models\ParticipantModel.cs" />
@@ -91,7 +90,7 @@
     <Compile Include="Calling\Models\CallbackEventModel.cs" />
     <Compile Include="Messaging\IGetStatusResponse.cs" />
     <Compile Include="Models\KeyValueModel.cs" />
-    <Compile Include="Models\Identity.cs" />
+    <Compile Include="Models\IdentityModel.cs" />
     <Compile Include="Calling\Models\MenuResultModel.cs" />
     <Compile Include="Models\MoneyModel.cs" />
     <Compile Include="Calling\Models\SvamletActionModel.cs" />

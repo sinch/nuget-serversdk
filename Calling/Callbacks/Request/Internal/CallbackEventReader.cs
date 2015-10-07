@@ -25,8 +25,12 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Request.Internal
 
         public ICallbackEvent ReadJson(string json)
         {
-            var evt = JsonDeserializar.Deserialize<CallbackEventModel>(new JsonTextReader(new StringReader(json)));
-            return ReadModel(evt);
+            using (var sreader = new StringReader(json))
+            using (var jreader = new JsonTextReader(sreader))
+            {
+                var evt = JsonDeserializar.Deserialize<CallbackEventModel>(jreader);
+                return ReadModel(evt);
+            }
         }
 
         private static object ReadModelProperty(object modelPropertyData, Type targetPropertyType)

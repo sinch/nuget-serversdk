@@ -3,6 +3,8 @@ using System.Web.Http;
 using Sinch.ServerSdk.Callback.WebApi;
 using Sinch.ServerSdk.Verification.Models;
 
+#pragma warning disable 1998
+
 namespace Sinch.Verification.Callback.Example.Controllers
 {
     [SinchCallback]

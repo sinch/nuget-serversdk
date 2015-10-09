@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinch.ServerSdk.Callback.We
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinch.ReceiveSms.Example", "Examples\Sinch.ReceiveSms.Example\Sinch.ReceiveSms.Example.csproj", "{C5A6E93B-F987-4297-9317-7C512B1DA358}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinch.Verification.Example", "Examples\Sinch.Verification.Example\Sinch.Verification.Example.csproj", "{C4222643-5E07-40A7-B9A7-FC166D891215}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinch.Verification.Callback.Example", "Examples\Sinch.Verification.Callback.Example\Sinch.Verification.Callback.Example.csproj", "{6807066D-B36A-4E5E-B4E8-4025E13973C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +47,14 @@ Global
 		{C5A6E93B-F987-4297-9317-7C512B1DA358}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5A6E93B-F987-4297-9317-7C512B1DA358}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5A6E93B-F987-4297-9317-7C512B1DA358}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4222643-5E07-40A7-B9A7-FC166D891215}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4222643-5E07-40A7-B9A7-FC166D891215}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4222643-5E07-40A7-B9A7-FC166D891215}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4222643-5E07-40A7-B9A7-FC166D891215}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6807066D-B36A-4E5E-B4E8-4025E13973C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6807066D-B36A-4E5E-B4E8-4025E13973C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6807066D-B36A-4E5E-B4E8-4025E13973C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6807066D-B36A-4E5E-B4E8-4025E13973C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,5 +64,7 @@ Global
 		{709C1AC7-8473-4F18-959E-24C6DDBFED3E} = {E4C85DC7-AD2F-42E8-B47E-85592D74C671}
 		{EA35A9DB-57F4-437C-81AA-E956CD90A652} = {E602E512-8D48-4E38-BCCC-1E8E421333EB}
 		{C5A6E93B-F987-4297-9317-7C512B1DA358} = {E4C85DC7-AD2F-42E8-B47E-85592D74C671}
+		{C4222643-5E07-40A7-B9A7-FC166D891215} = {E4C85DC7-AD2F-42E8-B47E-85592D74C671}
+		{6807066D-B36A-4E5E-B4E8-4025E13973C1} = {E4C85DC7-AD2F-42E8-B47E-85592D74C671}
 	EndGlobalSection
 EndGlobal

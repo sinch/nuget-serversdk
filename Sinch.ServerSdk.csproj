@@ -161,15 +161,30 @@
     <Compile Include="Calling\Callbacks\Response\PromptChain.cs" />
     <Compile Include="Calling\Callbacks\Response\PromptFile.cs" />
     <Compile Include="Calling\Callbacks\Response\TtsPrompt.cs" />
+    <Compile Include="Verification\Fluent\Verification.cs" />
+    <Compile Include="Verification\Fluent\VerificationApi.cs" />
+    <Compile Include="Verification\IVerification.cs" />
+    <Compile Include="Verification\IVerificationApi.cs" />
+    <Compile Include="Verification\IVerificationApiEndpoints.cs" />
+    <Compile Include="Verification\IInitiateVerificationResponse.cs" />
+    <Compile Include="Verification\IReportVerificationResponse.cs" />
+    <Compile Include="Verification\IVerificationResultResponse.cs" />
+    <Compile Include="Verification\Models\ReportVerificationRequest.cs" />
+    <Compile Include="Verification\Models\ReportVerificationResponse.cs" />
+    <Compile Include="Verification\Models\InitiateVerificationRequest.cs" />
+    <Compile Include="Verification\Models\VerificationRequestEvent.cs" />
+    <Compile Include="Verification\Models\InitiateVerificationResponse.cs" />
+    <Compile Include="Verification\Models\VerificationRequestEventResponse.cs" />
+    <Compile Include="Verification\Models\VerificationResultEvent.cs" />
+    <Compile Include="Verification\Models\VerificationResultResponse.cs" />
+    <Compile Include="Verification\VerificationMethod.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="README.md" />
     <None Include="Sinch.ServerSdk.nuspec" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Verification\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -40,11 +40,14 @@ namespace Sinch.ServerSdk.Callback
             if(!appKeyGuid.Equals(headerAppKeyGuid))
                 throw new InvalidCallbackException("Invalid authorization.  Application key in request header is not recognised.");
 
-            var callbackSignature = authorizationSplit[2];
-            var signature = Convert.ToBase64String(new HMACSHA256(_secret).ComputeHash(Encoding.UTF8.GetBytes(BuildStringToSign(absolutePath, headers, body))));
+            using (var sha = new HMACSHA256(_secret))
+            {
+                var callbackSignature = authorizationSplit[2];
+                var signature = Convert.ToBase64String(sha.ComputeHash(Encoding.UTF8.GetBytes(BuildStringToSign(absolutePath, headers, body))));
 
-            if (!signature.Equals(callbackSignature, StringComparison.Ordinal))
-                throw new InvalidCallbackException("Invalid authorization.  Invalid signing.");
+                if ( !signature.Equals(callbackSignature, StringComparison.Ordinal) )
+                    throw new InvalidCallbackException("Invalid authorization.  Invalid signing.");
+            }
         }
 
         private static Guid ParseAppKey(string appKeyString)
@@ -89,7 +92,12 @@ namespace Sinch.ServerSdk.Callback
         private static void AppendBody(StringBuilder sb, byte[] body)
         {
             if (body != null)
-                sb.Append(Convert.ToBase64String(MD5.Create().ComputeHash(body)));
+            {
+                using (var md5 = MD5.Create())
+                {
+                    sb.Append(Convert.ToBase64String(md5.ComputeHash(body)));
+                }
+            }
 
             sb.Append("\n");
         }

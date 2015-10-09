@@ -5,6 +5,8 @@ using Sinch.ServerSdk.Calling;
 using Sinch.ServerSdk.Calling.Fluent;
 using Sinch.ServerSdk.Messaging;
 using Sinch.ServerSdk.Messaging.Fluent;
+using Sinch.ServerSdk.Verification;
+using Sinch.ServerSdk.Verification.Fluent;
 using Sinch.WebApiClient;
 
 namespace Sinch.ServerSdk
@@ -25,6 +27,11 @@ namespace Sinch.ServerSdk
         /// Create a Sinch Conference API. Endpoints for ending the conference, as well as getting, muting, unmuting and kicking participants.
         /// </summary>
         IConferenceApi CreateConferenceApi();
+
+        /// <summary>
+        /// Create a Sinch Verification API. Provides endpoints for using Sinch Verification operations.
+        /// </summary>
+        IVerificationApi CreateVerificationApi();
     }
 
     internal class ApiFactory : IApiFactory
@@ -82,6 +89,11 @@ namespace Sinch.ServerSdk
         public IConferenceApi CreateConferenceApi()
         {
             return new ConferenceApi(CreateApiClient<IConferenceApiEndpoints>());
+        }
+
+        public IVerificationApi CreateVerificationApi()
+        {
+            return new VerificationApi(CreateApiClient<IVerificationApiEndpoints>());
         }
 
         private T CreateApiClient<T>() where T : class

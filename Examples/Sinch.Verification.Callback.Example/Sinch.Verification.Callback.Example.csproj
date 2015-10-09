@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{C5A6E93B-F987-4297-9317-7C512B1DA358}</ProjectGuid>
+    <ProjectGuid>{6807066D-B36A-4E5E-B4E8-4025E13973C1}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Sinch.ReceiveSms.Example</RootNamespace>
-    <AssemblyName>Sinch.ReceiveSms.Example</AssemblyName>
+    <RootNamespace>Sinch.Verification.Callback.Example</RootNamespace>
+    <AssemblyName>Sinch.Verification.Callback.Example</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -98,7 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\IncomingMessagesController.cs" />
+    <Compile Include="Controllers\VerificationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

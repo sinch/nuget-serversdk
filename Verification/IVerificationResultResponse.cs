@@ -3,11 +3,11 @@ namespace Sinch.ServerSdk.Verification
 {
     public interface IVerificationResultResponse
     {
-        string Id { get; set; }
-        string Method { get; set; }
-        string Status { get; set; }
-        string Reason { get; set; }
-        string Reference { get; set; }
-        string Source { get; set; }
+        string Id { get; }
+        string Method { get; }
+        string Status { get; }
+        string Reason { get; }
+        string Reference { get; }
+        string Source { get; }
     }
 }

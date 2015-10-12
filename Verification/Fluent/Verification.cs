@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Sinch.ServerSdk.Exceptions;
 using Sinch.ServerSdk.Models;
+using Sinch.ServerSdk.Verification.Adapters;
 using Sinch.ServerSdk.Verification.Models;
 
 namespace Sinch.ServerSdk.Verification.Fluent
@@ -39,7 +40,7 @@ namespace Sinch.ServerSdk.Verification.Fluent
                 Custom = _custom,
             };
 
-            return await _api.InitiateVerification(request).ConfigureAwait(false);
+            return new InitiateVerificationResponseAdapter(await _api.InitiateVerification(request).ConfigureAwait(false));
         }
         public async Task<IReportVerificationResponse> Report(VerificationMethod method)
         {

@@ -1,12 +1,12 @@
 ﻿
 namespace Sinch.ServerSdk.Verification.Models
 {
-    public class InitiateVerificationResponse : IInitiateVerificationResponse
+    public class InitiateVerificationResponse
     {
         public string Id { get; set; }
-        public ISmsVerificationData Sms { get; set; }
-        public IFlashCallVerificationData FlashCall { get; set; }
-        public ICalloutVerificationData Callout { get; set; }
+        public SmsVerificationData Sms { get; set; }
+        public FlashCallVerificationData FlashCall { get; set; }
+        public CalloutVerificationData Callout { get; set; }
     }
 
     public class SmsVerificationData : ISmsVerificationData

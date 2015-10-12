@@ -164,6 +164,7 @@
     <Compile Include="Calling\Callbacks\Response\PromptChain.cs" />
     <Compile Include="Calling\Callbacks\Response\PromptFile.cs" />
     <Compile Include="Calling\Callbacks\Response\TtsPrompt.cs" />
+    <Compile Include="Verification\Adapters\InitiateVerificationResponseAdapter.cs" />
     <Compile Include="Verification\Fluent\Verification.cs" />
     <Compile Include="Verification\Fluent\VerificationApi.cs" />
     <Compile Include="Verification\IVerification.cs" />

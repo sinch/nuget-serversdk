@@ -6,7 +6,7 @@ namespace Sinch.ServerSdk.Messaging.Fluent
     {
         private readonly ISmsApiEndpoints _smsApiEndpoints;
         
-        public SmsApi(ISmsApiEndpoints smsApiEndpoints)
+        internal SmsApi(ISmsApiEndpoints smsApiEndpoints)
         {
             _smsApiEndpoints = smsApiEndpoints;
         }

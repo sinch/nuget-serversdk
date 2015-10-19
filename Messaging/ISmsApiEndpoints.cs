@@ -4,6 +4,9 @@ using Sinch.WebApiClient;
 
 namespace Sinch.ServerSdk.Messaging
 {
+    /// <summary>
+    /// Interface defining the Sinch SMS REST API
+    /// </summary>
     public interface ISmsApiEndpoints
     {
         [HttpPost("messaging/v1/sms/{toNumber}")]

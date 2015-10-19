@@ -5,6 +5,9 @@ using Sinch.WebApiClient;
 
 namespace Sinch.ServerSdk.Verification
 {
+    /// <summary>
+    /// Interface defining the Sinch Verification REST API
+    /// </summary>
     public interface IVerificationApiEndpoints
     {
         [HttpPost("verification/v1/verifications")]

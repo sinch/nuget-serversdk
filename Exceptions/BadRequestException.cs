@@ -2,11 +2,14 @@
 
 namespace Sinch.ServerSdk.Exceptions
 {
+    /// <summary>
+    /// Exception thrown when a request contains invalid or missing arguments. Check the <see cref="Exception.Message"/> for more details
+    /// of what was wrong with the request
+    /// </summary>
     public class BadRequestException : Exception
     {
-        public BadRequestException(string message) : base(message)
+        internal BadRequestException(string message) : base(message)
         {
-
         }
     }
 }

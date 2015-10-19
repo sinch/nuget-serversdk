@@ -9,11 +9,40 @@ namespace Sinch.ServerSdk
 {
     public interface ICallbackResponseFactory
     {
+        /// <summary>
+        /// Creates a callback event reader
+        /// </summary>
+        /// <returns></returns>
         ICallbackEventReader CreateEventReader();
+
+        /// <summary>
+        /// Creates an ICE svamlet builder
+        /// </summary>
+        /// <returns></returns>
         IIceSvamletBuilder CreateIceSvamletBuilder();
+
+        /// <summary>
+        /// Creates and ACE svamlet builder
+        /// </summary>
+        /// <returns></returns>
         IAceSvamletBuilder CreateAceSvamletBuilder();
+
+        /// <summary>
+        /// Creates a manage call svamlet builder
+        /// </summary>
+        /// <returns></returns>
         IManageCallSvamletBuilder CreateManageCallSvamletBuilder();
+
+        /// <summary>
+        /// Creates a DICE svamlet response
+        /// </summary>
+        /// <returns></returns>
         ISvamletResponse CreateDiceResponse();
+
+        /// <summary>
+        /// Creates a notification svamlet response
+        /// </summary>
+        /// <returns></returns>
         ISvamletResponse CreateNotificationResponse();
     }
 
@@ -21,7 +50,7 @@ namespace Sinch.ServerSdk
     {
         private readonly Locale _locale;
 
-        public CallbackResponseFactory(Locale locale)
+        internal CallbackResponseFactory(Locale locale)
         {
             _locale = locale ?? Locale.EnUs;
         }

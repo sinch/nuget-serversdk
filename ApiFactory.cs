@@ -11,6 +11,9 @@ using Sinch.WebApiClient;
 
 namespace Sinch.ServerSdk
 {
+    /// <summary>
+    /// Factory object that will create ready-to-use Sinch Product API request objects on a per-application basis
+    /// </summary>
     public interface IApiFactory
     {
         /// <summary>
@@ -40,7 +43,7 @@ namespace Sinch.ServerSdk
         private readonly byte[] _secret;
         private readonly string _url;
 
-        public ApiFactory(string key, string secret, string url = "https://api.sinch.com")
+        internal ApiFactory(string key, string secret, string url = "https://api.sinch.com")
         {
             if (string.IsNullOrWhiteSpace(key))
                 throw new ArgumentNullException(nameof(key), "Sinch application key cannot be null.");

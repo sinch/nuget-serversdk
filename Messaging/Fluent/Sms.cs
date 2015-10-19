@@ -12,7 +12,7 @@ namespace Sinch.ServerSdk.Messaging.Fluent
         private string _from;
         private readonly string _message;
 
-        public Sms(ISmsApiEndpoints smsApiEndpoints, string to, string message)
+        internal Sms(ISmsApiEndpoints smsApiEndpoints, string to, string message)
         {
             _smsApiEndpoints = smsApiEndpoints;
 

@@ -25,5 +25,29 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
             Model.Action.Cli = cli;
             return this;
         }
+
+        public IConnectConferenceSvamletResponse WithEnterAndLeaveSounds()
+        {
+            Model.Action.EnterLeaveSound = true;
+            return this;
+        }
+
+        public IConnectConferenceSvamletResponse WithoutEnterAndLeaveSounds()
+        {
+            Model.Action.EnterLeaveSound = false;
+            return this;
+        }
+
+        public IConnectConferenceSvamletResponse WithTwoParts()
+        {
+            Model.Action.ConferenceType = "twopart";
+            return this;
+        }
+
+        public IConnectConferenceSvamletResponse WithMultiParts()
+        {
+            Model.Action.ConferenceType = "multipart";
+            return this;
+        }
     }
 }

@@ -6,5 +6,9 @@
         IConnectConferenceSvamletResponse WithRecording();
         IConnectConferenceSvamletResponse WithoutRecording();
         IConnectConferenceSvamletResponse WithCli(string cli);
+        IConnectConferenceSvamletResponse WithEnterAndLeaveSounds();
+        IConnectConferenceSvamletResponse WithoutEnterAndLeaveSounds();
+        IConnectConferenceSvamletResponse WithTwoParts();
+        IConnectConferenceSvamletResponse WithMultiParts();
     }
 }

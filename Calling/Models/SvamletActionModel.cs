@@ -68,6 +68,12 @@ namespace Sinch.ServerSdk.Calling.Models
         [JsonProperty(PropertyName = "indications", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Indications { get; set; }
 
+        [JsonProperty(PropertyName = "conferenceType", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string ConferenceType { get; set; }
+
+        [JsonProperty(PropertyName = "enterLeaveSound", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public bool EnterLeaveSound { get; set; }
+
         [JsonProperty(PropertyName = "_internal", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Internal { get; set; }
     }

@@ -38,6 +38,12 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Request.Internal
                 case "hangup":
                     result = MenuResultType.Hangup;
                     break;
+                case "invalidinput":
+                    result = MenuResultType.InvalidInput;
+                    break;
+                case "sequence":
+                    result = MenuResultType.Sequence;
+                    break;
                 default:
                     result = MenuResultType.Unknown;
                     break;

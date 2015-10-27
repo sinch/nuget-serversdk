@@ -5,8 +5,9 @@
         Error,
         Return,
         Timeout,
+        Sequence,
         Hangup,
-
+        InvalidInput,
         Unknown,
         Unspecified
     }

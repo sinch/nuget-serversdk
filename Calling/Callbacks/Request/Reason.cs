@@ -10,8 +10,9 @@
         CallerHangup,
         CalleeHangup,
         ManagerHangup,
+        Blocked,
+        NoCreditPartner,
         Timeout,
-
         Unknown,
         Unspecified
     }

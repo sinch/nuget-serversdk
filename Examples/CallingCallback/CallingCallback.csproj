@@ -42,14 +42,6 @@
       <HintPath>..\..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Sinch.ServerSdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Sinch.ServerSdk.1.0.2.6\lib\net45\Sinch.ServerSdk.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Sinch.WebApiClient, Version=1.0.3.19967, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Sinch.WebApiClient.1.0.3\lib\net45\Sinch.WebApiClient.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -71,6 +63,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ice.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Sinch.ServerSdk.csproj">
+      <Project>{954a6e5b-6be4-41c8-ad02-10b130399ff0}</Project>
+      <Name>Sinch.ServerSdk</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

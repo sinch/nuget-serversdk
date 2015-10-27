@@ -229,6 +229,12 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Request.Internal
                 case "generalerror":
                     result = Reason.Error;
                     break;
+                case "nocreditpartner":
+                    result = Reason.NoCreditPartner;
+                    break;
+                case "blocked":
+                    result = Reason.Blocked;
+                    break;
                 case "n/a":
                     result = Reason.NotApplicable;
                     break;

@@ -65,7 +65,7 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
             IdentityModel destinationModel;
 
             if (!TypeMapper.Singleton.TryConvert(destination, out destinationModel))
-                throw new BuilderException("Cannot interpres destination");
+                throw new BuilderException("Cannot interpret destination");
 
             SetAction(new SvamletActionModel
             {
@@ -76,6 +76,31 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
             });
 
             return Build<ConnectMxpSvamletResponse>();
+        }
+
+        protected IConnectSipSvamletResponse ConnectSip(IIdentity destination, string defaultCli)
+        {
+            if (string.IsNullOrEmpty(destination?.Endpoint))
+                throw new BuilderException("No destionation given");
+
+            if (destination.Endpoint.Length > 128)
+                throw new BuilderException("Destination too long");
+
+            IdentityModel destinationModel;
+
+            if (!TypeMapper.Singleton.TryConvert(destination, out destinationModel))
+                throw new BuilderException("Cannot interpret destination");
+
+            SetAction(new SvamletActionModel
+            {
+                Name = "connectsip",
+                Cli = defaultCli,
+                Account = null,
+                Locale = Locale.Code,
+                Destination = destinationModel
+            });
+
+            return Build<ConnectSipSvamletResponse>();
         }
 
         protected IConnectMxpSvamletResponse ConnectMxp(string userName, string defaultCli)

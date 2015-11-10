@@ -74,6 +74,9 @@ namespace Sinch.ServerSdk.Calling.Models
         [JsonProperty(PropertyName = "enterLeaveSound", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public bool EnterLeaveSound { get; set; }
 
+        [JsonProperty(PropertyName = "account", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Account { get; set; }
+
         [JsonProperty(PropertyName = "_internal", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Internal { get; set; }
     }

@@ -67,7 +67,9 @@
     <Compile Include="Calling\Callbacks\Response\IConnectMxpSvamletResponse.cs" />
     <Compile Include="Calling\Callbacks\Response\IConnectPstnSvamletResponse.cs" />
     <Compile Include="Calling\Callbacks\Response\IBridgedCallerSvamletBuilder.cs" />
+    <Compile Include="Calling\Callbacks\Response\IConnectSipSvamletResponse.cs" />
     <Compile Include="Calling\Callbacks\Response\Internal\BridgedCallerSvamletBuilders.cs" />
+    <Compile Include="Calling\Callbacks\Response\Internal\ConnectSipSvamletResponse.cs" />
     <Compile Include="Calling\Fluent\Conference.cs" />
     <Compile Include="Calling\Fluent\ConferenceApi.cs" />
     <Compile Include="Calling\Fluent\ConferenceParticipant.cs" />

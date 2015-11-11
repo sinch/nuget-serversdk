@@ -135,6 +135,9 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Request.Internal
                 case "server":
                     result = OriginationType.Server;
                     break;
+                case "sip":
+                    result = OriginationType.Sip;
+                    break;
                 default:
                     result = OriginationType.Unknown;
                     break;

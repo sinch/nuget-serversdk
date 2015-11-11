@@ -5,7 +5,7 @@
         Mxp,
         Pstn,
         Server,
-
+        Sip,
         Unknown,
         Unspecified
     }

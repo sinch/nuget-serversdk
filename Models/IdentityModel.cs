@@ -9,8 +9,5 @@ namespace Sinch.ServerSdk.Models
 
         [JsonProperty(PropertyName = "endpoint")]
         public string Endpoint { get; set; }
-        
-        [JsonProperty(PropertyName = "verified")]
-        public bool? Verified { get; set; }
     }
 }

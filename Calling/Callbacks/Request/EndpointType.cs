@@ -5,7 +5,7 @@
         Username,
         PstnNumber,
         Email,
-
+        Sip,
         Unspecified,
         Unknown
     }

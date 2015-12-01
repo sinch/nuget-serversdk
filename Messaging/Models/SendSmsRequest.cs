@@ -2,7 +2,7 @@
 {
     public class SendSmsRequest
     {
-        internal string From { get; set; }
-        internal string Message { get; set; }
+        public string From { get; set; }
+        public string Message { get; set; }
     }
 }

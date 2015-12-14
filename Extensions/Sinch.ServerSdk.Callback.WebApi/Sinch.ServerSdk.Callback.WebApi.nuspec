@@ -2,14 +2,14 @@
 <package >
   <metadata>
     <id>Sinch.ServerSdk.Callback.WebApi</id>
-    <version>1.0.0.1</version>
+    <version>1.0.1.0</version>
     <title>Sinch Server Callback SDK for Web API</title>
     <authors>Sinch AB</authors>
     <owners>Sinch AB</owners>
     <iconUrl>https://www.sinch.com/wp-content/uploads/2015/09/NET-icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Sinch Callback SDK.  Validates the message integrity of callbacks from Sinch</description>
-    <releaseNotes>Initial package</releaseNotes>
+    <releaseNotes>Signed assembly</releaseNotes>
     <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
     <copyright>Copyright © 2015 Sinch AB</copyright>
     <tags>sinch sms messaging callback request signing validate filter messagehandler delegatinghandler</tags>

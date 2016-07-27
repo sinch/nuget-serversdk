@@ -2,6 +2,8 @@
 using System.Web.Http;
 using Sinch.ServerSdk.Callback.WebApi;
 using Sinch.ServerSdk.Verification.Models;
+using System;
+using Newtonsoft.Json;
 
 #pragma warning disable 1998
 
@@ -10,20 +12,35 @@ namespace Sinch.Verification.Callback.Example.Controllers
     [SinchCallback]
     public class VerificationController : ApiController
     {
-        // POST: api/verification/request
-        [Route("request")]
-        public async Task<VerificationRequestEventResponse> Post([FromBody] VerificationRequestEvent request)
+        [Route]
+        public async Task<VerificationRequestEventResponse> Post()
         {
-            // Let us know what to do with this verification request. Possible actions are "allow" or "deny".
+            //based on this example, the value for your application callback url should be {server address}/api/verification
 
-            return new VerificationRequestEventResponse { Action = "deny" };
-        }
+            string jsonContent = await Request.Content.ReadAsStringAsync();
 
-        // POST: api/verification/result
-        [Route("result")]
-        public async Task Post([FromBody] VerificationResultEvent result)
-        {
-            // The verification has been processed and here's the result...
+            if (jsonContent.Contains("VerificationRequestEvent"))
+            {
+                VerificationRequestEvent request = JsonConvert.DeserializeObject<VerificationRequestEvent>(jsonContent);
+
+                bool isValid = true;
+
+                //do w/e do decide if the request is allowed
+
+                return new VerificationRequestEventResponse { Action = isValid ? "allow" : "deny" };
+            }
+            else if (jsonContent.Contains("VerificationResultEvent"))
+            {
+                VerificationResultEvent result = JsonConvert.DeserializeObject<VerificationResultEvent>(jsonContent);
+
+                //code for dealing with result of Verification
+
+                return null;
+            }
+            else
+            {
+                throw new NotImplementedException("Unknown event type!");
+            }
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿using Castle.Core.Internal;
-using Sinch.ServerSdk.Calling.Models;
+﻿using Sinch.ServerSdk.Calling.Models;
+using System.Linq;
 
 namespace Sinch.ServerSdk.Calling.Adapters
 {
@@ -13,13 +13,7 @@ namespace Sinch.ServerSdk.Calling.Adapters
             _getConferenceResponse = getConferenceResponse;
         }
 
-        public IParticipant[] Participants
-        {
-            get
-            {
-                return _participants ??
-                       (_participants = _getConferenceResponse.Participants.ConvertAll(p => (IParticipant) p));
-            }
-        }
+        public IParticipant[] Participants => _participants ??
+                                              (_participants = _getConferenceResponse.Participants.Cast<IParticipant>().ToArray());
     }
 }

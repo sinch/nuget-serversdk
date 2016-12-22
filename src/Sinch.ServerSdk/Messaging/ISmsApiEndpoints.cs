@@ -9,7 +9,7 @@ namespace Sinch.ServerSdk.Messaging
     /// </summary>
     public interface ISmsApiEndpoints
     {
-        [HttpPost("messaging/v1/sms/{toNumber}")]
+        [HttpPost("messaging/v1/sms/{+toNumber}")]
         Task<SendSmsResponse> SendSms([ToUri] string toNumber, [ToBody] SendSmsRequest request);
 
         [HttpGet("messaging/v1/sms/{messageId}")]

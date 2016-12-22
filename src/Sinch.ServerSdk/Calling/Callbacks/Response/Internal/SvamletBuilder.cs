@@ -71,7 +71,7 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
             if (file.Length > 128)
                 throw new BuilderException("File names can not be longer than 128 characters");
 
-            if(file.StartsWith("http", StringComparison.InvariantCultureIgnoreCase))
+            if(file.StartsWith("http", StringComparison.OrdinalIgnoreCase))
                 _promptSpecifications.Add("#href[" + file + "]");
             else
                 _promptSpecifications.Add(file);

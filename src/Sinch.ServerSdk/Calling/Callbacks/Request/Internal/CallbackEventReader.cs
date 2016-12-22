@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
 using Sinch.ServerSdk.Calling.Models;
+using System.Reflection;
 
 namespace Sinch.ServerSdk.Calling.Callbacks.Request.Internal
 {

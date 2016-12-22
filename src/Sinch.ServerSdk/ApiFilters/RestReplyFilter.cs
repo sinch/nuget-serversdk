@@ -8,8 +8,6 @@ namespace Sinch.ServerSdk.ApiFilters
 {
     public class RestReplyFilter : IActionFilter
     {
-        public RestReplyFilter() { }
-
         public Task OnActionExecuting(HttpRequestMessage requestMessage)
         {
             return Task.FromResult(true);
@@ -20,7 +18,7 @@ namespace Sinch.ServerSdk.ApiFilters
             if (responseMessage.StatusCode != HttpStatusCode.OK &&
                 responseMessage.StatusCode != HttpStatusCode.NoContent)
             {
-                var body = await responseMessage.Content.ReadAsStringAsync();
+                var body = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                 ApiError error;
                 try

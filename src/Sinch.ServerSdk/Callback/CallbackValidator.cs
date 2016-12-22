@@ -34,8 +34,8 @@ namespace Sinch.ServerSdk.Callback
             if(!authorizationSplit[0].Equals("application", StringComparison.OrdinalIgnoreCase))
                 throw new InvalidCallbackException("Invalid authorization type.  Not 'application'");
 
-            Guid appKeyGuid = ParseAppKey(_key);
-            Guid headerAppKeyGuid = ParseAppKey(authorizationSplit[1]);
+            var appKeyGuid = ParseAppKey(_key);
+            var headerAppKeyGuid = ParseAppKey(authorizationSplit[1]);
 
             if(!appKeyGuid.Equals(headerAppKeyGuid))
                 throw new InvalidCallbackException("Invalid authorization.  Application key in request header is not recognised.");

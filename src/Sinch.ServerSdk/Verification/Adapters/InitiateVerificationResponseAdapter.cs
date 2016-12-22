@@ -11,10 +11,10 @@ namespace Sinch.ServerSdk.Verification.Adapters
             _initiateVerificationResponse = initiateVerificationResponse;
         }
 
-        public string Id { get { return _initiateVerificationResponse.Id; } }
+        public string Id => _initiateVerificationResponse.Id;
 
-        public ISmsVerificationData Sms { get { return _initiateVerificationResponse.Sms; } }
-        public IFlashCallVerificationData FlashCall { get { return _initiateVerificationResponse.FlashCall; } }   
-        public ICalloutVerificationData Callout { get { return _initiateVerificationResponse.Callout; } }
+        public ISmsVerificationData Sms => _initiateVerificationResponse.Sms;
+        public IFlashCallVerificationData FlashCall => _initiateVerificationResponse.FlashCall;
+        public ICalloutVerificationData Callout => _initiateVerificationResponse.Callout;
     }
 }

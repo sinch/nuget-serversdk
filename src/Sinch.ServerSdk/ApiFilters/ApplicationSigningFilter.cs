@@ -61,7 +61,7 @@ namespace Sinch.ServerSdk.ApiFilters
             var sb = new StringBuilder();
 
             AppendMethod(request, sb);
-            await AppendBody(request, sb);
+            await AppendBody(request, sb).ConfigureAwait(false);
             AppendContentType(request, sb);
             AppendSinchHeaders(request, sb);
             AppendPath(request, sb);
@@ -94,7 +94,7 @@ namespace Sinch.ServerSdk.ApiFilters
             {
                 using (var md5 = MD5.Create())
                 {
-                    sb.Append(Convert.ToBase64String(md5.ComputeHash(await request.Content.ReadAsByteArrayAsync())));
+                    sb.Append(Convert.ToBase64String(md5.ComputeHash(await request.Content.ReadAsByteArrayAsync().ConfigureAwait(false))));
                 }
             }
 

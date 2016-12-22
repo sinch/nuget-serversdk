@@ -9,7 +9,7 @@ namespace Sinch.ServerSdk.Verification.Models
         }
         public class FlashCallData
         {
-            string Cli { get; set; }
+            public string Cli { get; set; }
         }
         public class CalloutData
         {

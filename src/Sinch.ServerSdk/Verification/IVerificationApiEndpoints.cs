@@ -13,10 +13,10 @@ namespace Sinch.ServerSdk.Verification
         [HttpPost("verification/v1/verifications")]
         Task<InitiateVerificationResponse> InitiateVerification([ToBody] InitiateVerificationRequest request);
 
-        [HttpPut("verification/v1/verifications/{type}/{endpoint}")]
+        [HttpPut("verification/v1/verifications/{type}/{+endpoint}")]
         Task<ReportVerificationResponse> ReportVerification([ToUri] IdentityModel identity, [ToBody] ReportVerificationRequest request);
 
-        [HttpGet("verification/v1/verifications/{type}/{endpoint}")]
+        [HttpGet("verification/v1/verifications/{type}/{+endpoint}")]
         Task<VerificationResultResponse> GetVerification([ToUri] IdentityModel identity);
 
         [HttpGet("verification/v1/verifications/id/{id}")]

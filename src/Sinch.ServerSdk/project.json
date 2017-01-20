@@ -1,9 +1,9 @@
 ﻿{
-  "version": "1.1.0-rc2",
+  "version": "1.1.0-rc3",
   "title": "Sinch Server SDK",
   "authors": [ "Sinch AB" ],
   "description": "Integrate server backends with the Sinch backend.",
-  "copyright": "Copyright © 2015 Sinch AB",
+  "copyright": "Copyright © 2015, 2016, 2017 Sinch AB",
 
 //  "buildOptions": {
 //    "keyFile": "r:\\Software\\Sinch\\dotNetSDKCodeSigningCert\\dotNetSDKCodeSigningCert.snk"

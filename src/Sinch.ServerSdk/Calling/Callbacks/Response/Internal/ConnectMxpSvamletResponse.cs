@@ -25,5 +25,17 @@
             Model.Action.Indications = indications;
             return this;
         }
+
+        public IConnectMxpSvamletResponse WithRecording()
+        {
+            Model.Action.Record = true;
+            return this;
+        }
+
+        public IConnectMxpSvamletResponse WithoutRecording()
+        {
+            Model.Action.Record = false;
+            return this;
+        }
     }
 }

@@ -6,5 +6,8 @@
         IConnectMxpSvamletResponse WithAnonymousCli();
         IConnectMxpSvamletResponse WithIncomingCli();
         IConnectMxpSvamletResponse WithIndications(string indications);
+        IConnectMxpSvamletResponse WithRecording();
+        IConnectMxpSvamletResponse WithoutRecording();
+
     }
 }

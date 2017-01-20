@@ -5,7 +5,6 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response
     public interface IConnectPstnSvamletResponse : ISvamletResponse
     {
         IConnectPstnSvamletResponse WithDialTimeout(TimeSpan timeout);
-        IConnectPstnSvamletResponse WithOptimizedDialTimeout();
         IConnectPstnSvamletResponse WithBridgeTimeout(TimeSpan timeout);
         IConnectPstnSvamletResponse WithCli(string cli);
         IConnectPstnSvamletResponse WithAnonymousCli();
@@ -13,5 +12,8 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response
         IConnectPstnSvamletResponse WithCallbacks();
         IConnectPstnSvamletResponse WithoutCallbacks();
         IConnectPstnSvamletResponse WithIndications(string indications);
+        IConnectPstnSvamletResponse WithRecording();
+        IConnectPstnSvamletResponse WithoutRecording();
+
     }
 }

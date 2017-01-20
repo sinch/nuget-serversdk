@@ -10,11 +10,6 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
             return this;
         }
 
-        public IConnectPstnSvamletResponse WithOptimizedDialTimeout()
-        {
-            return WithDialTimeout(TimeSpan.FromSeconds(-1));
-        }
-
         public IConnectPstnSvamletResponse WithBridgeTimeout(TimeSpan timeout)
         {
             if (timeout.TotalMinutes > 240)
@@ -57,6 +52,17 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
         public IConnectPstnSvamletResponse WithIndications(string indications)
         {
             Model.Action.Indications = indications;
+            return this;
+        }
+        public IConnectPstnSvamletResponse WithRecording()
+        {
+            Model.Action.Record = true;
+            return this;
+        }
+
+        public IConnectPstnSvamletResponse WithoutRecording()
+        {
+            Model.Action.Record = false;
             return this;
         }
     }

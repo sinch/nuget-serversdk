@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Sinch Callback")]
-[assembly: AssemblyDescription("To interpres calling callbacks and create replies")]
+[assembly: AssemblyDescription("To send SMSs, interpret callbacks and create replies")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Sinch")]
 [assembly: AssemblyProduct("Svamlet")]
-[assembly: AssemblyCopyright("Copyright ©  2015")]
+[assembly: AssemblyCopyright("Copyright ©  2015, 2016, 2017")]
 [assembly: AssemblyTrademark("Sinch")]
 [assembly: AssemblyCulture("")]
 

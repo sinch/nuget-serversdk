@@ -57,9 +57,14 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
             return ConnectMxp(userName, "private");
         }
 
-        public IConnectSipSvamletResponse ConnectSip(IIdentity identity)
+        public IConnectSipSvamletResponse ConnectSipDestination(string sipUri)
         {
-            return ConnectSip(identity, "private");
+            return ConnectSip(null, sipUri, "incoming");
+        }
+
+        public IConnectSipSvamletResponse ConnectRegisteredSipPeer(string authName)
+        {
+            return ConnectSip(authName, null, "incoming");
         }
 
         public IConnectMxpSvamletResponse ConnectMxp(IIdentity identity)

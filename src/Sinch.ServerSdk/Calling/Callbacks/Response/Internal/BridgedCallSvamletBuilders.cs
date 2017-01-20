@@ -57,7 +57,7 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
         protected IConnectMxpSvamletResponse ConnectMxp(IIdentity destination, string defaultCli)
         {
             if (string.IsNullOrEmpty(destination?.Endpoint))
-                throw new BuilderException("No destionation given");
+                throw new BuilderException("No destination given");
 
             if (destination.Endpoint.Length > 128)
                 throw new BuilderException("Destination too long");
@@ -78,26 +78,29 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
             return Build<ConnectMxpSvamletResponse>();
         }
 
-        protected IConnectSipSvamletResponse ConnectSip(IIdentity destination, string defaultCli)
+        protected IConnectSipSvamletResponse ConnectSip(string authName, string destination, string defaultCli)
         {
-            if (string.IsNullOrEmpty(destination?.Endpoint))
-                throw new BuilderException("No destionation given");
+            IdentityModel identity = null;
 
-            if (destination.Endpoint.Length > 128)
-                throw new BuilderException("Destination too long");
+            if (!string.IsNullOrEmpty(destination))
+            {
+                if(!destination.Contains("@"))
+                    throw new BuilderException("Sip-URI should contain an '@'-sign");
 
-            IdentityModel destinationModel;
-
-            if (!TypeMapper.Singleton.TryConvert(destination, out destinationModel))
-                throw new BuilderException("Cannot interpret destination");
+                identity = new IdentityModel
+                {
+                    Endpoint = destination.Replace("sip:", string.Empty),
+                    Type = "sip"
+                };
+            }
 
             SetAction(new SvamletActionModel
             {
                 Name = "connectsip",
                 Cli = defaultCli,
-                Account = null,
+                Account = authName,
                 Locale = Locale.Code,
-                Destination = destinationModel
+                Destination = identity
             });
 
             return Build<ConnectSipSvamletResponse>();

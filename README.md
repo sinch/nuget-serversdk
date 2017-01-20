@@ -412,6 +412,9 @@ The returned object supports manipulating the PSTN call:
 ###### WithCallbacks() - enable callbacks for the rest of the call (default)
 ###### WithoutCallbacks() - disable callbacks for the rest of the call
 ###### WithIndications(string indications) [*Experimental*] - set the tone standard for progress/busy/congestion - see "indications" below - default is "us"
+###### WithRecording() - enable recording of the call - you will need to contact Sinch to setup the destination of your recorded filed
+###### WithoutRecording() - disable recording (default)
+
 
 ##### ConnectMxp(string user)
 Connect the call to a app destination specified by "user". Note that this is currently an unsupported feature and it does not do any GCM/APN pushes.
@@ -421,9 +424,34 @@ The returned object supports manipulating the MXP call:
 ###### WithCli(string cli) - sets the CLI for the call
 ###### WithAnonymousCli() - sets hidden CLI for the call
 ###### WithIndications(string indications) [*Experimental*] - set the tone standard for progress/busy/congestion - see "indications" below - default is "us"
+###### WithRecording() - enable recording of the call - you will need to contact Sinch to setup the destination of your recorded filed
+###### WithoutRecording() - disable recording (default)
 
 ##### ConnectMxp(Identity identity)
 Connect the call to a app destination specified by "identity". Note that this is currently an unsupported feature and it does not do any GCM/APN pushes.
+
+##### ConnectSipDestination(string sipUri)
+Connect the call to a SIP destination. Example: ConnectSipDestination("123123123@mySipServer:5070")
+
+The returned object supports manipulating the MXP call:
+
+###### WithCli(string cli) - sets the CLI for the call
+###### WithAnonymousCli() - sets hidden CLI for the call
+###### WithIndications(string indications) [*Experimental*] - set the tone standard for progress/busy/congestion - see "indications" below - default is "us"
+###### WithRecording() - enable recording of the call - you will need to contact Sinch to setup the destination of your recorded filed
+###### WithoutRecording() - disable recording (default)
+
+##### ConnectRegisteredSipPeer(string authName)
+Connect the call to a SIP a registsred SIP peer (register with an account supplied by Sinch och using your application's application key and secret
+
+The returned object supports manipulating the MXP call:
+
+###### WithCli(string cli) - sets the CLI for the call
+###### WithAnonymousCli() - sets hidden CLI for the call
+###### WithExtension(string extension) - will replace the user name in the SIP-uri with the supplied extension
+###### WithIndications(string indications) [*Experimental*] - set the tone standard for progress/busy/congestion - see "indications" below - default is "us"
+###### WithRecording() - enable recording of the call - you will need to contact Sinch to setup the destination of your recorded filed
+###### WithoutRecording() - disable recording (default)
 
 ##### ConnectConference(string conferenceId)
 Connects the call to a server-side conference

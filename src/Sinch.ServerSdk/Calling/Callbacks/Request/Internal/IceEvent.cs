@@ -8,6 +8,7 @@
         }
 
         public ICli Cli { get; set; }
+        public ICli Rdnis { get; set;  }
         public IIdentity To { get; set; }
         public IMoney Rate { get; set; }
         public OriginationType OriginationType { get; set; }

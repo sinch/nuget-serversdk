@@ -47,6 +47,9 @@ namespace Sinch.ServerSdk.Calling.Models
         [JsonProperty(PropertyName = "cli", NullValueHandling = NullValueHandling.Ignore)]
         public string Cli { get; set; }
 
+        [JsonProperty(PropertyName = "rdnis", NullValueHandling = NullValueHandling.Ignore)]
+        public string Rdnis { get; set; }
+
         [JsonProperty(PropertyName = "to", NullValueHandling = NullValueHandling.Ignore)]
         public IdentityModel To { get; set; }
 

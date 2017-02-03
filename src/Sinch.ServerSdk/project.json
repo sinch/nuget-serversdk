@@ -1,5 +1,5 @@
 ﻿{
-  "version": "1.1.0-rc3",
+  "version": "1.1.0-rc4",
   "title": "Sinch Server SDK",
   "authors": [ "Sinch AB" ],
   "description": "Integrate server backends with the Sinch backend.",

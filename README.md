@@ -442,7 +442,7 @@ The returned object supports manipulating the MXP call:
 ###### WithoutRecording() - disable recording (default)
 
 ##### ConnectRegisteredSipPeer(string authName)
-Connect the call to a SIP a registsred SIP peer (register with an account supplied by Sinch och using your application's application key and secret
+Connect the call to a SIP a registered SIP peer (register with an account supplied by Sinch or by using your application's application key and secret
 
 The returned object supports manipulating the MXP call:
 
@@ -470,7 +470,7 @@ An ACE response has somewhat different support depending on in what context you 
 - If the ACE is an event triggered for a server-initiated call, the ACE response can be a Hangup, a ConnectConf or a Park
 
 ##Indications [*Experimental*]
-"connectMxp", "ConnectSipDestination"/"ConnectRegisteredSipPeer" and "connectPstn" supports different indications standards (the way progress/busy/congestions) sounds. The following standards are supported: at, au, be, br, ch, cl, cn, cz, de, dk, ee, es, fi, fr, gr, hu, it, lt, mx, ml, no, nz, pl, pt, ru, se, sg, uk, us, us-old, tw, ve and za
+"connectMxp", "connectSipDestination"/"connectRegisteredSipPeer" and "connectPstn" supports different indications standards (the way progress/busy/congestions) sounds. The following standards are supported: at, au, be, br, ch, cl, cn, cz, de, dk, ee, es, fi, fr, gr, hu, it, lt, mx, ml, no, nz, pl, pt, ru, se, sg, uk, us, us-old, tw, ve and za
 
 ## Defining menu structures
 You define menus by calling BeginMenuDefinition on an IIceSvamletBuilder or IAceSvamletBuilder:

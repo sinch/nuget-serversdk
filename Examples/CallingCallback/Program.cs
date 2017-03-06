@@ -31,6 +31,17 @@ namespace Sinch.ServerSdk.Examples.CallingCallback
                         .RunMenu("ipt").Body;
 
                Console.WriteLine(iceResponseText);
+
+                iceResponseText =
+                    resoponse
+                        .Say("Hello world")
+                        .Say("Will connect your call")
+                        .SetCookie("mycookie", "myvalue")
+                        .ConnectPstn("+46777888999")
+                        .WithBridgeTimeout(TimeSpan.FromMinutes(2.5))
+                        .WithAnonymousCli().Body;
+
+                Console.WriteLine(iceResponseText);
             }
         }
     }

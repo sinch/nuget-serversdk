@@ -65,5 +65,17 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
             Model.Action.Record = false;
             return this;
         }
+
+        public IConnectSipSvamletResponse WithCallbacks()
+        {
+            Model.Action.SuppressCallbacks = false;
+            return this;
+        }
+
+        public IConnectSipSvamletResponse WithoutCallbacks()
+        {
+            Model.Action.SuppressCallbacks = true;
+            return this;
+        }
     }
 }

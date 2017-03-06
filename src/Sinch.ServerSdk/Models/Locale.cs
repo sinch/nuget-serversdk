@@ -15,6 +15,7 @@ namespace Sinch.ServerSdk.Models
         public static readonly Locale FiFi = new Locale { Code = "fi-FI" };
         public static readonly Locale PtPt = new Locale { Code = "pt-PT" };
         public static readonly Locale RuRu = new Locale { Code = "ru-RU" };
+        public static readonly Locale SwSe = new Locale { Code = "sv-SE" };
 
         public static Locale CreateCustomLocale(string languageCode, string countryCode)
         {

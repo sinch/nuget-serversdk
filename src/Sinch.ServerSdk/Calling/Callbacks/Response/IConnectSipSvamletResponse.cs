@@ -11,5 +11,7 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response
         IConnectSipSvamletResponse WithIndications(string indications);
         IConnectSipSvamletResponse WithRecording();
         IConnectSipSvamletResponse WithoutRecording();
+        IConnectSipSvamletResponse WithCallbacks();
+        IConnectSipSvamletResponse WithoutCallbacks();
     }
 }

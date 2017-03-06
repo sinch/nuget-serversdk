@@ -1,5 +1,5 @@
 ﻿{
-  "version": "1.1.0-rc5",
+  "version": "1.1.0",
   "title": "Sinch Server SDK",
   "authors": [ "Sinch AB" ],
   "description": "Integrate server backends with the Sinch backend.",
@@ -14,7 +14,7 @@
     "iconUrl": "https://www.sinch.com/wp-content/uploads/2015/09/NET-icon.png",
     "licenseUrl": "https://opensource.org/licenses/MIT",
     "owners": [ "Sinch AB" ],
-    "releaseNotes": "Updated nuget packages and fixed uri-template to allow reserved '+' character",
+    "releaseNotes": "Stable 1.1.0",
     "summary": "Handle calling callbacks. Send SMS. Manage conference calls. Manage number verification. For sample usage see https://github.com/sinch/nuget-serversdk",
     "requireLicenseAcceptance": false,
     "tags": [ "sinch", "calling", "sms", "verification", "pstn", "messaging", "callback", "request", "signing", "flashcall" ],
@@ -27,7 +27,7 @@
 
   "dependencies": {
     "Newtonsoft.Json": "9.0.1",
-    "Sinch.WebApiClient": "1.1.0-rc5"
+    "Sinch.WebApiClient": "1.1.0"
   },
 
   "frameworks": {

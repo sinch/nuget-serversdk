@@ -49,8 +49,8 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
             if (_promptSpecifications.Count > 64)
                 throw new BuilderException("Cannot specify more than 64 TTS strings or file parts");
 
-            if (text.Length > 200)
-                throw new BuilderException("TTS texts can not be more than 200 characters per prompt");
+            if (text.Length > 600)
+                throw new BuilderException("TTS texts can not be more than 600 characters per prompt");
 
             if (_promptSpecifications.Where(x => x.StartsWith("#tts")).Sum(x => x.Length - 6) > 1000)
                 throw new BuilderException("TTS can not be more than a total of 1000 characters");

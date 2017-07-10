@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Integrate server backends with the Sinch backend.</Description>
+    <Copyright>Copyright © 2015, 2016, 2017 Sinch AB</Copyright>
+    <AssemblyTitle>Sinch Server SDK</AssemblyTitle>
+    <VersionPrefix>1.1.1</VersionPrefix>
+    <Authors>Sinch AB</Authors>
+    <TargetFrameworks>netstandard1.3;net45</TargetFrameworks>
+    <AssemblyName>Sinch.ServerSdk</AssemblyName>
+    <PackageId>Sinch.ServerSdk</PackageId>
+    <PackageTags>sinch;calling;sms;verification;pstn;messaging;callback;request;signing;flashcall</PackageTags>
+    <PackageReleaseNotes>Stable 1.1.1</PackageReleaseNotes>
+    <PackageIconUrl>https://www.sinch.com/wp-content/uploads/2015/09/NET-icon.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/sinch/nuget-serversdk</PackageProjectUrl>
+    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/sinch/nuget-serversdk</RepositoryUrl>
+    <NetStandardImplicitPackageVersion Condition=" '$(TargetFramework)' == 'netstandard1.3' ">1.6.1</NetStandardImplicitPackageVersion>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
+    <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Update="..\..\License.txt;..\..\Readme.md">
+      <Pack>true</Pack>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+    <PackageReference Include="Sinch.WebApiClient" Version="1.1.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
+    <PackageReference Include="System.Net.Http" Version="4.1.1" />
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+</Project>

@@ -3,6 +3,7 @@ using Sinch.ServerSdk.ApiFilters;
 using Sinch.ServerSdk.Callback;
 using Sinch.ServerSdk.Calling;
 using Sinch.ServerSdk.Calling.Fluent;
+using Sinch.ServerSdk.Callouts;
 using Sinch.ServerSdk.Messaging;
 using Sinch.ServerSdk.Messaging.Fluent;
 using Sinch.ServerSdk.Verification;
@@ -35,6 +36,12 @@ namespace Sinch.ServerSdk
         /// Create a Sinch Verification API. Provides endpoints for using Sinch Verification operations.
         /// </summary>
         IVerificationApi CreateVerificationApi();
+
+        /// <summary>
+        /// Createa a callout API to make Text to speech and Conference callouts
+        /// </summary>
+        /// <returns></returns>
+        ICalloutApi CreateCalloutApi();
     }
 
     internal class ApiFactory : IApiFactory
@@ -87,6 +94,12 @@ namespace Sinch.ServerSdk
         public ISmsApi CreateSmsApi()
         {
             return new SmsApi(CreateApiClient<ISmsApiEndpoints>());
+        }
+
+        public ICalloutApi CreateCalloutApi()
+        {
+            return new CalloutApi(CreateApiClient<ICalloutApiEndpoints>());
+
         }
 
         public IConferenceApi CreateConferenceApi()

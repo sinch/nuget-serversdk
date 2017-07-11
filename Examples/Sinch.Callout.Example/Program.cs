@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Sinch.ServerSdk;
 
-namespace CalloutSample
+namespace Sinch.Callout.Example
 {
     class Program
     {

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.14
+VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{E4C85DC7-AD2F-42E8-B47E-85592D74C671}"
 EndProject
@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinch.Verification.Example"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinch.ServerSdk", "src\Sinch.ServerSdk\Sinch.ServerSdk.csproj", "{3D9B976A-E9C2-465A-82E1-7AE5676FD222}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalloutSample", "CalloutSample\CalloutSample.csproj", "{B35A6552-FF06-4349-87FE-9B5C8ED525CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinch.Callout.Example", "Examples\Sinch.Callout.Example\Sinch.Callout.Example.csproj", "{4BC77DD9-DB13-4501-9291-45D834F5D775}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,10 +59,10 @@ Global
 		{3D9B976A-E9C2-465A-82E1-7AE5676FD222}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D9B976A-E9C2-465A-82E1-7AE5676FD222}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D9B976A-E9C2-465A-82E1-7AE5676FD222}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B35A6552-FF06-4349-87FE-9B5C8ED525CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B35A6552-FF06-4349-87FE-9B5C8ED525CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B35A6552-FF06-4349-87FE-9B5C8ED525CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B35A6552-FF06-4349-87FE-9B5C8ED525CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BC77DD9-DB13-4501-9291-45D834F5D775}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BC77DD9-DB13-4501-9291-45D834F5D775}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BC77DD9-DB13-4501-9291-45D834F5D775}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BC77DD9-DB13-4501-9291-45D834F5D775}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,6 +75,6 @@ Global
 		{6807066D-B36A-4E5E-B4E8-4025E13973C1} = {E4C85DC7-AD2F-42E8-B47E-85592D74C671}
 		{C4222643-5E07-40A7-B9A7-FC166D891215} = {E4C85DC7-AD2F-42E8-B47E-85592D74C671}
 		{3D9B976A-E9C2-465A-82E1-7AE5676FD222} = {5DE443D9-D22E-44DC-A4E8-0BCA35E832F1}
-		{B35A6552-FF06-4349-87FE-9B5C8ED525CD} = {E4C85DC7-AD2F-42E8-B47E-85592D74C671}
+		{4BC77DD9-DB13-4501-9291-45D834F5D775} = {E4C85DC7-AD2F-42E8-B47E-85592D74C671}
 	EndGlobalSection
 EndGlobal

@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Sinch.ServerSdk" Version="1.2.0" />
+    <PackageReference Include="Sinch.ServerSdk" Version="1.2.1" />
   </ItemGroup>
 
 </Project>

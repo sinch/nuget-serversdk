@@ -46,6 +46,12 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
             return this;
         }
 
+        public IIceSvamletBuilder Answer()
+        {
+            AddInstruction(new Models.SvamletInstructionModel { Name = "answer" });
+            return this;
+        }
+
         public IConnectPstnSvamletResponse ConnectPstn(string number)
         {
             return ConnectPstn(number, "incoming");

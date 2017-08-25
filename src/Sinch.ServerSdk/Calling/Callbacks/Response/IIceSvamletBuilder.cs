@@ -2,5 +2,6 @@
 {
     public interface IIceSvamletBuilder : IBridgedCallSvamletBuilder<IIceSvamletBuilder>
     {
+        IIceSvamletBuilder Answer();
     }
 }

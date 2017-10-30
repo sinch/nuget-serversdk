@@ -19,4 +19,5 @@ public class ConferenceCalloutRequest : IConferenceCalloutRequest
     public string conferenceId { get; set; }
     public bool enableDice { get; set; }
     public bool enableAce { get; set; }
+    public bool enablePie { get; set; }
 }

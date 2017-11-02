@@ -10,17 +10,17 @@ public class TTSCalloutRequest : ITTSCalloutRequest
     public string prompts { get; set; }
     public bool enableDice { get; set; }
     public bool enableAce { get; set; }
-
-    public ITTSCalloutRequest Addropmpt(string promptName)
+    public bool enablePie { get; set; }
+    
+    public ITTSCalloutRequest AddPrompt(string promptName)
     {
         this.prompts += ";" + promptName;
         return this;
-
     }
+    
     public ITTSCalloutRequest AddText(string text)
     {
         this.prompts += ";" + text;
         return this;
-
     }
 }

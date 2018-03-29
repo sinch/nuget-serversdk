@@ -6,6 +6,7 @@ using Sinch.ServerSdk.Calling.Fluent;
 using Sinch.ServerSdk.Callouts;
 using Sinch.ServerSdk.Messaging;
 using Sinch.ServerSdk.Messaging.Fluent;
+using Sinch.ServerSdk.Models;
 using Sinch.ServerSdk.Verification;
 using Sinch.ServerSdk.Verification.Fluent;
 using Sinch.WebApiClient;
@@ -49,23 +50,27 @@ namespace Sinch.ServerSdk
         private readonly string _key;
         private readonly byte[] _secret;
         private readonly string _url;
+        private readonly Locale _locale;
 
-        internal ApiFactory(string key, string secret, string url = "https://api.sinch.com")
+        internal ApiFactory(string key, string secret, Locale locale, string url = "https://api.sinch.com")
         {
             if (string.IsNullOrWhiteSpace(key))
                 throw new ArgumentNullException(nameof(key), "Sinch application key cannot be null.");
 
-            Guid guid;
-            if (!Guid.TryParse(key.Trim(), out guid))
-                throw new ArgumentException("Sinch application key is in an invalid format.  Confirm the key is correctly copied from your Sinch developer dashboard.");
+            if (!Guid.TryParse(key.Trim(), out var guid))
+                throw new ArgumentException(
+                    "Sinch application key is in an invalid format.  Confirm the key is correctly copied from your Sinch developer dashboard.");
 
             if (guid.Equals(Guid.Empty))
-                throw new ArgumentException("Replace the Sinch application key with the one copied from your Sinch developer dashboard.");
+                throw new ArgumentException(
+                    "Replace the Sinch application key with the one copied from your Sinch developer dashboard.");
 
             _key = key;
 
             if (string.IsNullOrWhiteSpace(secret))
                 throw new ArgumentNullException(nameof(secret), "Sinch application secret cannot be null.");
+
+            _locale = locale;
 
             try
             {
@@ -73,15 +78,16 @@ namespace Sinch.ServerSdk
             }
             catch (FormatException)
             {
-                throw new ArgumentException("Sinch application secret is in an invalid format.  Confirm the secret is correctly copied from your Sinch developer dashboard.");
+                throw new ArgumentException(
+                    "Sinch application secret is in an invalid format.  Confirm the secret is correctly copied from your Sinch developer dashboard.");
             }
 
             if (string.IsNullOrWhiteSpace(url))
                 throw new ArgumentNullException(nameof(url), "Sinch API URL cannot be null.");
 
-            Uri uri;
-            if (!Uri.TryCreate(url, UriKind.Absolute, out uri))
-                throw new ArgumentException("Sinch API URL is in an invalid format.  The default URL is https://api.sinch.com");
+            if (!Uri.TryCreate(url, UriKind.Absolute, out _))
+                throw new ArgumentException(
+                    "Sinch API URL is in an invalid format.  The default URL is https://api.sinch.com");
 
             _url = url;
         }
@@ -98,7 +104,7 @@ namespace Sinch.ServerSdk
 
         public ICalloutApi CreateCalloutApi()
         {
-            return new CalloutApi(CreateApiClient<ICalloutApiEndpoints>());
+            return new CalloutApi(CreateApiClient<ICalloutApiEndpoints>(), new CallbackResponseFactory(_locale));
 
         }
 
@@ -114,7 +120,8 @@ namespace Sinch.ServerSdk
 
         private T CreateApiClient<T>() where T : class
         {
-            return new WebApiClientFactory().CreateClient<T>(_url, new ApplicationSigningFilter(_key, _secret), new RestReplyFilter());
+            return new WebApiClientFactory().CreateClient<T>(_url, new ApplicationSigningFilter(_key, _secret),
+                new RestReplyFilter());
         }
     }
 }

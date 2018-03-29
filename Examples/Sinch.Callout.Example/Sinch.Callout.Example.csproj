@@ -2,13 +2,19 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
     <AssemblyName>Sinch.Callout.Example</AssemblyName>
     <RootNamespace>Sinch.Callout.Example</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Sinch.ServerSdk" Version="1.2.1" />
+    <ProjectReference Include="..\..\src\Sinch.ServerSdk\Sinch.ServerSdk.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Sinch.ServerSdk">
+      <HintPath>..\..\packages\Sinch.ServerSdk.1.2.0\lib\net46\Sinch.ServerSdk.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

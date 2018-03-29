@@ -35,18 +35,6 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
             return this;
         }
 
-        public IMenu<IAceSvamletBuilder> BeginMenuDefinition(string menuId, Prompt prompt, TimeSpan? timeout)
-        {
-            return InternalBeginMenuDefinition(this, menuId, prompt, timeout);
-        }
-
-        public IAceSvamletBuilder AddNumberInputMenu(string menuId, Prompt prompt, int maxDigits, Prompt repeatPrompt = null,
-            int repeats = 3, TimeSpan? timeout = null)
-        {
-            InternalAddNumberInputMenu(menuId, prompt, maxDigits, repeatPrompt, repeats, timeout);
-            return this;
-        }
-
         public IConnectPstnSvamletResponse ConnectPstn(string number)
         {
             return ConnectPstn(number, "private");

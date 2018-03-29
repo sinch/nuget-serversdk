@@ -1,26 +1,41 @@
-﻿using Sinch.ServerSdk.Models;
-public class TTSCalloutRequest : ITTSCalloutRequest
+﻿using Newtonsoft.Json;
+using Sinch.ServerSdk.Models;
+
+namespace Sinch.ServerSdk.Callouts
 {
-    public string cli { get; set; }
-    public IdentityModel destination { get; set; }
-    public string domain { get; set; }
-    public string custom { get; set; }
-    public string locale { get; set; }
-    public string text { get; set; }
-    public string prompts { get; set; }
-    public bool enableDice { get; set; }
-    public bool enableAce { get; set; }
-    public bool enablePie { get; set; }
-    
-    public ITTSCalloutRequest AddPrompt(string promptName)
+    public class TtsCalloutRequest : ITtsCalloutRequest
     {
-        this.prompts += ";" + promptName;
-        return this;
-    }
+        [JsonProperty(PropertyName = "cli", NullValueHandling = NullValueHandling.Ignore)]
+        public string Cli { get; set; }
+        [JsonProperty(PropertyName = "destination", NullValueHandling = NullValueHandling.Ignore)]
+        public IdentityModel Destination { get; set; }
+        [JsonProperty(PropertyName = "domain", NullValueHandling = NullValueHandling.Ignore)]
+        public string Domain { get; set; }
+        [JsonProperty(PropertyName = "custom", NullValueHandling = NullValueHandling.Ignore)]
+        public string Custom { get; set; }
+        [JsonProperty(PropertyName = "locale", NullValueHandling = NullValueHandling.Ignore)]
+        public string Locale { get; set; }
+        [JsonProperty(PropertyName = "text", NullValueHandling = NullValueHandling.Ignore)]
+        public string Text { get; set; }
+        [JsonProperty(PropertyName = "prompts", NullValueHandling = NullValueHandling.Ignore)]
+        public string Prompts { get; set; }
+        [JsonProperty(PropertyName = "enableDice", NullValueHandling = NullValueHandling.Ignore)]
+        public bool EnableDice { get; set; }
+        [JsonProperty(PropertyName = "enableAce", NullValueHandling = NullValueHandling.Ignore)]
+        public bool EnableAce { get; set; }
+        [JsonProperty(PropertyName = "enablePie", NullValueHandling = NullValueHandling.Ignore)]
+        public bool EnablePie { get; set; }
     
-    public ITTSCalloutRequest AddText(string text)
-    {
-        this.prompts += ";" + text;
-        return this;
+        public ITtsCalloutRequest AddPrompt(string promptName)
+        {
+            Prompts += ";" + promptName;
+            return this;
+        }
+    
+        public ITtsCalloutRequest AddText(string text)
+        {
+            Prompts += ";" + text;
+            return this;
+        }
     }
 }

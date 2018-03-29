@@ -1,6 +1,6 @@
 using System;
 
-namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
+namespace Sinch.ServerSdk.IvrMenus
 {
     internal class AbstractMenu
     {

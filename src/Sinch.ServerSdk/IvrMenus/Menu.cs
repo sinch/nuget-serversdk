@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using Sinch.ServerSdk.Calling.Callbacks.Response;
 
-namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
+namespace Sinch.ServerSdk.IvrMenus
 {
-    internal class Menu<T> : AbstractMenu, IMenu<T>
+    internal class Menu : AbstractMenu, IMenu
     {
-        private readonly T _builder;
+        private readonly IMenuBuilder _builder;
 
-        public IDictionary<Dtmf,Tuple<string,IDictionary<string,string>>> GotoMenuOptions { get; private set; }
-        public IDictionary<Dtmf,string> ReturnOptions { get; private set; }
+        public IDictionary<Dtmf,Tuple<string,IDictionary<string,string>>> GotoMenuOptions { get;  }
+        public IDictionary<Dtmf,string> ReturnOptions { get; }
 
-        internal Menu(T builder, Prompt prompt, Prompt repeatPrompt, int repeats, TimeSpan? timeout)
+        internal Menu(IMenuBuilder builder, Prompt prompt, Prompt repeatPrompt, int repeats, TimeSpan? timeout)
             : base(prompt, repeatPrompt, repeats, timeout)
         {
             _builder = builder;
@@ -19,7 +20,7 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
             ReturnOptions = new Dictionary<Dtmf, string>();
         }
 
-        public IMenu<T> AddGotoMenuOption(Dtmf option, string targetMenuId, IDictionary<string,string> cookies = null)
+        public IMenu AddGotoMenuOption(Dtmf option, string targetMenuId, IDictionary<string,string> cookies = null)
         {
             CheckClash(option);
             GotoMenuOptions[option] = new Tuple<string, IDictionary<string, string>>(targetMenuId,cookies);
@@ -32,26 +33,26 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
                 throw new BuilderException("Option '" + option + "' already defined");
         }
 
-        public IMenu<T> AddTriggerPieOption(Dtmf option, string result)
+        public IMenu AddTriggerPieOption(Dtmf option, string result)
         {
             CheckClash(option);
             ReturnOptions[option] = result;
             return this;
         }
 
-        public IMenu<T> WithRepeatPrompt(Prompt prompt)
+        public IMenu WithRepeatPrompt(Prompt prompt)
         {
             RepeatPrompt = prompt;
             return this;
         }
 
-        public IMenu<T> WithRepeats(int repeats)
+        public IMenu WithRepeats(int repeats)
         {
             Repeats = repeats;
             return this;
         }
 
-        public T EndMenuDefinition()
+        public IMenuBuilder EndMenuDefinition()
         {
             return _builder;
         }

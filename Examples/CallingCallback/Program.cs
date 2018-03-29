@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using Sinch.ServerSdk.Calling.Callbacks.Request;
-using Sinch.ServerSdk.Calling.Callbacks.Response;
+using Sinch.ServerSdk.IvrMenus;
 using Sinch.ServerSdk.Models;
 
 namespace Sinch.ServerSdk.Examples.CallingCallback
@@ -23,12 +23,11 @@ namespace Sinch.ServerSdk.Examples.CallingCallback
                 Console.WriteLine("From: " + iceEvent.Cli);
                 Console.WriteLine("To: " + iceEvent.To.Endpoint);
 
-                var resoponse = sinch.CreateIceSvamletBuilder();
+                var menu = sinch.CreateMenuBuilder();
+                menu.AddNumberInputMenu("ipt", new TtsPrompt("Hello!"), 4);
 
-                var iceResponseText =
-                    resoponse
-                        .AddNumberInputMenu("ipt", new TtsPrompt("Hello!"), 4)
-                        .RunMenu("ipt").Body;
+                var resoponse = sinch.CreateIceSvamletBuilder();
+                var iceResponseText = resoponse.RunMenu("ipt", menu).Body;
 
                Console.WriteLine(iceResponseText);
 

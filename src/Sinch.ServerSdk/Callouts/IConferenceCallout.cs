@@ -1,15 +1,18 @@
 ﻿using Sinch.ServerSdk.Models;
 
-public interface IConferenceCalloutRequest
+namespace Sinch.ServerSdk.Callouts
 {
-    string cli { get; set; }
-    string conferenceId { get; set; }
-    string custom { get; set; }
-    IdentityModel destination { get; set; }
-    string domain { get; set; }
-    bool enableAce { get; set; }
-    bool enableDice { get; set; }
-    bool enablePie { get; set; }
-    string greeting { get; set; }
-    string locale { get; set; }
+    public interface IConferenceCalloutRequest
+    {
+        string Cli { get; set; }
+        string ConferenceId { get; set; }
+        string Custom { get; set; }
+        IdentityModel Destination { get; set; }
+        string Domain { get; set; }
+        bool EnableAce { get; set; }
+        bool EnableDice { get; set; }
+        bool EnablePie { get; set; }
+        string Greeting { get; set; }
+        string Locale { get; set; }
+    }
 }

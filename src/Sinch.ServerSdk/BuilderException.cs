@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sinch.ServerSdk.Calling.Callbacks.Response
+namespace Sinch.ServerSdk
 {
     public class BuilderException : Exception
     {

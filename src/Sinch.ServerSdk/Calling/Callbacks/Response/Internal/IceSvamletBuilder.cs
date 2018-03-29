@@ -1,5 +1,4 @@
-﻿using System;
-using Sinch.ServerSdk.Calling.Callbacks.Request;
+﻿using Sinch.ServerSdk.Calling.Callbacks.Request;
 using Sinch.ServerSdk.Models;
 
 namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
@@ -31,18 +30,6 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
         public IIceSvamletBuilder SaySsml(string ssml)
         {
             InternalPlaySsml(ssml);
-            return this;
-        }
-
-        public IMenu<IIceSvamletBuilder> BeginMenuDefinition(string menuId, Prompt prompt, TimeSpan? timeout)
-        {
-            return InternalBeginMenuDefinition(this, menuId, prompt, timeout);
-        }
-
-        public IIceSvamletBuilder AddNumberInputMenu(string menuId, Prompt prompt, int maxDigits, Prompt repeatPrompt = null,
-            int repeats = 3, TimeSpan? timeout = null)
-        {
-            InternalAddNumberInputMenu(menuId, prompt, maxDigits, repeatPrompt);
             return this;
         }
 

@@ -40,9 +40,6 @@
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Sinch.ServerSdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Sinch.ServerSdk.1.2.0\lib\net46\Sinch.ServerSdk.dll</HintPath>
-    </Reference>
     <Reference Include="Sinch.WebApiClient, Version=1.0.3.18015, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Sinch.WebApiClient.1.1.0\lib\net45\Sinch.WebApiClient.dll</HintPath>
     </Reference>
@@ -92,6 +89,12 @@
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Sinch.ServerSdk.Callback.WebApi.nuspec" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Sinch.ServerSdk\Sinch.ServerSdk.csproj">
+      <Project>{3d9b976a-e9c2-465a-82e1-7ae5676fd222}</Project>
+      <Name>Sinch.ServerSdk</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

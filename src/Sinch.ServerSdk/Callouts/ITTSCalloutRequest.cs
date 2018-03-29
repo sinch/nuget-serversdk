@@ -1,15 +1,18 @@
 ﻿using Sinch.ServerSdk.Models;
 
-public interface ITTSCalloutRequest
+namespace Sinch.ServerSdk.Callouts
 {
-    string cli { get; set; }
-    string custom { get; set; }
-    IdentityModel destination { get; set; }
-    string domain { get; set; }
-    bool enableAce { get; set; }
-    bool enableDice { get; set; }
-    bool enablePie { get; set; }
-    string locale { get; set; }
-    string prompts { get; set; }
-    string text { get; set; }
+    public interface ITtsCalloutRequest
+    {
+        string Cli { get; set; }
+        string Custom { get; set; }
+        IdentityModel Destination { get; set; }
+        string Domain { get; set; }
+        bool EnableAce { get; set; }
+        bool EnableDice { get; set; }
+        bool EnablePie { get; set; }
+        string Locale { get; set; }
+        string Prompts { get; set; }
+        string Text { get; set; }
+    }
 }

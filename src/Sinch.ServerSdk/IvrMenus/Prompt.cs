@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Sinch.ServerSdk.Calling.Callbacks.Response
+namespace Sinch.ServerSdk.IvrMenus
 {
     public abstract class Prompt
     {

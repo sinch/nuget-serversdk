@@ -1,10 +1,15 @@
 ﻿using System.Threading.Tasks;
 
-public interface ICalloutRequest
+namespace Sinch.ServerSdk.Callouts
 {
-    IConferenceCalloutRequest conferenceCallout { get; set; }
-    string method { get; set; }
-    ITTSCalloutRequest ttsCallout { get; set; }
-    Task<CalloutResponse> Call();
+    public interface ICalloutRequest
+    {
+        string Method { get; set; }
 
+        IConferenceCalloutRequest ConferenceCallout { get; set; }
+        ITtsCalloutRequest TtsCallout { get; set; }
+        ICustomCalloutCalloutRequest CustomCallout { get; set; }
+
+        Task<CalloutResponse> Call();
+    }
 }

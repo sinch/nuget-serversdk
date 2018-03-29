@@ -1,4 +1,4 @@
-﻿namespace Sinch.ServerSdk.Calling.Callbacks.Response
+﻿namespace Sinch.ServerSdk.IvrMenus
 {
     public class TtsPrompt : Prompt
     {

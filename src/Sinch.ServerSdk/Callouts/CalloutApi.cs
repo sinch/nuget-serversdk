@@ -1,54 +1,78 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using Sinch.ServerSdk.IvrMenus;
 using Sinch.ServerSdk.Models;
 
 namespace Sinch.ServerSdk.Callouts
 {
     public class CalloutApi : ICalloutApi
     {
+        private readonly CallbackResponseFactory _responseFactory;
+        private readonly CalloutRequest _request;
 
-        private readonly ICalloutApiEndpoints _calloutApiEndpoints;
-        private CalloutRequest _request;
-
-        internal CalloutApi(ICalloutApiEndpoints calloutApiEndpoints)
+        internal CalloutApi(ICalloutApiEndpoints calloutApiEndpoints, CallbackResponseFactory responseFactory)
         {
-            _calloutApiEndpoints= calloutApiEndpoints;
+            _responseFactory = responseFactory;
             _request = new CalloutRequest(calloutApiEndpoints);
         }
 
-
-        public ICalloutRequest TTSCallout(string to, string message, string from)
+        public ICalloutRequest TtsCallout(string to, string message, string from)
         {
             var request = _request;
-            request.method = "ttsCallout";
-            request.ttsCallout = new TTSCalloutRequest();
-            request.ttsCallout.cli = from;
-            request.ttsCallout.destination = new IdentityModel()
-            {
-                Endpoint = to,
-                Type = "number"
-            };
-            request.ttsCallout.prompts ="#tts[" + message + "]";
-            return request;
+            request.Method = "ttsCallout";
 
+            request.TtsCallout = new TtsCalloutRequest
+            {
+                Cli = @from,
+                Destination = new IdentityModel()
+                {
+                    Endpoint = to,
+                    Type = "number"
+                },
+                Prompts = "#tts[" + message + "]"
+            };
+
+            return request;
         }
 
         public ICalloutRequest ConferenceCallout(string to, string conferenceId, string from, string greeting)
         {
             var request = _request;
-            request.method = "conferenceCallout";
-            request.conferenceCallout = new ConferenceCalloutRequest();
-            request.conferenceCallout.conferenceId = conferenceId;
-            request.conferenceCallout.cli = from;
-            request.conferenceCallout.destination = new IdentityModel()
+            request.Method = "conferenceCallout";
+
+            request.ConferenceCallout = new ConferenceCalloutRequest
             {
-                Type = "number",
-                Endpoint = to
+                ConferenceId = conferenceId,
+                Cli = @from,
+                Destination = new IdentityModel()
+                {
+                    Type = "number",
+                    Endpoint = to
+                },
+                Greeting = greeting
             };
-            request.conferenceCallout.greeting = greeting;
+
             return request;
         }
-        
+
+        public ICalloutRequest MenuCallout(string to, string @from, IMenuBuilder menu, string startMenu, TimeSpan maxDuration)
+        {
+            var request = _request;
+            request.Method = "customCallout";
+
+            request.CustomCallout = new CustomCalloutCalloutRequest
+            {
+                Ice = _responseFactory.CreateIceSvamletBuilder().ConnectPstn(to).WithCli(@from).WithBridgeTimeout(maxDuration).Body,
+                Ace = _responseFactory.CreateAceSvamletBuilder().RunMenu(startMenu, menu).Body,
+                Dice = _responseFactory.CreateDiceResponse().Body
+            };
+
+            return request;
+        }
+
+        public IMenuBuilder CreateMenuBuilder()
+        {
+            return new MenuBuilder();
+        }
+
     }
 }

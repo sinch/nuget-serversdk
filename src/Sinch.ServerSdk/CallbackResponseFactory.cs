@@ -3,6 +3,7 @@ using Sinch.ServerSdk.Calling.Callbacks.Request.Internal;
 using Sinch.ServerSdk.Calling.Callbacks.Response;
 using Sinch.ServerSdk.Calling.Callbacks.Response.Internal;
 using Sinch.ServerSdk.Calling.Models;
+using Sinch.ServerSdk.IvrMenus;
 using Sinch.ServerSdk.Models;
 
 namespace Sinch.ServerSdk
@@ -44,6 +45,8 @@ namespace Sinch.ServerSdk
         /// </summary>
         /// <returns></returns>
         ISvamletResponse CreateNotificationResponse();
+
+        IMenuBuilder CreateMenuBuilder();
     }
 
     class CallbackResponseFactory : ICallbackResponseFactory
@@ -61,5 +64,6 @@ namespace Sinch.ServerSdk
         public IManageCallSvamletBuilder CreateManageCallSvamletBuilder() { return new ManageCallSvamletBuilder(_locale); }
         public ISvamletResponse CreateDiceResponse() { return new SvamletResponse { Model = new SvamletModel() }; }
         public ISvamletResponse CreateNotificationResponse() { return new SvamletResponse { Model = new SvamletModel() }; }
+        public IMenuBuilder CreateMenuBuilder() { return new MenuBuilder(); }
     }
 }

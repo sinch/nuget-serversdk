@@ -1,5 +1,5 @@
-﻿using System;
-using Sinch.ServerSdk.Calling.Callbacks.Request;
+﻿using Sinch.ServerSdk.Calling.Callbacks.Request;
+using Sinch.ServerSdk.IvrMenus;
 
 namespace Sinch.ServerSdk.Calling.Callbacks.Response
 {
@@ -10,8 +10,6 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response
         IConnectSipSvamletResponse ConnectSipDestination(string sipUri);
         IConnectSipSvamletResponse ConnectRegisteredSipPeer(string authName);
         IConnectMxpSvamletResponse ConnectMxp(IIdentity identity);
-        IMenu<T> BeginMenuDefinition(string menuId, Prompt prompt, TimeSpan? timeout);
-        T AddNumberInputMenu(string menuId, Prompt prompt, int maxDigits, Prompt repeatPrompt = null, int repeats = 3, TimeSpan? timeout = null);
-        ISvamletResponse RunMenu(string menuId);
+        ISvamletResponse RunMenu(string menuId, IMenuBuilder menuBuilder);
     }
 }

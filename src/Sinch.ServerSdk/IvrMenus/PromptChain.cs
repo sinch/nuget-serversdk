@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Sinch.ServerSdk.Calling.Callbacks.Response
+namespace Sinch.ServerSdk.IvrMenus
 {
     public class PromptChain : Prompt
     {

@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
+namespace Sinch.ServerSdk.IvrMenus
 {
     internal class NumberInputMenu : AbstractMenu
     {
-        public int MaxDigits { get; private set; }
+        public int MaxDigits { get; }
 
         internal NumberInputMenu(Prompt prompt, Prompt repeatPrompt, int repeats, int maxDigits, TimeSpan? timeout)
             : base(prompt, repeatPrompt, repeats, timeout)

@@ -23,7 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinch.Verification.Example"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinch.ServerSdk", "src\Sinch.ServerSdk\Sinch.ServerSdk.csproj", "{3D9B976A-E9C2-465A-82E1-7AE5676FD222}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalloutSample", "CalloutSample\CalloutSample.csproj", "{B35A6552-FF06-4349-87FE-9B5C8ED525CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalloutSample", "CalloutSample\CalloutSample.csproj", "{B35A6552-FF06-4349-87FE-9B5C8ED525CD}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinch.Callout.Example", "Examples\Sinch.Callout.Example\Sinch.Callout.Example.csproj", "{4BC77DD9-DB13-4501-9291-45D834F5D775}"
 EndProject
 Global
@@ -82,5 +83,8 @@ Global
 		{3D9B976A-E9C2-465A-82E1-7AE5676FD222} = {5DE443D9-D22E-44DC-A4E8-0BCA35E832F1}
 		{B35A6552-FF06-4349-87FE-9B5C8ED525CD} = {E4C85DC7-AD2F-42E8-B47E-85592D74C671}
 		{4BC77DD9-DB13-4501-9291-45D834F5D775} = {E4C85DC7-AD2F-42E8-B47E-85592D74C671}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D93E13A7-9116-4E5B-A668-8B3EA7A97B3B}
 	EndGlobalSection
 EndGlobal

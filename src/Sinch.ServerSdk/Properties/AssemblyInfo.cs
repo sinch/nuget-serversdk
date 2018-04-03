@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Sinch")]
 [assembly: AssemblyProduct("Svamlet")]
-[assembly: AssemblyCopyright("Copyright ©  2015, 2016, 2017")]
+[assembly: AssemblyCopyright("Copyright ©  2015, 2016, 2017, 2018")]
 [assembly: AssemblyTrademark("Sinch")]
 [assembly: AssemblyCulture("")]
 

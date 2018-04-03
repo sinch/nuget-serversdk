@@ -1,6 +1,6 @@
 #
 # Sinch Server SDK NuGet package
-# Version: 1.0.2.9
+# Version: 1.3.0
 This package supports
 
 	- Signing and making API REST calls to the Sinch backend
@@ -12,6 +12,12 @@ This package supports
 2. Verification
 3. Calling Callbacks
 4. Calling Callbacks - Responding
+5. Indications
+6. Defining Menu Structures
+7. Callouts
+8. Fluent
+9. Examples
+
 
 ## SMS
 The major takeaways of this section are:
@@ -459,8 +465,8 @@ Connects the call to a server-side conference
 ##### Park(string holdPrompt, TimeSpan timeout)
 Parks the call while playing the holdprompt repeatalby. The timeout indicates when the park should timeout (but it will always play the entire prompt before timing out, so the actual timeout will be longer). To "unpark" a call, you need to PATCH the call using the Sinch REST API. Note that this is currently an unsupported feature.
 
-##### RunMenu(string menuId)
-Executes an IVR menu (specified by menuId). The menu structure must have been defined in advanced by using the menu definition functionality in an IIceSvamletBuilder - see "Defining Menus" below. Note that this is currently an unsupported feature.
+##### RunMenu(string menuId, IMenuBuilder menuDefinition)
+Executes an IVR menu (specified by menuId). The menu structure must have been defined in advanced by using the menu definition functionality in an IMenuBuilder - see "Defining Menus" below.
 
 #### Building an ACE response
 
@@ -470,12 +476,12 @@ An ACE response has somewhat different support depending on in what context you 
 - If the ACE is an event triggered for a server-initiated call, the ACE response can be a Hangup, a ConnectConf or a Park
 
 ##Indications [*Experimental*]
-"connectMxp", "connectSipDestination"/"connectRegisteredSipPeer" and "connectPstn" supports different indications standards (the way progress/busy/congestions) sounds. The following standards are supported: at, au, be, br, ch, cl, cn, cz, de, dk, ee, es, fi, fr, gr, hu, it, lt, mx, ml, no, nz, pl, pt, ru, se, sg, uk, us, us-old, tw, ve and za
+"connectMxp", "connectSipDestination"/"connectRegisteredSipPeer" and "connectPstn" supports different indications standards (the way progress/busy/congestions sounds). The following standards are supported: at, au, be, br, ch, cl, cn, cz, de, dk, ee, es, fi, fr, gr, hu, it, lt, mx, ml, no, nz, pl, pt, ru, se, sg, uk, us, us-old, tw, ve and za
 
 ## Defining menu structures
-You define menus by calling BeginMenuDefinition on an IIceSvamletBuilder or IAceSvamletBuilder:
+You define menus by calling BeginMenuDefinition on an IMenuBuilder:
 
-	IMenu<IIceSvamletBuilder> BeginMenuDefinition(string menuId, string prompt, string repeatPrompt = null, int repeats = 3)
+	IMenu BeginMenuDefinition(string menuId, string prompt, string repeatPrompt = null, int repeats = 3)
 
 	string menuId - the unique id of the menu (within this SVAMLet response)
 	string prompt - the prompt to play
@@ -486,19 +492,46 @@ The "prompt" will be played first. If no DTMF response is detected a prompt will
 
 To the returned menu, you can add menu options. If you want a menu option that  jumps to another menu, call
 
-        IMenu<T> AddGotoMenuOption(Dtmf option, string targetMenuId, IDictionary<string,string> cookies = null)
+        IMenu AddGotoMenuOption(Dtmf option, string targetMenuId, IDictionary<string,string> cookies = null)
 
 If you want a menu options that triggers a PIE event, call (the specified "result" will be added to the PIE event):
 
-        IMenu<T> AddTriggerPieOption(Dtmf option, string result);
+        IMenu AddTriggerPieOption(Dtmf option, string result);
 
-## Defining menus for number sequence input
-You can define a number sequence input menu by calling AddNumberInputMenu on an IIceSvamletBuilder
+### Defining menus for number sequence input
+You can define a number sequence input menu by calling AddNumberInputMenu on an IMenuBuilder
 
-	IIceSvamletBuilder AddNumberInputMenu(string menuId, string prompt, int maxDigits, string repeatPrompt = null, int repeats = 3)
+	IMenuBuilder AddNumberInputMenu(string menuId, string prompt, int maxDigits, string repeatPrompt = null, int repeats = 3)
 
-## Menu prompts
-Any menu prompt (as specified in AddNumberInputMenu or BeginMenuDefinition) can be a number of prompt definitions separated by ";". A prompt definition can be a file name of an uploaded prompt file or a text-to-speech (TTS) string. A TTS string is identified by wrapping the text in "#TTS[]" where you enter you text between the brackets.
+### Menu prompts
+Any menu prompt (as specified in AddNumberInputMenu or BeginMenuDefinition) can be a number of prompt definitions separated by ";". A prompt definition can be a file name of an uploaded prompt file or a text-to-speech (TTS) string. A TTS string is identified by wrapping the text in "#tts[]" where you enter you text between the brackets.
+
+## Callouts
+You can instruct the Sinch backend to place outgoing calls. When that outgoing call is answered, a few typical scenarios are supported-
+
+- Reading a message to the callee
+- Sending the callee to a conference room
+- Presenting the callee with IVR options to respond to (using DTMF)
+
+To place such calls, you use the Callout API of this Nuget
+
+            
+    var calloutApi = SinchFactory.CreateApiFactory("f429b49...", "ui8/...").CreateCalloutApi();
+
+### Reading a message to the callee
+You need to supply a destination phone number, a text message and an optional caller id.
+
+    var calloutResponse = await calloutApi.TtsCallout("+15612600684", "how are you doing", "").Call();
+
+### Sending the callee to a conference room
+You need to supply a destination phone number, a conference room id, an optional greeting text message and an optional caller id.
+
+    var calloutResponse = await calloutApi.ConferenceCallout("+15612600684", "#4711", "private", "Welcome").Call();
+
+### Presenting the callee with IVR options to respond to (using DTMF)
+First, you need to create and define your menu structure using the IMenuBuilder (see "Defining menu structures"). You also need to supply a destination phone number, a cli, a startmenu (pointing to a menu in the defined menu structure and a max call duration.
+
+    var calloutResponse = await calloutApi.MenuCallout("+15612600684", "private", menuBuilder, "main", TimeSpan.FromMinutes(1)).Call();
 
 ## Fluent
 The package support a "fluent" style of creating responses - see the example section.
@@ -545,10 +578,10 @@ The package support a "fluent" style of creating responses - see the example sec
 
 ### Defining a menu
 
-    svamletBuilder.BeginMenuDefinition("xyc", "#TTS[Welcome]")
+    menuBuilder.BeginMenuDefinition("xyc", "#TTS[Welcome]")
         .AddGotoMenuOption(Dtmf.Digit0, "xyc", new Dictionary<string, string>() { { "c1", "v1"}})
         .AddGotoMenuOption(Dtmf.Digit1, "xyz")
         .AddTriggerPieOption(Dtmf.Digit2, "returned")
         .EndMenuDefinition();
 
-    svamletBuilder.AddNumberInputMenu("xyz", "#TTS[Enter 12 digits]", 12);
+    menuBuilder.AddNumberInputMenu("xyz", "#TTS[Enter 12 digits]", 12);

@@ -77,5 +77,11 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
             Model.Action.SuppressCallbacks = true;
             return this;
         }
+
+        public IConnectSipSvamletResponse WithBillingTag(string tag)
+        {
+            Model.Action.BillingTag = tag;
+            return this;
+        }
     }
 }

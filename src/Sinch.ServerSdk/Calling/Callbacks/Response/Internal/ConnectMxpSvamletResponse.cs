@@ -37,5 +37,11 @@
             Model.Action.Record = false;
             return this;
         }
+
+        public IConnectMxpSvamletResponse WithBillingTag(string tag)
+        {
+            Model.Action.BillingTag = tag;
+            return this;
+        }
     }
 }

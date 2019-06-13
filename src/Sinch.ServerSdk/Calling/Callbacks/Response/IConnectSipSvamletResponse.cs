@@ -13,5 +13,6 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response
         IConnectSipSvamletResponse WithoutRecording();
         IConnectSipSvamletResponse WithCallbacks();
         IConnectSipSvamletResponse WithoutCallbacks();
+        IConnectSipSvamletResponse WithBillingTag(string tag);
     }
 }

@@ -49,5 +49,11 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
             Model.Action.ConferenceType = "multipart";
             return this;
         }
+
+        public IConnectConferenceSvamletResponse WithBillingTag(string tag)
+        {
+            Model.Action.BillingTag = tag;
+            return this;
+        }
     }
 }

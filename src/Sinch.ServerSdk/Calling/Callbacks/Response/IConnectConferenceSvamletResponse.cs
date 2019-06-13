@@ -10,5 +10,6 @@
         IConnectConferenceSvamletResponse WithoutEnterAndLeaveSounds();
         IConnectConferenceSvamletResponse WithTwoParts();
         IConnectConferenceSvamletResponse WithMultiParts();
+        IConnectConferenceSvamletResponse WithBillingTag(string tag);
     }
 }

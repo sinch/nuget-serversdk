@@ -65,5 +65,11 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
             Model.Action.Record = false;
             return this;
         }
+
+        public IConnectPstnSvamletResponse WithBillingTag(string tag)
+        {
+            Model.Action.BillingTag = tag;
+            return this;
+        }
     }
 }

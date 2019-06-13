@@ -14,6 +14,6 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response
         IConnectPstnSvamletResponse WithIndications(string indications);
         IConnectPstnSvamletResponse WithRecording();
         IConnectPstnSvamletResponse WithoutRecording();
-
+        IConnectPstnSvamletResponse WithBillingTag(string tag);
     }
 }

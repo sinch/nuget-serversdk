@@ -26,13 +26,13 @@ namespace Sinch.ServerSdk.Examples.CallingCallback
                 var menu = sinch.CreateMenuBuilder();
                 menu.AddNumberInputMenu("ipt", new TtsPrompt("Hello!"), 4);
 
-                var resoponse = sinch.CreateIceSvamletBuilder();
-                var iceResponseText = resoponse.RunMenu("ipt", menu).Body;
+                var response = sinch.CreateIceSvamletBuilder();
+                var iceResponseText = response.RunMenu("ipt", menu).Body;
 
                Console.WriteLine(iceResponseText);
 
                 iceResponseText =
-                    resoponse
+                    response
                         .Say("Hello world")
                         .Say("Will connect your call")
                         .SetCookie("mycookie", "myvalue")

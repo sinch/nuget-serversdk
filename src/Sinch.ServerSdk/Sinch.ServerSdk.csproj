@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <Description>Integrate server backends with the Sinch backend.</Description>
-    <Copyright>Copyright © 2015, 2016, 2017 Sinch AB</Copyright>
+    <Copyright>Copyright © 2015, 2016, 2017, 2018, 2019 Sinch AB</Copyright>
     <AssemblyTitle>Sinch Server SDK</AssemblyTitle>
     <Title>Sinch Server SDK</Title>
     <VersionPrefix>1.4.0</VersionPrefix>
@@ -11,7 +11,7 @@
     <AssemblyName>Sinch.ServerSdk</AssemblyName>
     <PackageId>Sinch.ServerSdk</PackageId>
     <PackageTags>sinch;calling;sms;verification;pstn;messaging;callback;request;signing;flashcall;callout;conference</PackageTags>
-    <PackageReleaseNotes>1.3.0: Added support for callout menus, some restructuring and renaming</PackageReleaseNotes>
+    <PackageReleaseNotes>1.4.0-beta2: Added callTags in svamlet action</PackageReleaseNotes>
     <PackageIconUrl>https://www.sinch.com/wp-content/uploads/2015/09/NET-icon.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/sinch/nuget-serversdk</PackageProjectUrl>
     <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
@@ -26,7 +26,7 @@
     <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
     <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
     <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
-    <Version>1.4.0-beta1</Version>
+    <Version>1.4.0-beta2</Version>
   </PropertyGroup>
 
   <ItemGroup>

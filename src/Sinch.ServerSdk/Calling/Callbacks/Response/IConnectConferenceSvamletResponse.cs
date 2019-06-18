@@ -1,4 +1,6 @@
-﻿namespace Sinch.ServerSdk.Calling.Callbacks.Response
+﻿using Sinch.ServerSdk.Calling.Models;
+
+namespace Sinch.ServerSdk.Calling.Callbacks.Response
 {
     public interface IConnectConferenceSvamletResponse : ISvamletResponse
     {
@@ -10,6 +12,6 @@
         IConnectConferenceSvamletResponse WithoutEnterAndLeaveSounds();
         IConnectConferenceSvamletResponse WithTwoParts();
         IConnectConferenceSvamletResponse WithMultiParts();
-        IConnectConferenceSvamletResponse WithBillingTag(string tag);
+        IConnectConferenceSvamletResponse WithCallTag(CallTag tagType, string value);
     }
 }

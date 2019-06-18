@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Sinch.ServerSdk.Calling.Callbacks.Request;
+using Sinch.ServerSdk.Calling.Models;
 using Sinch.ServerSdk.IvrMenus;
 using Sinch.ServerSdk.Models;
 
@@ -38,7 +39,9 @@ namespace Sinch.ServerSdk.Examples.CallingCallback
                         .SetCookie("mycookie", "myvalue")
                         .ConnectPstn("+46777888999")
                         .WithBridgeTimeout(TimeSpan.FromMinutes(2.5))
-                        .WithAnonymousCli().Body;
+                        .WithAnonymousCli()
+                        .WithCallTag(CallTag.BillingTag, "C02-14")
+                        .WithCallTag("CustomCallTag", "foo").Body;
 
                 Console.WriteLine(iceResponseText);
             }

@@ -1,4 +1,6 @@
-﻿using Sinch.ServerSdk.Calling.Models;
+﻿using System;
+using Sinch.ServerSdk.Calling.Models;
+using Sinch.ServerSdk.Models;
 
 namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
 {
@@ -42,6 +44,22 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
         public SvamletModel Model
         {
             get; set;
+        }
+
+        protected internal void AddCallTag(CallTag type, string value)
+        {
+            if (Model.Action.CallTags == null)
+            {
+                Model.Action.CallTags = new[] { new KeyValueModel { Key = type, Value = value } };
+
+                return;
+            }
+
+            var newTags = new KeyValueModel[Model.Action.CallTags.Length + 1];
+            Array.Copy(Model.Action.CallTags, newTags, Model.Action.CallTags.Length);
+            newTags[newTags.Length - 1] = new KeyValueModel { Key = type, Value = value };
+
+            Model.Action.CallTags = newTags;
         }
     }
 }

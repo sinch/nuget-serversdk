@@ -1,3 +1,5 @@
+using Sinch.ServerSdk.Calling.Models;
+
 namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
 {
     internal class ConnectConferenceSvamletResponse : SvamletResponse, IConnectConferenceSvamletResponse
@@ -50,9 +52,10 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
             return this;
         }
 
-        public IConnectConferenceSvamletResponse WithBillingTag(string tag)
+        public IConnectConferenceSvamletResponse WithCallTag(CallTag tagType, string value)
         {
-            Model.Action.BillingTag = tag;
+            AddCallTag(tagType, value);
+
             return this;
         }
     }

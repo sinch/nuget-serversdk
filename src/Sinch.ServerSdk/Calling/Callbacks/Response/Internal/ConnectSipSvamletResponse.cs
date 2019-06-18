@@ -1,4 +1,5 @@
-﻿using Sinch.ServerSdk.Models;
+﻿using Sinch.ServerSdk.Calling.Models;
+using Sinch.ServerSdk.Models;
 
 namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
 {
@@ -78,9 +79,10 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
             return this;
         }
 
-        public IConnectSipSvamletResponse WithBillingTag(string tag)
+        public IConnectSipSvamletResponse WithCallTag(CallTag tagType, string value)
         {
-            Model.Action.BillingTag = tag;
+            AddCallTag(tagType, value);
+
             return this;
         }
     }

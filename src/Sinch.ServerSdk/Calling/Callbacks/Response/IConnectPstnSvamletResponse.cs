@@ -1,4 +1,5 @@
 ﻿using System;
+using Sinch.ServerSdk.Calling.Models;
 
 namespace Sinch.ServerSdk.Calling.Callbacks.Response
 {
@@ -14,6 +15,6 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response
         IConnectPstnSvamletResponse WithIndications(string indications);
         IConnectPstnSvamletResponse WithRecording();
         IConnectPstnSvamletResponse WithoutRecording();
-        IConnectPstnSvamletResponse WithBillingTag(string tag);
+        IConnectPstnSvamletResponse WithCallTag(CallTag tagType, string value);
     }
 }

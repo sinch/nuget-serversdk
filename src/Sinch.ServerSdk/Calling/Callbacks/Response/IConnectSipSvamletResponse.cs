@@ -1,4 +1,4 @@
-﻿using Sinch.ServerSdk.Calling.Callbacks.Request;
+﻿using Sinch.ServerSdk.Calling.Models;
 
 namespace Sinch.ServerSdk.Calling.Callbacks.Response
 {
@@ -13,6 +13,6 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response
         IConnectSipSvamletResponse WithoutRecording();
         IConnectSipSvamletResponse WithCallbacks();
         IConnectSipSvamletResponse WithoutCallbacks();
-        IConnectSipSvamletResponse WithBillingTag(string tag);
+        IConnectSipSvamletResponse WithCallTag(CallTag tagType, string value);
     }
 }

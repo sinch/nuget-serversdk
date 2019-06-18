@@ -1,4 +1,6 @@
-﻿namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
+﻿using Sinch.ServerSdk.Calling.Models;
+
+namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
 {
     internal class ConnectMxpSvamletResponse : SvamletResponse, IConnectMxpSvamletResponse
     {
@@ -38,9 +40,10 @@
             return this;
         }
 
-        public IConnectMxpSvamletResponse WithBillingTag(string tag)
+        public IConnectMxpSvamletResponse WithCallTag(CallTag tagType, string value)
         {
-            Model.Action.BillingTag = tag;
+            AddCallTag(tagType, value);
+
             return this;
         }
     }

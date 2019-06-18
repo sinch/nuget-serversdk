@@ -80,7 +80,7 @@ namespace Sinch.ServerSdk.Calling.Models
         [JsonProperty(PropertyName = "_internal", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Internal { get; set; }
 
-        [JsonProperty(PropertyName = "billingTag", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string BillingTag { get; set; }
+        [JsonProperty(PropertyName = "tags", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public KeyValueModel[] CallTags { get; set; }
     }
 }

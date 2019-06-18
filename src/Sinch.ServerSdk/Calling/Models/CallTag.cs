@@ -1,11 +1,8 @@
-﻿using System;
-
-namespace Sinch.ServerSdk.Calling.Models
+﻿namespace Sinch.ServerSdk.Calling.Models
 {
     public sealed class CallTag
     {
-        public static CallTag BillingTag = new CallTag("BillingTag");
-        public static CallTag CountryCode = new CallTag("CountryCode");
+        public static CallTag DefaultBillingTag = new CallTag("BillingTag");
 
         private readonly string _tagName;
 
@@ -14,7 +11,7 @@ namespace Sinch.ServerSdk.Calling.Models
             _tagName = tagName;
         }
 
-        public static implicit operator String(CallTag tag) => tag._tagName;
+        public static implicit operator string(CallTag tag) => tag._tagName;
         public static implicit operator CallTag(string tagName) => new CallTag(tagName);
 
         public static CallTag Custom(string tagName) => tagName;

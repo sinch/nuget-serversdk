@@ -40,7 +40,7 @@ namespace Sinch.ServerSdk.Examples.CallingCallback
                         .ConnectPstn("+46777888999")
                         .WithBridgeTimeout(TimeSpan.FromMinutes(2.5))
                         .WithAnonymousCli()
-                        .WithCallTag(CallTag.BillingTag, "C02-14")
+                        .WithCallTag(CallTag.DefaultBillingTag, "C02-14")
                         .WithCallTag("CustomCallTag", "foo").Body;
 
                 Console.WriteLine(iceResponseText);

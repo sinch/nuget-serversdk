@@ -16,5 +16,6 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response
         IConnectPstnSvamletResponse WithRecording();
         IConnectPstnSvamletResponse WithoutRecording();
         IConnectPstnSvamletResponse WithCallTag(CallTag tagType, string value);
+        IConnectPstnSvamletResponse WithDTMF(string dtmf);
     }
 }

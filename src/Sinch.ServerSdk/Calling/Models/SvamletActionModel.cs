@@ -14,6 +14,10 @@ namespace Sinch.ServerSdk.Calling.Models
         [JsonProperty(PropertyName = "number", NullValueHandling = NullValueHandling.Ignore)]
         public string Number { get; set; }
 
+
+        [JsonProperty(PropertyName = "dtmf", NullValueHandling = NullValueHandling.Ignore)]
+        public string Dtmf { get; set; }
+
         [JsonProperty(PropertyName = "cli", NullValueHandling = NullValueHandling.Ignore)]
         public string Cli { get; set; }
 

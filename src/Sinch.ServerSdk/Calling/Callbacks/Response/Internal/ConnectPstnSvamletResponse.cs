@@ -10,6 +10,11 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
             Model.Action.DialTimeout = (int) timeout.TotalSeconds;
             return this;
         }
+        public IConnectPstnSvamletResponse WithDTMF(string code)
+        {
+            Model.Action.Dtmf = code;
+            return this;
+        }
 
         public IConnectPstnSvamletResponse WithBridgeTimeout(TimeSpan timeout)
         {

@@ -11,13 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5DE443D9-D22
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CallingCallback", "Examples\CallingCallback\CallingCallback.csproj", "{231D055E-A58C-44C0-94D6-2B10A3FFF40C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinch.SendSms.Example", "Examples\Sinch.SendSms.Example\Sinch.SendSms.Example.csproj", "{709C1AC7-8473-4F18-959E-24C6DDBFED3E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinch.ServerSdk.Callback.WebApi", "Extensions\Sinch.ServerSdk.Callback.WebApi\Sinch.ServerSdk.Callback.WebApi.csproj", "{EA35A9DB-57F4-437C-81AA-E956CD90A652}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinch.ReceiveSms.Example", "Examples\Sinch.ReceiveSms.Example\Sinch.ReceiveSms.Example.csproj", "{C5A6E93B-F987-4297-9317-7C512B1DA358}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinch.Verification.Callback.Example", "Examples\Sinch.Verification.Callback.Example\Sinch.Verification.Callback.Example.csproj", "{6807066D-B36A-4E5E-B4E8-4025E13973C1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinch.Verification.Example", "Examples\Sinch.Verification.Example\Sinch.Verification.Example.csproj", "{C4222643-5E07-40A7-B9A7-FC166D891215}"
 EndProject

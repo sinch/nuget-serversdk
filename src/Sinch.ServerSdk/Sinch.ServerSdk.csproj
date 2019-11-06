@@ -7,11 +7,12 @@
     <Title>Sinch Server SDK</Title>
     <VersionPrefix>1.4.0</VersionPrefix>
     <Authors>Sinch AB</Authors>
-    <TargetFrameworks>netstandard1.3;net46</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net462; net45</TargetFrameworks>
     <AssemblyName>Sinch.ServerSdk</AssemblyName>
     <PackageId>Sinch.ServerSdk</PackageId>
     <PackageTags>sinch;calling;sms;verification;pstn;messaging;callback;request;signing;flashcall;callout;conference</PackageTags>
-    <PackageReleaseNotes>1.4.0-beta2: Added callTags in svamlet action</PackageReleaseNotes>
+    <PackageReleaseNotes>2.0 added netstandard,net46 to support tls 1.2
+added dtmf and support for geographical endpoints.</PackageReleaseNotes>
     <PackageIconUrl>https://www.sinch.com/wp-content/uploads/2015/09/NET-icon.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/sinch/nuget-serversdk</PackageProjectUrl>
     <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
@@ -26,7 +27,7 @@
     <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
     <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
     <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
-    <Version>1.4.0-beta2</Version>
+    <Version>2.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -36,12 +37,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-    <PackageReference Include="Sinch.WebApiClient" Version="1.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="Sinch.WebApiClient" Version="2.0.1-beta" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
-    <PackageReference Include="System.Net.Http" Version="4.1.1" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
     <PackageReference Include="Sinch.WebApiClient" Version="1.1.0" />

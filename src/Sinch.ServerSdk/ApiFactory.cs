@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http;
 using Sinch.ServerSdk.ApiFilters;
 using Sinch.ServerSdk.Callback;
 using Sinch.ServerSdk.Calling;
@@ -51,8 +52,20 @@ namespace Sinch.ServerSdk
         private readonly byte[] _secret;
         private readonly string _url;
         private readonly Locale _locale;
-
-        internal ApiFactory(string key, string secret, Locale locale, string url = "https://api.sinch.com")
+        /// <summary>
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="secret"></param>
+        /// <param name="locale"></param>
+        /// <param name="url">
+        /// Its different enpints for each region, to initialise with one specific region pass in https://{0}-use1-api.sinch.com 0 will 
+        /// https://*-euc1.api.sinch.com/[version]  - Europe
+        /// https://*-use1.api.sinch.com/[version]  - United States
+        /// https://*-sae1.api.sinch.com/[version]  - South America
+        /// https://*-apse1.api.sinch.com/[version] - South East Asia 1
+        /// https://*-apse2.api.sinch.com/[version] - South East Asia 2
+        /// </param>
+        internal ApiFactory(string key, string secret, Locale locale, string url = "https://{0}-use1-api.sinch.com")
         {
             if (string.IsNullOrWhiteSpace(key))
                 throw new ArgumentNullException(nameof(key), "Sinch application key cannot be null.");
@@ -85,7 +98,7 @@ namespace Sinch.ServerSdk
             if (string.IsNullOrWhiteSpace(url))
                 throw new ArgumentNullException(nameof(url), "Sinch API URL cannot be null.");
 
-            if (!Uri.TryCreate(url, UriKind.Absolute, out _))
+            if (!Uri.TryCreate(String.Format(url, "calling"), UriKind.Absolute, out _))
                 throw new ArgumentException(
                     "Sinch API URL is in an invalid format.  The default URL is https://api.sinch.com");
 
@@ -99,28 +112,36 @@ namespace Sinch.ServerSdk
 
         public ISmsApi CreateSmsApi()
         {
-            return new SmsApi(CreateApiClient<ISmsApiEndpoints>());
+            return new SmsApi(CreateApiClient<ISmsApiEndpoints>(_url));
         }
+     
 
         public ICalloutApi CreateCalloutApi()
         {
-            return new CalloutApi(CreateApiClient<ICalloutApiEndpoints>(), new CallbackResponseFactory(_locale));
+            return new CalloutApi(CreateApiClient<ICalloutApiEndpoints>(String.Format(_url, "calling")), new CallbackResponseFactory(_locale));
 
         }
+        
 
         public IConferenceApi CreateConferenceApi()
         {
-            return new ConferenceApi(CreateApiClient<IConferenceApiEndpoints>());
+            return new ConferenceApi(CreateApiClient<IConferenceApiEndpoints>(String.Format(_url, "calling")));
         }
 
         public IVerificationApi CreateVerificationApi()
         {
-            return new VerificationApi(CreateApiClient<IVerificationApiEndpoints>());
+            return new VerificationApi(CreateApiClient<IVerificationApiEndpoints>("https://verificationapi-v1.sinch.com/verification/v1"));
         }
 
         private T CreateApiClient<T>() where T : class
         {
-            return new WebApiClientFactory().CreateClient<T>(_url, new ApplicationSigningFilter(_key, _secret),
+            return CreateApiClient<T>(_url);
+        }
+        private T CreateApiClient<T>(string url) where T : class
+        {
+            //var handler = new HttpClientHandler();
+            //handler.SslProtocols = System.Security.Authentication.SslProtocols.Tls12;
+            return new WebApiClientFactory().CreateClient<T>(url, new ApplicationSigningFilter(_key, _secret),
                 new RestReplyFilter());
         }
     }

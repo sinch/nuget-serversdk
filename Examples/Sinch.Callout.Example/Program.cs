@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Sinch.ServerSdk;
 using Sinch.ServerSdk.Calling.Callbacks.Response;
+using Sinch.ServerSdk.Callouts;
 using Sinch.ServerSdk.IvrMenus;
 
 namespace Sinch.Callout.Example
@@ -20,6 +21,12 @@ namespace Sinch.Callout.Example
             // TTS callout
             var calloutResponse = await calloutApi.TtsCallout("+15612600684", "How are you doing?", "").Call();
             
+            Console.WriteLine(calloutResponse.callId);
+            Console.ReadLine();
+
+            // Conference callout
+            calloutResponse = await calloutApi.ConferenceCallout(To.Username("Buddy"), "ConfId-123", "", "Welcome!").Call();
+
             Console.WriteLine(calloutResponse.callId);
             Console.ReadLine();
 

@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Sinch.ServerSdk;
 using Sinch.ServerSdk.Calling.Callbacks.Response;
 using Sinch.ServerSdk.IvrMenus;
+using Sinch.ServerSdk.Models;
 
 namespace Sinch.Callout.Example
 {
@@ -32,7 +33,25 @@ namespace Sinch.Callout.Example
                 .AddNumberInputMenu("input", new PromptFile("enterprompt"), 4);
 
 
-            calloutResponse = await calloutApi.MenuCallout("+15612600684", "+15612600684", menu, "main", TimeSpan.FromSeconds(5)).Call();
+            calloutResponse = await calloutApi
+                .MenuCallout("+15612600684", "+15612600684", menu, "main", TimeSpan.FromSeconds(5)).Call();
+
+            Console.WriteLine(calloutResponse.callId);
+            Console.ReadLine();
+
+            // Custom callout with ICE and ACE handlers
+            var crf = SinchFactory.CreateCallbackResponseFactory(Locale.EnUs);
+
+            var ice = crf.CreateIceSvamletBuilder()
+                .ConnectPstn("+15612600684")
+                .WithAnonymousCli()
+                .WithDialTimeout(TimeSpan.FromSeconds(30));
+
+            var ace = crf.CreateAceSvamletBuilder()
+                .Say("Hello there!")
+                .Build();
+
+            calloutResponse = await calloutApi.CustomCallout(ice.Body, ace.Body, null, null).Call();
 
             Console.WriteLine(calloutResponse.callId);
             Console.ReadLine();

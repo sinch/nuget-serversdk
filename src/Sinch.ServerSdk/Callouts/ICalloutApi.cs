@@ -15,5 +15,7 @@ namespace Sinch.ServerSdk.Callouts
         ICalloutRequest MenuCallout(string to, string from, IMenuBuilder menu, string startMenu, TimeSpan? maxDuration, string dtmf);
 
         IMenuBuilder CreateMenuBuilder();
+
+        ICalloutRequest CustomCallout(string ice, string ace, string pie, string dice);
     }
 }

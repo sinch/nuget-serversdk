@@ -1,4 +1,5 @@
 ﻿using System;
+using Sinch.ServerSdk.Calling.Callbacks.Response;
 using Sinch.ServerSdk.IvrMenus;
 using Sinch.ServerSdk.Models;
 
@@ -93,13 +94,21 @@ namespace Sinch.ServerSdk.Callouts
         {
             return new MenuBuilder();
         }
+        
+        public ICalloutRequest CustomCallout(string ice, string ace, string pie, string dice)
+        {
+            var request = _request;
+            request.Method = "customCallout";
 
- 
+            request.CustomCallout = new CustomCalloutCalloutRequest
+            {
+                Ice = ice,
+                Ace = ace,
+                Pie = pie,
+                Dice = dice
+            };
 
-
-   
-
-   
-
+            return request;
+        }
     }
 }

@@ -4,6 +4,6 @@ using Sinch.WebApiClient;
 
 public interface ICalloutApiEndpoints
 {
-    [HttpPost("calling/v1/callouts/")]
+    [HttpPost("calling/v1/callouts")]
     Task<CalloutResponse> Callout([ToBody] CalloutRequest request);
 }

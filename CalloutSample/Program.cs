@@ -17,7 +17,7 @@ namespace CalloutSample
         private static async Task MainAsync()
         {
           
-            var calloutApi = SinchFactory.CreateApiFactory("f429b49c-4ca8-4b9a-9376-3c22428c5309", "ui8/g2EMaEieaPA5/1L+fQ==").CreateCalloutApi();
+            var calloutApi = SinchFactory.CreateApiFactory("", "").CreateCalloutApi();
             IMenuBuilder menuBuilder = calloutApi.CreateMenuBuilder();
             menuBuilder.AddNumberInputMenu("main", "This is a test call from Azure MFA. Please enter the following digits: 1 7 8 9. Press 'pound' if the digits were unclear.", 4,
                    "This is a test call from Azure MFA. Please enter the following digits: 1 7 8 9. Press 'pound' if the digits were unclear.", 1, TimeSpan.FromSeconds(15));

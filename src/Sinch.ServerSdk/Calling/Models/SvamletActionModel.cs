@@ -89,5 +89,8 @@ namespace Sinch.ServerSdk.Calling.Models
 
         [JsonProperty(PropertyName = "tags", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public KeyValueModel[] CallTags { get; set; }
+
+        [JsonProperty(PropertyName = "amd")]
+        public AmdOptions Amd { get; set; }
     }
 }

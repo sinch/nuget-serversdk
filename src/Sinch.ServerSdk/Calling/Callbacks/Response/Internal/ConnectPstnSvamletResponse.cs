@@ -16,6 +16,12 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
             return this;
         }
 
+        public IConnectPstnSvamletResponse WithAnsweringMachineDetection()
+        {
+            Model.Action.Amd = new AmdOptions {Enabled = true};
+            return this;
+        }
+
         public IConnectPstnSvamletResponse WithBridgeTimeout(TimeSpan timeout)
         {
             if (timeout.TotalMinutes > 240)

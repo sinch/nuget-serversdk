@@ -90,7 +90,7 @@ namespace Sinch.ServerSdk.Calling.Models
         [JsonProperty(PropertyName = "tags", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public KeyValueModel[] CallTags { get; set; }
 
-        [JsonProperty(PropertyName = "amd")]
+        [JsonProperty(PropertyName = "amd", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public AmdOptions Amd { get; set; }
     }
 }

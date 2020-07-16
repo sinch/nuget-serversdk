@@ -41,7 +41,8 @@ namespace Sinch.ServerSdk.Examples.CallingCallback
                         .WithBridgeTimeout(TimeSpan.FromMinutes(2.5))
                         .WithAnonymousCli()
                         .WithCallTag(CallTag.DefaultBillingTag, "C02-14")
-                        .WithCallTag("CustomCallTag", "foo").Body;
+                        .WithCallTag("CustomCallTag", "foo")
+                        .WithAnsweringMachineDetection().Body;
 
                 Console.WriteLine(iceResponseText);
             }

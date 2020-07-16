@@ -127,17 +127,36 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
 
         public ISvamletResponse RunMenu(string menuId, IMenuBuilder menuBuilder)
         {
+            return RunMenu(menuId, false, menuBuilder);
+        }
+
+        public ISvamletResponse RunMenu(string menuId, bool enableVoice, IMenuBuilder menuBuilder)
+        {
             var menus = menuBuilder.Build().ToDictionary(m => m.Id, m => m);
 
             if (!menus.ContainsKey(menuId))
                 throw new BuilderException("Menu '" + menuId + "' is not defined");
+
+            if (!enableVoice)
+            {
+                foreach(var menu in menus)
+                    if (menu.Value.Options != null)
+                        foreach (var option in menu.Value.Options)
+                        {
+                            if (option.Input != null && option.Digit == null)
+                                throw new BuilderException("Menus with voice option disabled only support DTMF input");
+
+                            option.Input = null;
+                        }
+            }
 
             SetAction(new SvamletActionModel
             {
                 Name = "runmenu",
                 Locale = Locale.Code,
                 MainMenu = menuId,
-                Menus = menus.Values.ToArray()
+                Menus = menus.Values.ToArray(),
+                EnableVoice = enableVoice ? true : default(bool?) // avoid including the property in the serialized version if false
             });
 
             return Build();

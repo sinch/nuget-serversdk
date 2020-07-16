@@ -8,6 +8,9 @@ namespace Sinch.ServerSdk.Calling.Models
         [JsonProperty(PropertyName = "dtmf", NullValueHandling = NullValueHandling.Ignore)]
         public string Digit { get; set; }
 
+        [JsonProperty(PropertyName = "input", NullValueHandling = NullValueHandling.Ignore)]
+        public string Input { get; set; }
+
         [JsonProperty(PropertyName = "action")]
         public string Action { get; set; }
 

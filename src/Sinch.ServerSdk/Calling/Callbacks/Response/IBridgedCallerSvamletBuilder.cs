@@ -11,5 +11,6 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response
         IConnectSipSvamletResponse ConnectRegisteredSipPeer(string authName);
         IConnectMxpSvamletResponse ConnectMxp(IIdentity identity);
         ISvamletResponse RunMenu(string menuId, IMenuBuilder menuBuilder);
+        ISvamletResponse RunMenu(string menuId, bool enableVoice, IMenuBuilder menuBuilder);
     }
 }

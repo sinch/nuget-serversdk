@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Sinch.ServerSdk.Calling.Callbacks.Response;
 using Sinch.ServerSdk.Calling.Models;
 using Sinch.ServerSdk.Models;
 
@@ -12,9 +13,6 @@ namespace Sinch.ServerSdk.IvrMenus
 
         private readonly IDictionary<string, NumberInputMenu> _numberInputMenus =
             new Dictionary<string, NumberInputMenu>();
-
-        private TypeMapper Mapper { get; } = new TypeMapper();
-
 
         public IMenu BeginMenuDefinition(string menuId, Prompt prompt, TimeSpan? timeout)
         {
@@ -68,11 +66,13 @@ namespace Sinch.ServerSdk.IvrMenus
                         mo.Value.Item2 != null
                             ? mo.Value.Item2.Select(c => new KeyValueModel {Key = c.Key, Value = c.Value}).ToArray()
                             : null,
-                    Digit = Mapper.AsString(mo.Key)
+                    Digit = mo.Key.Dtmf,
+                    Input = mo.Key.Input
                 }).Union(m.Value.ReturnOptions.Select(ro => new MenuOptionModel()
                 {
                     Action = "return(" + ro.Value + ")",
-                    Digit = Mapper.AsString(ro.Key),
+                    Digit = ro.Key.Dtmf,
+                    Input = ro.Key.Input
                 }));
 
                 menu.Options = options.ToArray();

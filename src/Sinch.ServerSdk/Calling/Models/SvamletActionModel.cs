@@ -60,6 +60,9 @@ namespace Sinch.ServerSdk.Calling.Models
         [JsonProperty(PropertyName = "barge", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public bool Barge { get; set; }
 
+        [JsonProperty(PropertyName = "enableVoice", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public bool? EnableVoice { get; set; }
+
         [JsonProperty(PropertyName = "hangupCause", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public int HangupCause { get; set; }
 

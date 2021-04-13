@@ -68,9 +68,6 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
             if (_promptSpecifications.Count > 64)
                 throw new BuilderException("Cannot specify more than 64 TTS strings or file parts");
 
-            if (file.Length > 128)
-                throw new BuilderException("File names can not be longer than 128 characters");
-
             if(file.StartsWith("http", StringComparison.OrdinalIgnoreCase))
                 _promptSpecifications.Add("#href[" + file + "]");
             else

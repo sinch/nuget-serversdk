@@ -21,5 +21,8 @@ namespace Sinch.ServerSdk.Calling.Models
 
         [JsonProperty(PropertyName = "value", NullValueHandling = NullValueHandling.Ignore)]
         public string Value { get; set; }
+
+        [JsonProperty(PropertyName = "details", NullValueHandling = NullValueHandling.Ignore)]
+        public string Details { get; set; }
     }
 }

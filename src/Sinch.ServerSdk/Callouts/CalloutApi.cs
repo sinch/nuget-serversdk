@@ -96,7 +96,7 @@ namespace Sinch.ServerSdk.Callouts
             {
                 Ice = _responseFactory.CreateIceSvamletBuilder().ConnectPstn(to).WithDTMF(dtmf).WithCli(@from).WithBridgeTimeout(waittime).Body,
                 Ace = _responseFactory.CreateAceSvamletBuilder().RunMenu(startMenu, menu).Body,
-                Dice = _responseFactory.CreateDiceResponse().Body
+                Dice = _responseFactory.CreateDiceResponse().Build().Body
             };
 
             return request;

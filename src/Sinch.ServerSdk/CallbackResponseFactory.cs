@@ -38,7 +38,7 @@ namespace Sinch.ServerSdk
         /// Creates a DICE svamlet response
         /// </summary>
         /// <returns></returns>
-        ISvamletResponse CreateDiceResponse();
+        IDiceSvamletBuilder CreateDiceResponse();
 
         /// <summary>
         /// Creates a notification svamlet response
@@ -62,7 +62,7 @@ namespace Sinch.ServerSdk
         public IIceSvamletBuilder CreateIceSvamletBuilder() { return new IceSvamletBuilder(_locale); }
         public IAceSvamletBuilder CreateAceSvamletBuilder() { return new AceSvamletBuilder(_locale); }
         public IManageCallSvamletBuilder CreateManageCallSvamletBuilder() { return new ManageCallSvamletBuilder(_locale); }
-        public ISvamletResponse CreateDiceResponse() { return new SvamletResponse { Model = new SvamletModel() }; }
+        public IDiceSvamletBuilder CreateDiceResponse() { return new DiceSvamletBuilder(_locale); }
         public ISvamletResponse CreateNotificationResponse() { return new SvamletResponse { Model = new SvamletModel() }; }
         public IMenuBuilder CreateMenuBuilder() { return new MenuBuilder(); }
     }

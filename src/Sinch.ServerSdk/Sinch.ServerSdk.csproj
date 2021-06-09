@@ -5,8 +5,8 @@
     <Copyright>Copyright © 2015, 2016, 2017, 2018, 2019 Sinch AB</Copyright>
     <AssemblyTitle>Sinch Server SDK</AssemblyTitle>
     <Title>Sinch Server SDK</Title>
-    <VersionPrefix>1.4.0</VersionPrefix>
     <Authors>Sinch AB</Authors>
+    <Version>2.2.0</Version>
     <TargetFrameworks>netstandard2.0;net462; net45</TargetFrameworks>
     <AssemblyName>Sinch.ServerSdk</AssemblyName>
     <PackageId>Sinch.ServerSdk</PackageId>
@@ -27,7 +27,6 @@ added dtmf and support for geographical endpoints.</PackageReleaseNotes>
     <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
     <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
     <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
-    <Version>2.1.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

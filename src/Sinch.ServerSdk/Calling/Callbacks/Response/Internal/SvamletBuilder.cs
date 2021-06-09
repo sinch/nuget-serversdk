@@ -85,6 +85,19 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
             _promptSpecifications.Add("#ssml[" + ssml + "]");
         }
 
+        protected void InternalReportCallStatus(CallStatus status, string details)
+        {
+            if (details?.Length > 64)
+                throw new BuilderException("Cannot specify more than 64 characters for details");
+
+            _instructions.Add(new SvamletInstructionModel
+            {
+                Name = "ReportCallStatus",
+                Value = status.ToString().ToLowerInvariant(),
+                Details = details
+            });
+        }
+
         public ISvamletResponse Hangup()
         {
             return Hangup(HangupCause.Normal);
@@ -121,7 +134,7 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
                 Model = new SvamletModel()
                 {
                     Action = _actionModel,
-                    Instructions = _instructions.ToArray()
+                    Instructions = _instructions?.Count > 0 ? _instructions.ToArray() : null
                 }
             };
         }

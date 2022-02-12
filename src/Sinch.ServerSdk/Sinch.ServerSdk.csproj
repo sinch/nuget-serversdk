@@ -7,7 +7,7 @@
     <Title>Sinch Server SDK</Title>
     <Authors>Sinch AB</Authors>
     <Version>2.2.0</Version>
-    <TargetFrameworks>netstandard2.0;net462; net45</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <AssemblyName>Sinch.ServerSdk</AssemblyName>
     <PackageId>Sinch.ServerSdk</PackageId>
     <PackageTags>sinch;calling;sms;verification;pstn;messaging;callback;request;signing;flashcall;callout;conference</PackageTags>
@@ -36,7 +36,7 @@ added dtmf and support for geographical endpoints.</PackageReleaseNotes>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Sinch.WebApiClient" Version="2.0.2" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
   </ItemGroup>
@@ -52,6 +52,10 @@ added dtmf and support for geographical endpoints.</PackageReleaseNotes>
     <None Update="..\..\License.txt;..\..\Readme.md">
       <Pack>true</Pack>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Calling\Configuration\" />
   </ItemGroup>
 
 </Project>

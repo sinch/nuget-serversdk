@@ -128,6 +128,10 @@ namespace Sinch.ServerSdk
             return new ConferenceApi(CreateApiClient<IConferenceApiEndpoints>(String.Format(_url, "calling")));
         }
 
+        public IConfigurationApi CreateConfigurationApi()
+        {
+            return new ConfigurationApi(CreateApiClient<IConfigurationApiEndpoints>(String.Format(_url, "calling")));
+        }
         public IVerificationApi CreateVerificationApi()
         {
             return new VerificationApi(CreateApiClient<IVerificationApiEndpoints>("https://verificationapi-v1.sinch.com/verification/v1"));

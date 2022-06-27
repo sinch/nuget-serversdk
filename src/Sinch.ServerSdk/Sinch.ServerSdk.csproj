@@ -6,7 +6,7 @@
     <AssemblyTitle>Sinch Server SDK</AssemblyTitle>
     <Title>Sinch Server SDK</Title>
     <Authors>Sinch AB</Authors>
-    <Version>2.2.0</Version>
+    <Version>2.3.0</Version>
     <TargetFrameworks>netstandard2.0;net462; net45</TargetFrameworks>
     <AssemblyName>Sinch.ServerSdk</AssemblyName>
     <PackageId>Sinch.ServerSdk</PackageId>

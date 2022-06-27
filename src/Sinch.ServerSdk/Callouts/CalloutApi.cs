@@ -1,6 +1,6 @@
-﻿using System;
-using Sinch.ServerSdk.Calling.Callbacks.Response;
-using Sinch.ServerSdk.IvrMenus;
+﻿using Sinch.ServerSdk.IvrMenus;
+using System;
+using System.Globalization;
 
 namespace Sinch.ServerSdk.Callouts
 {
@@ -8,11 +8,12 @@ namespace Sinch.ServerSdk.Callouts
     {
         private readonly CallbackResponseFactory _responseFactory;
         private readonly CalloutRequest _request;
+        private readonly ICalloutApiEndpoints _apiEndpoints;
 
         internal CalloutApi(ICalloutApiEndpoints calloutApiEndpoints, CallbackResponseFactory responseFactory)
         {
             _responseFactory = responseFactory;
-            _request = new CalloutRequest(calloutApiEndpoints);
+            _request = new CalloutRequest(_apiEndpoints = calloutApiEndpoints);
         }
 
         public ICalloutRequest TtsCallout(string to, string message, string from, string dtmf)
@@ -121,6 +122,27 @@ namespace Sinch.ServerSdk.Callouts
             };
 
             return request;
+        }
+
+        public ICallStatusReportRequest ReportCallStatus(string callId, CallStatusReport report)
+        {
+            if (callId == null)
+                throw new ArgumentNullException(nameof(callId));
+
+            if (string.Empty.Equals(callId))
+                throw new ArgumentException("Invalid callId specified", nameof(callId));
+
+            if (report == null)
+                throw new ArgumentNullException(nameof(report));
+
+            if (report.Details?.Length > 64)
+                throw new ArgumentException("Details property value is too long. Maximum 64 characters allowed.");
+
+            return new CallStatusReportRequest(_apiEndpoints, callId, new CallStatusReportModel
+            {
+                Details = report.Details,
+                Status = report.Status.ToString()
+            });
         }
     }
 }

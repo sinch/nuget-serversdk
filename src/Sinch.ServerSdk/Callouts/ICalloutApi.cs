@@ -23,5 +23,12 @@ namespace Sinch.ServerSdk.Callouts
         IMenuBuilder CreateMenuBuilder();
 
         ICalloutRequest CustomCallout(string ice, string ace, string pie, string dice);
+
+        ICallStatusReportRequest ReportCallStatus(string callId, CallStatusReport report);
+    }
+
+    public class CallStatusReportResponse
+    {
+
     }
 }

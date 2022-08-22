@@ -1,3 +1,4 @@
+using Sinch.ServerSdk.Calling.Callbacks.Request;
 using Sinch.ServerSdk.Calling.Models;
 
 namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
@@ -56,6 +57,12 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response.Internal
         {
             AddCallTag(tagType, value);
 
+            return this;
+        }
+
+        public IConnectConferenceSvamletResponse WithDtmfMode(DtmfMode mode)
+        {
+            Model.Action.DtmfMode = mode.ToString();
             return this;
         }
     }

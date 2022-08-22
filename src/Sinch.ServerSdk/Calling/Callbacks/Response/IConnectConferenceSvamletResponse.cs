@@ -1,4 +1,5 @@
-﻿using Sinch.ServerSdk.Calling.Models;
+﻿using Sinch.ServerSdk.Calling.Callbacks.Request;
+using Sinch.ServerSdk.Calling.Models;
 
 namespace Sinch.ServerSdk.Calling.Callbacks.Response
 {
@@ -13,5 +14,6 @@ namespace Sinch.ServerSdk.Calling.Callbacks.Response
         IConnectConferenceSvamletResponse WithTwoParts();
         IConnectConferenceSvamletResponse WithMultiParts();
         IConnectConferenceSvamletResponse WithCallTag(CallTag tagType, string value);
+        IConnectConferenceSvamletResponse WithDtmfMode(DtmfMode mode);
     }
 }

@@ -92,5 +92,8 @@ namespace Sinch.ServerSdk.Calling.Models
 
         [JsonProperty(PropertyName = "amd", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public AmdOptions Amd { get; set; }
+
+        [JsonProperty(PropertyName = "dtmfMode", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string DtmfMode { get; set; }
     }
 }

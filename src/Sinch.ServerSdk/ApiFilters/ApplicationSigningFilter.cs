@@ -1,17 +1,14 @@
 using System;
 using System.Globalization;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Sinch.WebApiClient;
 
 namespace Sinch.ServerSdk.ApiFilters
 {
-    public class ApplicationSigningFilter : IActionFilter
+    internal class ApplicationSigningFilter : SinchSigningFilterBase
     {
         readonly string _key;
         readonly byte[] _secret;
@@ -22,7 +19,7 @@ namespace Sinch.ServerSdk.ApiFilters
             _secret = secret;
         }
 
-        public async Task OnActionExecuting(HttpRequestMessage requestMessage)
+        public override async Task OnActionExecuting(HttpRequestMessage requestMessage)
         {
             requestMessage.Headers.Add("x-timestamp", DateTime.UtcNow.ToString("O", CultureInfo.InvariantCulture));
 
@@ -32,27 +29,6 @@ namespace Sinch.ServerSdk.ApiFilters
             {
                 var signature = Convert.ToBase64String(sha.ComputeHash(Encoding.UTF8.GetBytes(stringToSign)));
                 requestMessage.Headers.TryAddWithoutValidation("authorization", "application " + _key + ":" + signature);
-            }
-        }
-
-        public async Task OnActionExecuted(HttpResponseMessage responseMessage)
-        {
-            if (responseMessage.StatusCode != HttpStatusCode.OK &&
-                responseMessage.StatusCode != HttpStatusCode.NoContent)
-            {
-                var value = await responseMessage.Content.ReadAsStringAsync();
-                ApiError error;
-                try
-                {
-                    error = JsonConvert.DeserializeObject<ApiError>(value) ??
-                            new ApiError { ErrorCode = (int)responseMessage.StatusCode, Message = "Unable to deserialize exception (because it seems to be empty): " + value };
-                }
-                catch (JsonSerializationException)
-                {
-                    error = new ApiError { ErrorCode = (int)responseMessage.StatusCode, Message = "Unable to deserialize exception: " + value };
-                }
-
-                throw new ApiException(error);
             }
         }
 

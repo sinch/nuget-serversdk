@@ -1,6 +1,4 @@
-﻿using System;
-using System.Net.Http;
-using Sinch.ServerSdk.ApiFilters;
+﻿using Sinch.ServerSdk.ApiFilters;
 using Sinch.ServerSdk.Callback;
 using Sinch.ServerSdk.Calling;
 using Sinch.ServerSdk.Calling.Fluent;
@@ -11,6 +9,8 @@ using Sinch.ServerSdk.Models;
 using Sinch.ServerSdk.Verification;
 using Sinch.ServerSdk.Verification.Fluent;
 using Sinch.WebApiClient;
+using System;
+using System.Text;
 
 namespace Sinch.ServerSdk
 {
@@ -48,10 +48,12 @@ namespace Sinch.ServerSdk
 
     internal class ApiFactory : IApiFactory
     {
-        private readonly string _key;
-        private readonly byte[] _secret;
         private readonly string _url;
         private readonly Locale _locale;
+        private readonly ICallbackValidator _callbackValidator;
+
+        private readonly Func<IActionFilter> _signingFilterFactory;
+
         /// <summary>
         /// </summary>
         /// <param name="key"></param>
@@ -78,23 +80,11 @@ namespace Sinch.ServerSdk
                 throw new ArgumentException(
                     "Replace the Sinch application key with the one copied from your Sinch developer dashboard.");
 
-            _key = key;
-
             if (string.IsNullOrWhiteSpace(secret))
                 throw new ArgumentNullException(nameof(secret), "Sinch application secret cannot be null.");
 
             _locale = locale;
-
-            try
-            {
-                _secret = Convert.FromBase64String(secret.Trim());
-            }
-            catch (FormatException)
-            {
-                throw new ArgumentException(
-                    "Sinch application secret is in an invalid format.  Confirm the secret is correctly copied from your Sinch developer dashboard.");
-            }
-
+            
             if (string.IsNullOrWhiteSpace(url))
                 throw new ArgumentNullException(nameof(url), "Sinch API URL cannot be null.");
 
@@ -103,25 +93,61 @@ namespace Sinch.ServerSdk
                     "Sinch API URL is in an invalid format.  The default URL is https://api.sinch.com");
 
             _url = url;
+
+            byte[] secretKey = ParseSecretKey(secret);
+
+            _signingFilterFactory = 
+                () => new ApplicationSigningFilter(key, secretKey);
+
+            _callbackValidator = new CallbackValidator(key, secretKey);
+        }
+
+        private byte[] ParseSecretKey(string secret)
+        {
+            try
+            {
+                return Convert.FromBase64String(secret.Trim());
+            }
+            catch (FormatException)
+            {
+                throw new ArgumentException(
+                    "Sinch application secret is in an invalid format.  Confirm the secret is correctly copied from your Sinch developer dashboard.");
+            }
+        }
+
+        internal ApiFactory(SinchAccessCredentials credentials, Locale locale, string url = "https://{0}-use1-api.sinch.com")
+        {
+            if (credentials == null)
+                throw new ArgumentNullException(nameof(credentials));
+
+            _locale = locale ?? throw new ArgumentNullException(nameof(locale));
+
+            if (string.IsNullOrWhiteSpace(url))
+                throw new ArgumentNullException(nameof(url), "Sinch API URL cannot be null.");
+
+            _url = url;
+
+            _signingFilterFactory = () => new AccessCredentialsSigningFilter(credentials);
+
+            _callbackValidator = new CallbackValidator(
+                credentials.AccessKeyId, Encoding.ASCII.GetBytes(credentials.KeySecret));
         }
 
         public ICallbackValidator CreateCallbackValidator()
         {
-            return new CallbackValidator(_key, _secret);
+            return _callbackValidator;
         }
 
         public ISmsApi CreateSmsApi()
         {
             return new SmsApi(CreateApiClient<ISmsApiEndpoints>(_url));
         }
-     
 
         public ICalloutApi CreateCalloutApi()
         {
             return new CalloutApi(CreateApiClient<ICalloutApiEndpoints>(String.Format(_url, "calling")), new CallbackResponseFactory(_locale));
 
         }
-        
 
         public IConferenceApi CreateConferenceApi()
         {
@@ -137,12 +163,9 @@ namespace Sinch.ServerSdk
         {
             return CreateApiClient<T>(_url);
         }
-        private T CreateApiClient<T>(string url) where T : class
-        {
-            //var handler = new HttpClientHandler();
-            //handler.SslProtocols = System.Security.Authentication.SslProtocols.Tls12;
-            return new WebApiClientFactory().CreateClient<T>(url, new ApplicationSigningFilter(_key, _secret),
+
+        private T CreateApiClient<T>(string url) where T : class =>
+            new WebApiClientFactory().CreateClient<T>(url, _signingFilterFactory(),
                 new RestReplyFilter());
-        }
     }
 }

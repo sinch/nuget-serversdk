@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Net.Http;
 using Sinch.ServerSdk.ApiFilters;
 using Sinch.ServerSdk.Callback;
 using Sinch.ServerSdk.Calling;
 using Sinch.ServerSdk.Calling.Fluent;
 using Sinch.ServerSdk.Callouts;
-using Sinch.ServerSdk.Messaging;
-using Sinch.ServerSdk.Messaging.Fluent;
 using Sinch.ServerSdk.Models;
-using Sinch.ServerSdk.Verification;
-using Sinch.ServerSdk.Verification.Fluent;
 using Sinch.WebApiClient;
 
 namespace Sinch.ServerSdk
@@ -23,21 +18,11 @@ namespace Sinch.ServerSdk
         /// Create a validator that checks the integrity of callbacks from the Sinch server.
         /// </summary>
         ICallbackValidator CreateCallbackValidator();
-
-        /// <summary>
-        /// Create a Sinch SMS API. Provides endpoints for sending SMS's using Sinch.
-        /// </summary>
-        ISmsApi CreateSmsApi();
-
+        
         /// <summary>
         /// Create a Sinch Conference API. Endpoints for ending the conference, as well as getting, muting, unmuting and kicking participants.
         /// </summary>
         IConferenceApi CreateConferenceApi();
-
-        /// <summary>
-        /// Create a Sinch Verification API. Provides endpoints for using Sinch Verification operations.
-        /// </summary>
-        IVerificationApi CreateVerificationApi();
 
         /// <summary>
         /// Createa a callout API to make Text to speech and Conference callouts
@@ -110,12 +95,6 @@ namespace Sinch.ServerSdk
             return new CallbackValidator(_key, _secret);
         }
 
-        public ISmsApi CreateSmsApi()
-        {
-            return new SmsApi(CreateApiClient<ISmsApiEndpoints>(_url));
-        }
-     
-
         public ICalloutApi CreateCalloutApi()
         {
             return new CalloutApi(CreateApiClient<ICalloutApiEndpoints>(String.Format(_url, "calling")), new CallbackResponseFactory(_locale));
@@ -126,11 +105,6 @@ namespace Sinch.ServerSdk
         public IConferenceApi CreateConferenceApi()
         {
             return new ConferenceApi(CreateApiClient<IConferenceApiEndpoints>(String.Format(_url, "calling")));
-        }
-
-        public IVerificationApi CreateVerificationApi()
-        {
-            return new VerificationApi(CreateApiClient<IVerificationApiEndpoints>("https://verificationapi-v1.sinch.com/verification/v1"));
         }
 
         private T CreateApiClient<T>() where T : class

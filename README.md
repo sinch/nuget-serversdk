@@ -1,4 +1,7 @@
-#
+# This repo is archived. 
+# You may consider switching to the official [Sinch Dotnet SDK](https://github.com/sinch/sinch-sdk-dotnet)
+
+
 # Sinch Server SDK NuGet package
 # Version: 1.3.0
 This package supports
